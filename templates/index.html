@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySense AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+
+<!-- ================= NAVBAR ================= -->
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+
+StudySense <span>AI</span>
+
+</div>
+
+<ul>
+
+<li><a href="/">Home</a></li>
+
+<li><a href="/courses">Courses</a></li>
+
+<li><a href="/projects">Projects</a></li>
+
+<li><a href="/dashboard">Dashboard</a></li>
+
+<li><a href="/profile">Profile</a></li>
+
+</ul>
+
+<div class="nav-buttons">
+
+<a href="/login" class="login-btn">Login</a>
+
+<a href="/signup" class="signup-btn">Sign Up</a>
+
+</div>
+
+</nav>
+
+</header>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+<div class="hero-left">
+
+<span class="badge">
+
+<i class="fa-solid fa-robot"></i>
+
+AI Powered Learning
+
+</span>
+
+<h1>
+
+Learn Coding
+
+<span>Smarter with AI</span>
+
+</h1>
+
+<p>
+
+Master programming with AI-generated explanations,
+coding practice, quizzes, projects and personalized learning.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="/courses" class="primary-btn">
+
+Explore Courses
+
+</a>
+
+<a href="/signup" class="secondary-btn">
+
+Get Started
+
+</a>
+
+</div>
+
+<div class="stats">
+
+<div class="glass-card">
+
+<h2>25K+</h2>
+
+<p>Students</p>
+
+</div>
+
+<div class="glass-card">
+
+<h2>120+</h2>
+
+<p>Courses</p>
+
+</div>
+
+<div class="glass-card">
+
+<h2>98%</h2>
+
+<p>Success</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="hero-right">
+
+<div class="image-card">
+
+<img src="{{ url_for('static', filename='images/hero.jpg') }}" alt="AI Learning">
+
+<div class="floating-card card1">
+
+🤖 AI Tutor
+
+</div>
+
+<div class="floating-card card2">
+
+🐍 Python Roadmap
+
+</div>
+
+<div class="floating-card card3">
+
+⭐ Personalized Learning
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= FEATURES ================= -->
+
+<section class="features">
+
+<h2>
+
+Why Choose StudySense AI?
+
+</h2>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+
+<i class="fa-solid fa-brain"></i>
+
+<h3>AI Tutor</h3>
+
+<p>
+
+Get instant explanations and coding guidance.
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-code"></i>
+
+<h3>Code Practice</h3>
+
+<p>
+
+Practice programming with live feedback.
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-chart-line"></i>
+
+<h3>Progress Tracking</h3>
+
+<p>
+
+Monitor your learning journey.
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-certificate"></i>
+
+<h3>Certificates</h3>
+
+<p>
+
+Earn certificates after completing courses.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= CTA ================= -->
+
+<section class="cta">
+
+<h2>
+
+Start Your AI Learning Journey Today
+
+</h2>
+
+<p>
+
+Join thousands of students learning smarter.
+
+</p>
+
+<a href="/signup">
+
+Create Free Account
+
+</a>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<p>
+
+© 2026 StudySense AI. All Rights Reserved.
+
+</p>
+
+</footer>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+</html>

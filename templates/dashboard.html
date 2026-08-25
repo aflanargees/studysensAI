@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | StudySense AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= Sidebar ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-brain"></i>
+
+            <h2>StudySense AI</h2>
+
+        </div>
+
+        <ul class="menu">
+
+            <li class="active">
+                <a href="/dashboard">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/courses">
+                    <i class="fa-solid fa-book-open"></i>
+                    <span>Courses</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/ai-tutor">
+                    <i class="fa-solid fa-robot"></i>
+                    <span>AI Tutor</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/quiz">
+                    <i class="fa-solid fa-circle-question"></i>
+                    <span>Quiz</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/projects">
+                    <i class="fa-solid fa-code"></i>
+                    <span>Projects</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/profile">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+
+        </ul>
+
+        <div class="logout">
+
+            <a href="/login">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </a>
+
+        </div>
+
+    </aside>
+
+    <!-- ================= Main ================= -->
+
+    <main class="main">
+
+        <!-- Top Bar -->
+
+        <header class="topbar">
+
+            <div class="search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input type="text"
+                    placeholder="Search courses...">
+
+            </div>
+
+            <div class="top-icons">
+
+                 <button id="notificationBtn">
+                      <i class="fa-regular fa-bell"></i>
+                </button>
+
+                <button id="themeToggle">
+                     <i class="fa-solid fa-moon"></i>
+                 </button>
+
+                <img src="{{ url_for('static', filename='images/profile.png') }}"
+                     alt="Profile">
+
+</div>
+
+        </header>
+
+        <!-- Hero -->
+
+        <section class="hero">
+
+            <div>
+
+                <h1>Welcome Back, {{ user.name }}! 👋</h1>
+
+                <p>Continue your programming journey with AI-powered learning.</p>
+
+            </div>
+
+            <div class="progress-circle">
+
+                <span>{{ overall_progress }}%</span>
+
+            </div>
+
+        </section>
+        <!-- ================= Statistics ================= -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+                <div class="icon purple">
+                    <i class="fa-solid fa-book"></i>
+                </div>
+                <div>
+                    <h3>{{ course_count }}</h3>
+                    <p>Courses</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="icon blue">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div>
+                    <h3>{{ quiz_count }}</h3>
+                    <p>Quizzes</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="icon green">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+                <div>
+                    <h3>{{ project_count }}</h3>
+                    <p>Projects</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="icon orange">
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+                <div>
+                    <h3>{{ learning_hours }}</h3>
+                    <p>Learning Hours</p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ================= Dashboard Grid ================= -->
+
+        <section class="dashboard-grid">
+
+            <!-- Continue Learning -->
+
+            <div class="card continue">
+
+                <h2>Continue Learning</h2>
+
+                <div class="course">
+
+                    <img src="{{ url_for('static', filename='images/python.png') }}" alt="Python">
+
+                    <div>
+
+                        <h3>Python Programming</h3>
+
+                        <p>Lesson 6 • Functions & Modules</p>
+
+                        <div class="progress-bar">
+
+                            <div class="progress-fill" style="width:70%;"></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button class="primary-btn">
+
+                    Resume Learning
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </div>
+
+            <!-- AI Tutor -->
+
+            <div class="card ai-card">
+
+                <div class="robot">
+
+                    <i class="fa-solid fa-robot"></i>
+
+                </div>
+
+                <h2>AI Tutor</h2>
+
+                <p>
+
+                    Stuck on a programming problem?
+
+                    Ask StudySense AI for explanations,
+
+                    debugging help and personalized guidance.
+
+                </p>
+
+                <button class="primary-btn">
+
+                    Ask AI Tutor
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- ================= Recommended Courses ================= -->
+
+        <section class="recommend-section">
+
+            <h2>Recommended Courses</h2>
+
+            <div class="course-grid">
+
+                <div class="course-card">
+
+                    <i class="fa-brands fa-python"></i>
+
+                    <h3>Python</h3>
+
+                    <p>Beginner to Advanced</p>
+
+                </div>
+
+                <div class="course-card">
+
+                    <i class="fa-solid fa-globe"></i>
+
+                    <h3>Web Development</h3>
+
+                    <p>HTML • CSS • JavaScript</p>
+
+                </div>
+
+                <div class="course-card">
+
+                    <i class="fa-solid fa-brain"></i>
+
+                    <h3>Machine Learning</h3>
+
+                    <p>AI Fundamentals</p>
+
+                </div>
+
+                <div class="course-card">
+
+                    <i class="fa-solid fa-database"></i>
+
+                    <h3>SQL & DBMS</h3>
+
+                    <p>Database Essentials</p>
+
+                </div>
+
+            </div>
+            
+
+        </section>
+        <!-- ================= Bottom Section ================= -->
+
+        <section class="bottom-grid">
+
+            <!-- Weekly Activity -->
+
+            <div class="card activity">
+
+                <h2>Weekly Activity</h2>
+
+                <div class="bars">
+
+                    <div class="bar">
+                        <span class="fill" style="height:60%"></span>
+                        <p>Mon</p>
+                    </div>
+
+                    <div class="bar">
+                        <span class="fill" style="height:85%"></span>
+                        <p>Tue</p>
+                    </div>
+
+                    <div class="bar">
+                        <span class="fill" style="height:70%"></span>
+                        <p>Wed</p>
+                    </div>
+
+                    <div class="bar">
+                        <span class="fill" style="height:95%"></span>
+                        <p>Thu</p>
+                    </div>
+
+                    <div class="bar">
+                        <span class="fill" style="height:75%"></span>
+                        <p>Fri</p>
+                    </div>
+
+                    <div class="bar">
+                        <span class="fill" style="height:90%"></span>
+                        <p>Sat</p>
+                    </div>
+
+                    <div class="bar">
+                        <span class="fill" style="height:55%"></span>
+                        <p>Sun</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Achievements -->
+
+            <div class="card achievements">
+
+                <h2>Achievements</h2>
+
+                <div class="achievement">
+                    <i class="fa-solid fa-trophy"></i>
+                    <div>
+                        <h4>Quiz Master</h4>
+                        <p>Completed 50+ quizzes</p>
+                    </div>
+                </div>
+
+                <div class="achievement">
+                    <i class="fa-solid fa-fire"></i>
+                    <div>
+                        <h4>7 Day Streak</h4>
+                        <p>Learned every day this week</p>
+                    </div>
+                </div>
+
+                <div class="achievement">
+                    <i class="fa-solid fa-star"></i>
+                    <div>
+                        <h4>Fast Learner</h4>
+                        <p>Finished 5 courses</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Recent Projects -->
+
+            <div class="card projects-card">
+
+                <h2>Recent Projects</h2>
+
+                <div class="project-item">
+                    <i class="fa-solid fa-laptop-code"></i>
+                    <div>
+                        <h4>QueueLess</h4>
+                        <p>Digital Queue Management</p>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <i class="fa-solid fa-brain"></i>
+                    <div>
+                        <h4>StudySense AI</h4>
+                        <p>AI Learning Platform</p>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <i class="fa-solid fa-hospital"></i>
+                    <div>
+                        <h4>Hospital Management</h4>
+                        <p>Healthcare Management System</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Daily Goal -->
+
+            <div class="card goal-card">
+
+                <h2>Today's Goal</h2>
+
+                <div class="goal-circle">
+
+                    <span>75%</span>
+
+                </div>
+
+                <p>3 of 4 learning tasks completed today.</p>
+
+                <button class="primary-btn">
+
+                    Continue Learning
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+</body>
+
+</html>

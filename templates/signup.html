@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | StudySense AI</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/signup.css') }}">
+
+</head>
+
+<body>
+
+<!-- Animated Background -->
+
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+
+<section class="signup-page">
+
+<div class="signup-container">
+
+<!-- ================= LEFT ================= -->
+
+<div class="left">
+
+<div class="badge">
+
+<i class="fa-solid fa-sparkles"></i>
+
+Future of Learning
+
+</div>
+
+<h1>
+
+Start Your
+
+<span>AI Learning</span>
+
+Journey
+
+</h1>
+
+<p>
+
+Join thousands of learners improving their programming
+skills using AI-powered personalized learning, quizzes,
+coding practice, and project guidance.
+
+</p>
+
+<div class="feature-list">
+
+<div class="feature">
+
+<i class="fa-solid fa-robot"></i>
+
+<span>AI Personal Tutor</span>
+
+</div>
+
+<div class="feature">
+
+<i class="fa-solid fa-code"></i>
+
+<span>Interactive Coding Practice</span>
+
+</div>
+
+<div class="feature">
+
+<i class="fa-solid fa-chart-line"></i>
+
+<span>Progress Analytics</span>
+
+</div>
+
+<div class="feature">
+
+<i class="fa-solid fa-graduation-cap"></i>
+
+<span>Certificates & Projects</span>
+
+</div>
+
+</div>
+
+<div class="image-wrapper">
+
+<img src="{{ url_for('static', filename='images/signup-ai.png') }}"
+alt="StudySense AI">
+
+<div class="floating-card card1">
+
+🤖 AI Tutor
+
+</div>
+
+<div class="floating-card card2">
+
+🐍 Python
+
+</div>
+
+<div class="floating-card card3">
+
+📊 Progress
+
+</div>
+
+<div class="floating-card card4">
+
+🚀 Roadmap
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= RIGHT ================= -->
+
+<div class="right">
+
+<div class="signup-card">
+
+<h2>
+
+Create Account
+
+</h2>
+
+<p>
+
+Let's begin your AI learning journey.
+
+</p>
+
+<form id="signupForm">
+
+<div class="input-box">
+
+<i class="fa-solid fa-user"></i>
+
+<input
+type="text"
+id="fullname"
+placeholder="Full Name"
+required>
+
+</div>
+
+<div class="input-box">
+
+<i class="fa-solid fa-envelope"></i>
+
+<input
+type="email"
+id="email"
+placeholder="Email Address"
+required>
+
+</div>
+
+<div class="input-box password-box">
+
+<i class="fa-solid fa-lock"></i>
+
+<input
+type="password"
+id="password"
+placeholder="Password"
+required>
+
+<button
+type="button"
+class="toggle-password">
+
+<i class="fa-solid fa-eye"></i>
+
+</button>
+
+</div>
+
+<div class="strength">
+
+<div class="strength-bar">
+
+<div class="strength-fill"></div>
+
+</div>
+
+<span class="strength-text">
+
+Password Strength
+
+</span>
+
+</div>
+
+<div class="input-box password-box">
+
+<i class="fa-solid fa-lock"></i>
+
+<input
+type="password"
+id="confirmPassword"
+placeholder="Confirm Password"
+required>
+
+<button
+type="button"
+class="toggle-password">
+
+<i class="fa-solid fa-eye"></i>
+
+</button>
+
+</div>
+
+<div class="options">
+
+<label>
+
+<input type="checkbox" required>
+
+I agree to the
+
+<a href="#">Terms & Conditions</a>
+
+</label>
+
+</div>
+
+<button
+type="submit"
+class="signup-btn">
+
+Create Account
+
+</button>
+
+<div class="divider">
+
+<span>OR</span>
+
+</div>
+
+<button
+type="button"
+class="google-btn">
+
+<i class="fa-brands fa-google"></i>
+
+Continue with Google
+
+</button>
+
+<div class="login-link">
+
+Already have an account?
+
+<a href="/login">
+
+Login
+
+</a>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<script src="{{ url_for('static', filename='js/signup.js') }}"></script>
+
+</body>
+</html>
