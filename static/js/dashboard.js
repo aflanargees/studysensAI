@@ -1,4 +1,6 @@
 console.log("Dashboard JS Loaded!");
+
+
 // =====================================
 // Greeting
 // =====================================
@@ -9,23 +11,21 @@ const hour = new Date().getHours();
 
 let greeting = "Welcome Back";
 
-if(hour < 12){
-
+if (hour < 12) {
     greeting = "Good Morning";
-
 }
-else if(hour < 17){
-
+else if (hour < 17) {
     greeting = "Good Afternoon";
-
 }
-else{
-
+else {
     greeting = "Good Evening";
-
 }
 
-heroTitle.innerHTML = `${greeting}, username! 👋`;
+if (heroTitle) {
+    heroTitle.innerHTML = `${greeting}, ${window.userName || "username"}! 👋`;
+}
+
+
 // =====================================
 // Animated Counter
 // =====================================
@@ -34,87 +34,124 @@ const counters = document.querySelectorAll(".stat-card h3");
 
 const speed = 30;
 
-counters.forEach(counter=>{
+counters.forEach(counter => {
 
     const target = Number(counter.innerText);
 
     let count = 0;
 
-    const update = ()=>{
+    const update = () => {
 
-        count += Math.ceil(target/speed);
-
-        if(count >= target){
-
-            counter.innerText = target;
-
-        }else{
-
-            counter.innerText = count;
-
-            requestAnimationFrame(update);
-
+        if (target === 0) {
+            counter.innerText = "0";
+            return;
         }
 
-    }
+        count += Math.ceil(target / speed);
+
+        if (count >= target) {
+            counter.innerText = target;
+        }
+        else {
+            counter.innerText = count;
+            requestAnimationFrame(update);
+        }
+    };
 
     update();
 
 });
-// ======================
-// Theme Toggle
-// ======================
+
+
+// =====================================
+// DARK / LIGHT MODE
+// =====================================
 
 const themeBtn = document.getElementById("themeToggle");
 
-themeBtn.addEventListener("click", () => {
-
-    document.body.classList.toggle("light-mode");
+if (themeBtn) {
 
     const icon = themeBtn.querySelector("i");
 
-    if (document.body.classList.contains("light-mode")) {
+    // Check previously selected theme
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "light") {
+
+        document.body.classList.add("light-mode");
+
         icon.classList.remove("fa-moon");
         icon.classList.add("fa-sun");
-    } else {
+
+    }
+    else {
+
+        document.body.classList.remove("light-mode");
+
         icon.classList.remove("fa-sun");
         icon.classList.add("fa-moon");
+
     }
 
-});
+
+    // Toggle theme
+    themeBtn.addEventListener("click", () => {
+
+        document.body.classList.toggle("light-mode");
+
+        if (document.body.classList.contains("light-mode")) {
+
+            localStorage.setItem("theme", "light");
+
+            icon.classList.remove("fa-moon");
+            icon.classList.add("fa-sun");
+
+        }
+        else {
+
+            localStorage.setItem("theme", "dark");
+
+            icon.classList.remove("fa-sun");
+            icon.classList.add("fa-moon");
+
+        }
+
+    });
+
+}
+
+
 // =====================================
 // Button Hover Animation
 // =====================================
 
-document.querySelectorAll(".primary-btn").forEach(btn=>{
+document.querySelectorAll(".primary-btn").forEach(btn => {
 
-    btn.addEventListener("mouseenter",()=>{
-
-        btn.style.transform="scale(1.05)";
-
+    btn.addEventListener("mouseenter", () => {
+        btn.style.transform = "scale(1.05)";
     });
 
-    btn.addEventListener("mouseleave",()=>{
-
-        btn.style.transform="scale(1)";
-
+    btn.addEventListener("mouseleave", () => {
+        btn.style.transform = "scale(1)";
     });
 
 });
+
+
 // =====================================
 // Scroll Animation
 // =====================================
 
 const cards = document.querySelectorAll(".card");
 
-const observer = new IntersectionObserver(entries=>{
+const observer = new IntersectionObserver(entries => {
 
-    entries.forEach(entry=>{
+    entries.forEach(entry => {
 
-        if(entry.isIntersecting){
+        if (entry.isIntersecting) {
 
-            entry.target.style.opacity="1";
-            entry.target.style.transform="translateY(0)";
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
 
         }
 
@@ -122,11 +159,11 @@ const observer = new IntersectionObserver(entries=>{
 
 });
 
-cards.forEach(card=>{
+cards.forEach(card => {
 
-    card.style.opacity="0";
-    card.style.transform="translateY(40px)";
-    card.style.transition=".6s";
+    card.style.opacity = "0";
+    card.style.transform = "translateY(40px)";
+    card.style.transition = ".6s";
 
     observer.observe(card);
 

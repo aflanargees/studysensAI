@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Courses | StudySense AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/courses.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div>
+            <div class="logo">
+                <i class="fa-solid fa-brain"></i>
+                <h2>StudySense AI</h2>
+            </div>
+
+            <ul class="menu">
+
+                <li>
+                    <a href="/dashboard">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="/courses">
+                        <i class="fa-solid fa-book-open"></i>
+                        <span>Courses</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/ai-tutor">
+                        <i class="fa-solid fa-robot"></i>
+                        <span>AI Tutor</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/quiz">
+                        <i class="fa-solid fa-circle-question"></i>
+                        <span>Quiz</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/projects">
+                        <i class="fa-solid fa-code"></i>
+                        <span>Projects</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/profile">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-gear"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="logout">
+            <a href="/logout">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </a>
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main">
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div class="search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input type="text"
+                       id="courseSearch"
+                       placeholder="Search courses...">
+            </div>
+
+            <div class="top-icons">
+
+                <button id="notificationBtn">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+
+                <button id="themeToggle">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <img src="{{ url_for('static', filename='images/profile.png') }}"
+                     alt="Profile">
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= PAGE HEADER ================= -->
+
+        <section class="page-header">
+
+            <div>
+                <h1>Explore Courses</h1>
+
+                <p>
+                    Choose a course and start building your programming skills.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- ================= COURSE FILTER ================= -->
+
+        <div class="course-filter">
+
+            <button class="filter-btn active" data-filter="all">
+                All Courses
+            </button>
+
+            <button class="filter-btn" data-filter="beginner">
+                Beginner
+            </button>
+
+            <button class="filter-btn" data-filter="intermediate">
+                Intermediate
+            </button>
+
+        </div>
+
+
+        <!-- ================= COURSES ================= -->
+
+        <section class="course-grid" id="courseGrid">
+
+
+            <!-- PYTHON -->
+
+            <div class="course-card"
+                 data-level="beginner"
+                 data-name="python programming">
+
+                <div class="course-icon python">
+                    <i class="fa-brands fa-python"></i>
+                </div>
+
+                <span class="level beginner-level">
+                    Beginner
+                </span>
+
+                <h2>Python Programming</h2>
+
+                <p>
+                    Learn Python from the basics and build practical
+                    programming skills step by step.
+                </p>
+
+                <div class="course-info">
+                    <span>
+                        <i class="fa-solid fa-book"></i>
+                        7 Modules
+                    </span>
+
+                    <span>
+                        <i class="fa-regular fa-clock"></i>
+                        8 Hours
+                    </span>
+                </div>
+
+                <a href="#" class="course-btn">
+                    Start Learning
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+            <!-- WEB DEVELOPMENT -->
+
+            <div class="course-card"
+                 data-level="beginner"
+                 data-name="web development">
+
+                <div class="course-icon web">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+
+                <span class="level beginner-level">
+                    Beginner
+                </span>
+
+                <h2>Web Development</h2>
+
+                <p>
+                    Learn HTML, CSS and JavaScript to create modern
+                    and responsive websites.
+                </p>
+
+                <div class="course-info">
+                    <span>
+                        <i class="fa-solid fa-book"></i>
+                        8 Modules
+                    </span>
+
+                    <span>
+                        <i class="fa-regular fa-clock"></i>
+                        10 Hours
+                    </span>
+                </div>
+
+                <a href="#" class="course-btn">
+                    Start Learning
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+            <!-- SQL & DBMS -->
+
+            <div class="course-card"
+                 data-level="intermediate"
+                 data-name="sql dbms">
+
+                <div class="course-icon sql">
+                    <i class="fa-solid fa-database"></i>
+                </div>
+
+                <span class="level intermediate-level">
+                    Intermediate
+                </span>
+
+                <h2>SQL &amp; DBMS</h2>
+
+                <p>
+                    Understand databases, SQL queries, joins,
+                    normalization and essential DBMS concepts.
+                </p>
+
+                <div class="course-info">
+                    <span>
+                        <i class="fa-solid fa-book"></i>
+                        7 Modules
+                    </span>
+
+                    <span>
+                        <i class="fa-regular fa-clock"></i>
+                        9 Hours
+                    </span>
+                </div>
+
+                <a href="#" class="course-btn">
+                    Start Learning
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+            <!-- FLUTTER -->
+
+            <div class="course-card"
+                 data-level="beginner"
+                 data-name="flutter development">
+
+                <div class="course-icon flutter">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                </div>
+
+                <span class="level beginner-level">
+                    Beginner
+                </span>
+
+                <h2>Flutter Development</h2>
+
+                <p>
+                    Learn Dart and Flutter to create beautiful
+                    cross-platform mobile applications.
+                </p>
+
+                <div class="course-info">
+                    <span>
+                        <i class="fa-solid fa-book"></i>
+                        8 Modules
+                    </span>
+
+                    <span>
+                        <i class="fa-regular fa-clock"></i>
+                        10 Hours
+                    </span>
+                </div>
+
+                <a href="#" class="course-btn">
+                    Start Learning
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+            <!-- JAVA & DATA STRUCTURES -->
+
+            <div class="course-card"
+                 data-level="intermediate"
+                 data-name="java data structures">
+
+                <div class="course-icon java">
+                    <i class="fa-brands fa-java"></i>
+                </div>
+
+                <span class="level intermediate-level">
+                    Intermediate
+                </span>
+
+                <h2>Java &amp; Data Structures</h2>
+
+                <p>
+                    Learn Java programming, object-oriented concepts
+                    and fundamental data structures and algorithms.
+                </p>
+
+                <div class="course-info">
+                    <span>
+                        <i class="fa-solid fa-book"></i>
+                        8 Modules
+                    </span>
+
+                    <span>
+                        <i class="fa-regular fa-clock"></i>
+                        12 Hours
+                    </span>
+                </div>
+
+                <a href="#" class="course-btn">
+                    Start Learning
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    /* ==========================
+       DARK / LIGHT MODE
+    ========================== */
+
+    const themeBtn = document.getElementById("themeToggle");
+    const themeIcon = themeBtn.querySelector("i");
+
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "light") {
+
+        document.body.classList.add("light-mode");
+
+        themeIcon.classList.remove("fa-moon");
+        themeIcon.classList.add("fa-sun");
+
+    }
+
+
+    themeBtn.addEventListener("click", function () {
+
+        document.body.classList.toggle("light-mode");
+
+        if (document.body.classList.contains("light-mode")) {
+
+            localStorage.setItem("theme", "light");
+
+            themeIcon.classList.remove("fa-moon");
+            themeIcon.classList.add("fa-sun");
+
+        } else {
+
+            localStorage.setItem("theme", "dark");
+
+            themeIcon.classList.remove("fa-sun");
+            themeIcon.classList.add("fa-moon");
+
+        }
+
+    });
+
+
+    /* ==========================
+       COURSE FILTER
+    ========================== */
+
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const courseCards = document.querySelectorAll(".course-card");
+
+    filterButtons.forEach(button => {
+
+        button.addEventListener("click", function () {
+
+            filterButtons.forEach(btn => {
+                btn.classList.remove("active");
+            });
+
+            this.classList.add("active");
+
+            const filter = this.dataset.filter;
+
+            courseCards.forEach(card => {
+
+                if (filter === "all" ||
+                    card.dataset.level === filter) {
+
+                    card.style.display = "flex";
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+        });
+
+    });
+
+
+    /* ==========================
+       COURSE SEARCH
+    ========================== */
+
+    const searchInput = document.getElementById("courseSearch");
+
+    searchInput.addEventListener("input", function () {
+
+        const searchValue = this.value.toLowerCase();
+
+        courseCards.forEach(card => {
+
+            const courseName =
+                card.dataset.name.toLowerCase();
+
+            if (courseName.includes(searchValue)) {
+
+                card.style.display = "flex";
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+    });
+
+</script>
+
+</body>
+</html>

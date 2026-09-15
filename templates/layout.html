@@ -22,35 +22,42 @@
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar">
+<nav class="navbar">
 
-        <div class="logo">
-            <a href="/">StudySense <span>AI</span></a>
-        </div>
+    <div class="logo">
+        <a href="/">StudySense <span>AI</span></a>
+    </div>
 
-        <ul class="nav-links">
+    <div class="nav-links">
 
-            <li><a href="/">Home</a></li>
+        {% if session.get('logged_in') %}
 
-            <li><a href="/courses">Courses</a></li>
+            <a href="/">Home</a>
+            <a href="/courses">Courses</a>
+            <a href="/projects">Projects</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/profile">Profile</a>
 
-            <li><a href="/projects">Projects</a></li>
+        {% endif %}
 
-            <li><a href="/dashboard">Dashboard</a></li>
+    </div>
 
-            <li><a href="/profile">Profile</a></li>
+    <div class="nav-buttons">
 
-        </ul>
+        {% if session.get('logged_in') %}
 
-        <div class="nav-buttons">
+            <a href="/logout" class="logout-btn">Logout</a>
+
+        {% else %}
 
             <a href="/login" class="login-btn">Login</a>
-
             <a href="/signup" class="signup-btn">Sign Up</a>
 
-        </div>
+        {% endif %}
 
-    </nav>
+    </div>
+
+</nav>
 
 
     <!-- Main Content -->

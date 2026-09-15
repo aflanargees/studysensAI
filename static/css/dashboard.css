@@ -212,7 +212,10 @@ body{
     width:130px;
     height:130px;
     border-radius:50%;
-    background:conic-gradient(#6366f1 80%, #1e293b 0);
+    background:conic-gradient(
+        #6366f1 0%,
+        #e2e8f0 0%
+    );
     display:flex;
     align-items:center;
     justify-content:center;
@@ -618,16 +621,14 @@ body{
 }
 
 .goal-circle{
-
     width:170px;
     height:170px;
     border-radius:50%;
-    background:conic-gradient(#6366f1 75%, #334155 0);
+    background:conic-gradient(#e2e8f0 0%, #e2e8f0 100%);
     display:flex;
     justify-content:center;
     align-items:center;
     margin:25px 0;
-
 }
 
 .goal-circle span{
@@ -824,103 +825,272 @@ body{
     background:#8b5cf6;
 
 }
-/* ===============================
+/* ==========================================
    LIGHT MODE
-=============================== */
+========================================== */
 
-body.light-mode{
-
-    background:#f3f4f6;
-    color:#111827;
-
+body.light-mode {
+    background: #f3f4f6;
+    color: #111827;
 }
 
-body.light-mode .sidebar{
-
-    background:white;
-
-}
-
-body.light-mode .card,
-body.light-mode .stat-card,
-body.light-mode .course-card{
-
-    background:white;
-    color:#111827;
-
-}
-
-body.light-mode .search{
-
-    background:#e5e7eb;
-
-}
-
-body.light-mode .top-icons button{
-
-    background:#e5e7eb;
-    color:#111827;
-
-}
-
-/* ==========================
-   LIGHT MODE
-========================== */
-
-body.light-mode{
-    background:#f3f4f6;
-    color:#111827;
-}
-
-/* Main Area */
-body.light-mode .main{
-    background:#f3f4f6;
+/* Main area */
+body.light-mode .main {
+    background: #f3f4f6;
 }
 
 /* Sidebar */
-body.light-mode .sidebar{
-    background:#ffffff;
-    border-right:1px solid #d1d5db;
+body.light-mode .sidebar {
+    background: #ffffff;
+    border-right: 1px solid #e5e7eb;
 }
 
-body.light-mode .logo h2,
-body.light-mode .menu li a,
-body.light-mode .logout a{
-    color:#111827;
+body.light-mode .logo h2 {
+    color: #111827;
 }
 
-/* Cards */
-body.light-mode .card,
-body.light-mode .stat-card,
-body.light-mode .course-card{
-    background:#ffffff;
-    color:#111827;
+body.light-mode .menu li a {
+    color: #334155;
 }
 
-/* Search Bar */
-body.light-mode .search{
-    background:#e5e7eb;
+body.light-mode .menu li:hover a {
+    background: #f1f5f9;
+    color: #111827;
 }
 
-body.light-mode .search input{
-    color:#111827;
+/* Keep active menu purple */
+body.light-mode .menu .active a {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: #ffffff;
 }
 
-body.light-mode .search input::placeholder{
-    color:#6b7280;
+/* Logout */
+body.light-mode .logout a {
+    color: #ffffff;
 }
 
-/* Buttons */
-body.light-mode .top-icons button{
-    background:#e5e7eb;
-    color:#111827;
+
+/* ==========================================
+   TOP BAR
+========================================== */
+
+body.light-mode .search {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
 }
 
-/* Hero Text */
-body.light-mode .hero p,
-body.light-mode .stat-card p,
-body.light-mode .course-card p,
-body.light-mode .achievement p,
-body.light-mode .project-item p{
-    color:#6b7280;
+body.light-mode .search input {
+    color: #111827;
+}
+
+body.light-mode .search input::placeholder {
+    color: #94a3b8;
+}
+
+body.light-mode .top-icons button {
+    background: #ffffff;
+    color: #111827;
+    border: 1px solid #e5e7eb;
+}
+
+
+/* ==========================================
+   HERO
+========================================== */
+
+body.light-mode .hero h1 {
+    color: #111827;
+}
+
+body.light-mode .hero p {
+    color: #64748b;
+}
+
+
+/* ==========================================
+   PROGRESS CIRCLE
+========================================== */
+
+body.light-mode .progress-circle {
+    background: conic-gradient(
+        #6366f1 0%,
+        #e2e8f0 0
+    );
+}
+
+body.light-mode .progress-circle span {
+    background: #ffffff;
+    color: #111827;
+}
+
+
+/* ==========================================
+   STAT CARDS
+========================================== */
+
+body.light-mode .stat-card {
+    background: #ffffff;
+    color: #111827;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+body.light-mode .stat-card h3 {
+    color: #111827;
+}
+
+body.light-mode .stat-card p {
+    color: #64748b;
+}
+
+
+/* ==========================================
+   GENERAL CARDS
+========================================== */
+
+body.light-mode .card {
+    background: #ffffff;
+    color: #111827;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+body.light-mode .card h2 {
+    color: #111827;
+}
+
+
+/* ==========================================
+   CONTINUE LEARNING
+========================================== */
+
+body.light-mode .course h3 {
+    color: #111827;
+}
+
+body.light-mode .course p {
+    color: #64748b;
+}
+
+body.light-mode .course img {
+    background: #f1f5f9;
+}
+
+body.light-mode .progress-bar {
+    background: #e2e8f0;
+}
+
+
+/* ==========================================
+   AI TUTOR
+========================================== */
+
+body.light-mode .ai-card p {
+    color: #64748b;
+}
+
+
+/* ==========================================
+   RECOMMENDED COURSES
+========================================== */
+
+body.light-mode .recommend-section h2 {
+    color: #111827;
+}
+
+body.light-mode .course-card {
+    background: #ffffff;
+    color: #111827;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+body.light-mode .course-card h3 {
+    color: #111827;
+}
+
+body.light-mode .course-card p {
+    color: #64748b;
+}
+
+body.light-mode .course-card:hover {
+    background: #ffffff;
+}
+
+
+/* ==========================================
+   WEEKLY ACTIVITY
+========================================== */
+
+body.light-mode .bar p {
+    color: #64748b;
+}
+
+
+/* ==========================================
+   ACHIEVEMENTS
+========================================== */
+
+body.light-mode .achievement {
+    background: #f8fafc;
+    color: #111827;
+    border: 1px solid #e5e7eb;
+}
+
+body.light-mode .achievement h4 {
+    color: #111827;
+}
+
+body.light-mode .achievement p {
+    color: #64748b;
+}
+
+
+/* ==========================================
+   RECENT PROJECTS
+========================================== */
+
+body.light-mode .project-item {
+    background: #f8fafc;
+    color: #111827;
+    border: 1px solid #e5e7eb;
+}
+
+body.light-mode .project-item h4 {
+    color: #111827;
+}
+
+body.light-mode .project-item p {
+    color: #64748b;
+}
+
+
+/* ==========================================
+   TODAY'S GOAL
+========================================== */
+
+body.light-mode .goal-circle {
+    background: conic-gradient(
+        #6366f1 0%,
+        #e2e8f0 0
+    );
+}
+
+body.light-mode .goal-circle span {
+    background: #ffffff;
+    color: #111827;
+}
+
+body.light-mode .goal-card p {
+    color: #64748b;
+}
+
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+
+body.light-mode ::-webkit-scrollbar-track {
+    background: #e5e7eb;
+}
+
+body.light-mode ::-webkit-scrollbar-thumb {
+    background: #6366f1;
 }

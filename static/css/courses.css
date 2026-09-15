@@ -1,0 +1,652 @@
+/* ===========================
+   GOOGLE FONT
+=========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+/* ===========================
+   RESET
+=========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+body {
+    background: #0f172a;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+
+/* ===========================
+   LAYOUT
+=========================== */
+
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* ===========================
+   SIDEBAR
+=========================== */
+
+.sidebar {
+    width: 270px;
+    background: #111827;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 20px;
+    border-right: 1px solid rgba(255,255,255,.08);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+
+.logo i {
+    font-size: 30px;
+    color: #6366f1;
+}
+
+
+.logo h2 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+
+.menu {
+    list-style: none;
+}
+
+
+.menu li {
+    margin: 10px 0;
+}
+
+
+.menu li a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #cbd5e1;
+    text-decoration: none;
+    padding: 14px 18px;
+    border-radius: 12px;
+    transition: .3s;
+}
+
+
+.menu li a i {
+    width: 20px;
+    text-align: center;
+}
+
+
+.menu li:hover a {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+
+.menu .active a {
+    background: linear-gradient(135deg,#6366f1,#8b5cf6);
+    color: #ffffff;
+}
+
+
+/* ===========================
+   LOGOUT
+=========================== */
+
+.logout a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #ffffff;
+    padding: 14px;
+    border-radius: 12px;
+    background: #ef4444;
+    transition: .3s;
+}
+
+
+.logout a:hover {
+    background: #dc2626;
+}
+
+
+/* ===========================
+   MAIN
+=========================== */
+
+.main {
+    flex: 1;
+    padding: 35px;
+}
+
+
+/* ===========================
+   TOPBAR
+=========================== */
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+
+.search {
+    display: flex;
+    align-items: center;
+    background: #1e293b;
+    padding: 12px 18px;
+    border-radius: 14px;
+    width: 340px;
+}
+
+
+.search i {
+    color: #94a3b8;
+    margin-right: 10px;
+}
+
+
+.search input {
+    background: none;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    width: 100%;
+    font-size: 15px;
+}
+
+
+.search input::placeholder {
+    color: #94a3b8;
+}
+
+
+.top-icons {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+
+.top-icons button {
+    width: 46px;
+    height: 46px;
+    border: none;
+    border-radius: 50%;
+    background: #1e293b;
+    color: #ffffff;
+    cursor: pointer;
+    transition: .3s;
+    font-size: 18px;
+}
+
+
+.top-icons button:hover {
+    background: #6366f1;
+}
+
+
+.top-icons img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #6366f1;
+}
+
+
+/* ===========================
+   PAGE HEADER
+=========================== */
+
+.page-header {
+    margin-bottom: 30px;
+}
+
+
+.page-header h1 {
+    font-size: 42px;
+    margin-bottom: 8px;
+}
+
+
+.page-header p {
+    color: #94a3b8;
+    font-size: 17px;
+}
+
+
+/* ===========================
+   FILTER BUTTONS
+=========================== */
+
+.course-filter {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+
+.filter-btn {
+    border: none;
+    padding: 11px 20px;
+    border-radius: 10px;
+    background: #1e293b;
+    color: #cbd5e1;
+    cursor: pointer;
+    font-size: 14px;
+    transition: .3s;
+}
+
+
+.filter-btn:hover {
+    background: #273549;
+}
+
+
+.filter-btn.active {
+    background: linear-gradient(135deg,#6366f1,#8b5cf6);
+    color: #ffffff;
+}
+
+
+/* ===========================
+   COURSE GRID
+=========================== */
+
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+
+/* ===========================
+   COURSE CARD
+=========================== */
+
+.course-card {
+    background: #1e293b;
+    border-radius: 20px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    min-height: 390px;
+    transition: .3s;
+    border: 1px solid transparent;
+}
+
+
+.course-card:hover {
+    transform: translateY(-7px);
+    border-color: #6366f1;
+    box-shadow: 0 15px 35px rgba(99,102,241,.18);
+}
+
+
+/* ===========================
+   COURSE ICON
+=========================== */
+
+.course-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    margin-bottom: 20px;
+}
+
+
+.python {
+    background: rgba(59,130,246,.15);
+    color: #60a5fa;
+}
+
+
+.web {
+    background: rgba(139,92,246,.15);
+    color: #a78bfa;
+}
+
+
+.sql {
+    background: rgba(16,185,129,.15);
+    color: #34d399;
+}
+
+
+.flutter {
+    background: rgba(14,165,233,.15);
+    color: #38bdf8;
+}
+
+
+.java {
+    background: rgba(239,68,68,.15);
+    color: #f87171;
+}
+
+
+/* ===========================
+   LEVEL
+=========================== */
+
+.level {
+    display: inline-block;
+    width: fit-content;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 14px;
+}
+
+
+.beginner-level {
+    background: rgba(16,185,129,.15);
+    color: #34d399;
+}
+
+
+.intermediate-level {
+    background: rgba(245,158,11,.15);
+    color: #fbbf24;
+}
+
+
+/* ===========================
+   CARD TEXT
+=========================== */
+
+.course-card h2 {
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+
+.course-card p {
+    color: #94a3b8;
+    line-height: 1.7;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+
+/* ===========================
+   COURSE INFO
+=========================== */
+
+.course-info {
+    display: flex;
+    gap: 20px;
+    color: #94a3b8;
+    font-size: 13px;
+    margin-bottom: 22px;
+}
+
+
+.course-info span {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+
+.course-info i {
+    color: #6366f1;
+}
+
+
+/* ===========================
+   BUTTON
+=========================== */
+
+.course-btn {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    background: linear-gradient(135deg,#6366f1,#8b5cf6);
+    color: #ffffff;
+    padding: 13px 18px;
+    border-radius: 11px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+
+.course-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(99,102,241,.3);
+}
+
+
+/* ===========================
+   LIGHT MODE
+=========================== */
+
+body.light-mode {
+    background: #f3f4f6;
+    color: #111827;
+}
+
+
+body.light-mode .main {
+    background: #f3f4f6;
+}
+
+
+body.light-mode .sidebar {
+    background: #ffffff;
+    border-right: 1px solid #e5e7eb;
+}
+
+
+body.light-mode .logo h2 {
+    color: #111827;
+}
+
+
+body.light-mode .menu li a {
+    color: #334155;
+}
+
+
+body.light-mode .menu li:hover a {
+    background: #f1f5f9;
+    color: #111827;
+}
+
+
+body.light-mode .menu .active a {
+    background: linear-gradient(135deg,#6366f1,#8b5cf6);
+    color: #ffffff;
+}
+
+
+body.light-mode .search {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+}
+
+
+body.light-mode .search input {
+    color: #111827;
+}
+
+
+body.light-mode .top-icons button {
+    background: #ffffff;
+    color: #111827;
+    border: 1px solid #e5e7eb;
+}
+
+
+body.light-mode .page-header h1 {
+    color: #111827;
+}
+
+
+body.light-mode .page-header p {
+    color: #64748b;
+}
+
+
+body.light-mode .filter-btn {
+    background: #ffffff;
+    color: #475569;
+    border: 1px solid #e5e7eb;
+}
+
+
+body.light-mode .filter-btn:hover {
+    background: #f1f5f9;
+}
+
+
+body.light-mode .filter-btn.active {
+    background: linear-gradient(135deg,#6366f1,#8b5cf6);
+    color: #ffffff;
+}
+
+
+body.light-mode .course-card {
+    background: #ffffff;
+    color: #111827;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 8px 25px rgba(0,0,0,.06);
+}
+
+
+body.light-mode .course-card h2 {
+    color: #111827;
+}
+
+
+body.light-mode .course-card p {
+    color: #64748b;
+}
+
+
+body.light-mode .course-info {
+    color: #64748b;
+}
+
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 1200px) {
+
+    .course-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 992px) {
+
+    .sidebar {
+        width: 230px;
+    }
+
+    .course-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .menu {
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 8px;
+    }
+
+    .menu li a {
+        justify-content: center;
+    }
+
+    .menu span {
+        display: none;
+    }
+
+    .logout {
+        margin-top: 20px;
+    }
+
+    .topbar {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .search {
+        width: 100%;
+    }
+
+    .main {
+        padding: 20px;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .page-header h1 {
+        font-size: 32px;
+    }
+
+    .course-card {
+        padding: 22px;
+    }
+
+}

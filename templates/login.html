@@ -2,25 +2,25 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Login | StudySense AI</title>
 
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
+    <!-- Font Awesome -->
     <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
+    <!-- Login CSS -->
     <link rel="stylesheet"
-    href="{{ url_for('static', filename='css/login.css') }}">
-
+        href="{{ url_for('static', filename='css/login.css') }}">
 </head>
 
 <body>
@@ -32,8 +32,7 @@
 
     <div class="login-container">
 
-        <!-- LEFT -->
-
+        <!-- LEFT SIDE -->
         <div class="left">
 
             <span class="badge">
@@ -42,101 +41,95 @@
             </span>
 
             <h1>
-
                 Learn Coding
-
                 <span>Smarter</span>
-
                 with AI
-
             </h1>
 
             <p>
-
                 Master programming through interactive lessons,
                 AI guidance, quizzes and coding practice.
-
             </p>
 
             <img
-            src="{{ url_for('static', filename='images/login.png') }}"
-            alt="AI Illustration">
+                src="{{ url_for('static', filename='images/login.png') }}"
+                alt="AI Illustration">
 
         </div>
 
-        <!-- RIGHT -->
 
+        <!-- RIGHT SIDE -->
         <div class="right">
 
             <div class="card">
 
-                <h2>
+                <h2>Welcome Back 👋</h2>
 
-                    Welcome Back 👋
-
-                </h2>
-
-                <p>
-
+                <p class="subtitle">
                     Login to continue your coding journey.
-
                 </p>
 
-                <form>
+                <form method="POST">
 
+                    <!-- EMAIL -->
                     <div class="input-box">
 
                         <i class="fa-solid fa-envelope"></i>
 
                         <input
-                        type="email"
-                        placeholder="Email Address">
+                            type="email"
+                            name="email"
+                            placeholder="Email Address"
+                            required>
 
                     </div>
 
+
+                    <!-- PASSWORD -->
                     <div class="input-box">
 
                         <i class="fa-solid fa-lock"></i>
 
                         <input
-                        type="password"
-                        placeholder="Password">
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            required>
 
                     </div>
 
+
+                    <!-- OPTIONS -->
                     <div class="options">
 
                         <label>
-
-                            <input type="checkbox">
-
+                            <input type="checkbox" name="remember">
                             Remember Me
-
                         </label>
 
                         <a href="#">
-
                             Forgot Password?
-
                         </a>
 
                     </div>
 
-                    <button class="login-btn">
 
+                    <!-- LOGIN BUTTON -->
+                    <button type="submit" class="login-btn">
                         Login
-
                     </button>
 
                 </form>
 
+
+                <!-- DIVIDER -->
                 <div class="divider">
-
                     <span>OR</span>
-
                 </div>
 
-                <button class="google-btn">
+
+                <!-- GOOGLE LOGIN -->
+                <button type="button" class="google-btn">
 
                     <i class="fa-brands fa-google"></i>
 
@@ -144,14 +137,14 @@
 
                 </button>
 
+
+                <!-- SIGNUP -->
                 <div class="signup">
 
                     Don't have an account?
 
                     <a href="/signup">
-
                         Create Account
-
                     </a>
 
                 </div>
@@ -165,5 +158,4 @@
 </section>
 
 </body>
-
 </html>

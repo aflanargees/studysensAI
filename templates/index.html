@@ -25,33 +25,64 @@
 
 <nav class="navbar">
 
-<div class="logo">
+    <!-- LOGO -->
+    <div class="logo">
+        StudySense <span>AI</span>
+    </div>
 
-StudySense <span>AI</span>
 
-</div>
+    <!-- NAVIGATION LINKS -->
+    {% if session.get('logged_in') %}
 
-<ul>
+    <ul>
 
-<li><a href="/">Home</a></li>
+        <li>
+            <a href="/">Home</a>
+        </li>
 
-<li><a href="/courses">Courses</a></li>
+        <li>
+            <a href="/courses">Courses</a>
+        </li>
 
-<li><a href="/projects">Projects</a></li>
+        <li>
+            <a href="/projects">Projects</a>
+        </li>
 
-<li><a href="/dashboard">Dashboard</a></li>
+        <li>
+            <a href="/dashboard">Dashboard</a>
+        </li>
 
-<li><a href="/profile">Profile</a></li>
+        <li>
+            <a href="/profile">Profile</a>
+        </li>
 
-</ul>
+    </ul>
 
-<div class="nav-buttons">
+    {% endif %}
 
-<a href="/login" class="login-btn">Login</a>
 
-<a href="/signup" class="signup-btn">Sign Up</a>
+    <!-- BUTTONS -->
+    <div class="nav-buttons">
 
-</div>
+        {% if session.get('logged_in') %}
+
+            <a href="/logout" class="logout-btn">
+                Logout
+            </a>
+
+        {% else %}
+
+            <a href="/login" class="login-btn">
+                Login
+            </a>
+
+            <a href="/signup" class="signup-btn">
+                Sign Up
+            </a>
+
+        {% endif %}
+
+    </div>
 
 </nav>
 

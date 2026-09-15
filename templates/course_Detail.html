@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python Programming | StudySense AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/course_detail.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        StudySense <span>AI</span>
+    </div>
+
+    <nav class="sidebar-nav">
+
+        <a href="/dashboard">
+            <i class="fa-solid fa-house"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="/courses" class="active">
+            <i class="fa-solid fa-book"></i>
+            <span>Courses</span>
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-robot"></i>
+            <span>AI Tutor</span>
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-circle-question"></i>
+            <span>Quiz</span>
+        </a>
+
+        <a href="/projects">
+            <i class="fa-solid fa-code"></i>
+            <span>Projects</span>
+        </a>
+
+        <a href="/profile">
+            <i class="fa-solid fa-user"></i>
+            <span>Profile</span>
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-gear"></i>
+            <span>Settings</span>
+        </a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+        <a href="/logout">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+        </a>
+    </div>
+
+</aside>
+
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<main class="main-content">
+
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search courses...">
+        </div>
+
+        <div class="topbar-right">
+
+            <button class="icon-btn">
+                <i class="fa-regular fa-bell"></i>
+            </button>
+
+            <button class="icon-btn" id="themeToggle">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+
+            <div class="profile">
+                <img src="{{ url_for('static', filename='images/profile.png') }}"
+                     alt="Profile">
+
+                <div>
+                    <strong>{{ session.get('user_name', 'Test User') }}</strong>
+                    <span>Student</span>
+                </div>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= COURSE HEADER ================= -->
+
+    <section class="course-header">
+
+        <div class="back-link">
+            <a href="/courses">
+                <i class="fa-solid fa-arrow-left"></i>
+                Back to Courses
+            </a>
+        </div>
+
+        <div class="course-header-content">
+
+            <div class="course-icon python-icon">
+                <i class="fa-brands fa-python"></i>
+            </div>
+
+            <div class="course-title">
+
+                <span class="course-level">BEGINNER TO ADVANCED</span>
+
+                <h1>Python Programming</h1>
+
+                <p>
+                    Learn Python from the basics and build practical
+                    programming skills step by step.
+                </p>
+
+                <div class="course-meta">
+
+                    <span>
+                        <i class="fa-solid fa-layer-group"></i>
+                        7 Modules
+                    </span>
+
+                    <span>
+                        <i class="fa-regular fa-clock"></i>
+                        8 Hours
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-signal"></i>
+                        Beginner
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PROGRESS ================= -->
+
+    <section class="progress-card">
+
+        <div class="progress-info">
+
+            <div>
+                <h3>Your Progress</h3>
+                <p>Start learning to track your progress.</p>
+            </div>
+
+            <strong>0%</strong>
+
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+
+    </section>
+
+
+    <!-- ================= COURSE CONTENT ================= -->
+
+    <section class="course-content">
+
+        <div class="section-heading">
+
+            <div>
+                <h2>Course Content</h2>
+                <p>Learn step by step with lessons, assignments and quizzes.</p>
+            </div>
+
+            <span>7 Modules • 8 Hours</span>
+
+        </div>
+
+
+        <!-- ================= MODULE 1 ================= -->
+
+        <div class="module">
+
+            <div class="module-header">
+
+                <div>
+                    <span class="module-number">MODULE 01</span>
+                    <h3>Python Basics</h3>
+                    <p>Learn the fundamentals of Python programming.</p>
+                </div>
+
+                <i class="fa-solid fa-chevron-down"></i>
+
+            </div>
+
+
+            <div class="lessons">
+
+                <!-- LESSON 1 -->
+
+                <div class="lesson active-lesson">
+
+                    <div class="lesson-icon">
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+
+                    <div class="lesson-info">
+
+                        <h4>Lesson 1 — Introduction to Python</h4>
+
+                        <p>
+                            Learn what Python is, why it is used,
+                            and write your first Python program.
+                        </p>
+
+                        <div class="lesson-tools">
+
+                            <span>
+                                <i class="fa-solid fa-book-open"></i>
+                                Lesson
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-pen"></i>
+                                Assignment
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-circle-question"></i>
+                                Quiz
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <a href="#" class="start-btn">
+                        Start Lesson
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+
+                <!-- LESSON 2 -->
+
+                <div class="lesson locked">
+
+                    <div class="lesson-icon">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+
+                    <div class="lesson-info">
+
+                        <h4>Lesson 2 — Variables & Data Types</h4>
+
+                        <p>
+                            Understand variables and the basic data types
+                            used in Python.
+                        </p>
+
+                        <div class="lesson-tools">
+
+                            <span>
+                                <i class="fa-solid fa-book-open"></i>
+                                Lesson
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-pen"></i>
+                                Assignment
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-circle-question"></i>
+                                Quiz
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <span class="locked-text">
+                        Locked
+                    </span>
+
+                </div>
+
+
+                <!-- LESSON 3 -->
+
+                <div class="lesson locked">
+
+                    <div class="lesson-icon">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+
+                    <div class="lesson-info">
+
+                        <h4>Lesson 3 — Input & Output</h4>
+
+                        <p>
+                            Learn how to take input from users and display
+                            output using Python.
+                        </p>
+
+                        <div class="lesson-tools">
+
+                            <span>
+                                <i class="fa-solid fa-book-open"></i>
+                                Lesson
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-pen"></i>
+                                Assignment
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-circle-question"></i>
+                                Quiz
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <span class="locked-text">
+                        Locked
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= MODULE 2 ================= -->
+
+        <div class="module">
+
+            <div class="module-header">
+
+                <div>
+                    <span class="module-number">MODULE 02</span>
+                    <h3>Control Flow</h3>
+                    <p>Control the flow of your Python programs.</p>
+                </div>
+
+                <i class="fa-solid fa-chevron-down"></i>
+
+            </div>
+
+            <div class="lessons">
+
+                <div class="lesson locked">
+
+                    <div class="lesson-icon">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+
+                    <div class="lesson-info">
+
+                        <h4>Lesson 4 — Conditional Statements</h4>
+
+                        <p>
+                            Learn if, elif and else statements.
+                        </p>
+
+                    </div>
+
+                    <span class="locked-text">Locked</span>
+
+                </div>
+
+
+                <div class="lesson locked">
+
+                    <div class="lesson-icon">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+
+                    <div class="lesson-info">
+
+                        <h4>Lesson 5 — Loops</h4>
+
+                        <p>
+                            Learn for loops and while loops in Python.
+                        </p>
+
+                    </div>
+
+                    <span class="locked-text">Locked</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= MODULE 3 ================= -->
+
+        <div class="module">
+
+            <div class="module-header">
+
+                <div>
+                    <span class="module-number">MODULE 03</span>
+                    <h3>Functions & Modules</h3>
+                    <p>Organize your Python programs using functions.</p>
+                </div>
+
+                <i class="fa-solid fa-chevron-down"></i>
+
+            </div>
+
+            <div class="lessons">
+
+                <div class="lesson locked">
+
+                    <div class="lesson-icon">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+
+                    <div class="lesson-info">
+
+                        <h4>Lesson 6 — Functions</h4>
+
+                        <p>
+                            Learn how to create and use functions.
+                        </p>
+
+                    </div>
+
+                    <span class="locked-text">Locked</span>
+
+                </div>
+
+
+                <div class="lesson locked">
+
+                    <div class="lesson-icon">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+
+                    <div class="lesson-info">
+
+                        <h4>Lesson 7 — Modules</h4>
+
+                        <p>
+                            Learn how to use modules and organize code.
+                        </p>
+
+                    </div>
+
+                    <span class="locked-text">Locked</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= UPCOMING ================= -->
+
+        <div class="more-modules">
+
+            <i class="fa-solid fa-layer-group"></i>
+
+            <div>
+                <h3>More Modules Coming Soon</h3>
+                <p>
+                    Complete the current modules to continue your
+                    programming journey.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ================= THEME SCRIPT ================= -->
+
+<script>
+
+const themeBtn = document.getElementById("themeToggle");
+
+if (themeBtn) {
+
+    const icon = themeBtn.querySelector("i");
+
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "light") {
+
+        document.body.classList.add("light-mode");
+
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
+
+    }
+
+    themeBtn.addEventListener("click", () => {
+
+        document.body.classList.toggle("light-mode");
+
+        if (document.body.classList.contains("light-mode")) {
+
+            localStorage.setItem("theme", "light");
+
+            icon.classList.remove("fa-moon");
+            icon.classList.add("fa-sun");
+
+        } else {
+
+            localStorage.setItem("theme", "dark");
+
+            icon.classList.remove("fa-sun");
+            icon.classList.add("fa-moon");
+
+        }
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
