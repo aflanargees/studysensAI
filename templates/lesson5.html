@@ -1,0 +1,2786 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 5 | Conditional Statements</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/lesson.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <i class="fa-solid fa-brain"></i>
+
+        <span>StudySense</span> <b>AI</b>
+
+    </div>
+
+
+    <nav>
+
+        <a href="/dashboard">
+
+            <i class="fa-solid fa-house"></i>
+
+            <span>Dashboard</span>
+
+        </a>
+
+
+        <a href="/courses" class="active">
+
+            <i class="fa-solid fa-book-open"></i>
+
+            <span>Courses</span>
+
+        </a>
+
+
+        <a href="#">
+
+            <i class="fa-solid fa-robot"></i>
+
+            <span>AI Tutor</span>
+
+        </a>
+
+
+        <a href="#">
+
+            <i class="fa-solid fa-circle-question"></i>
+
+            <span>Quiz</span>
+
+        </a>
+
+
+        <a href="/projects">
+
+            <i class="fa-solid fa-code"></i>
+
+            <span>Projects</span>
+
+        </a>
+
+
+        <a href="/profile">
+
+            <i class="fa-solid fa-user"></i>
+
+            <span>Profile</span>
+
+        </a>
+
+
+        <a href="#">
+
+            <i class="fa-solid fa-gear"></i>
+
+            <span>Settings</span>
+
+        </a>
+
+    </nav>
+
+
+    <div class="logout">
+
+        <a href="/logout">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            <span>Logout</span>
+
+        </a>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="main">
+
+
+<!-- =====================================================
+     TOPBAR
+===================================================== -->
+
+<header class="topbar">
+
+    <div class="breadcrumb">
+
+        <a href="/courses">Courses</a>
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+        <span>Python Programming</span>
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+        <strong>Lesson 5</strong>
+
+    </div>
+
+
+    <div class="top-right">
+
+        <button class="top-btn">
+
+            <i class="fa-regular fa-bell"></i>
+
+        </button>
+
+
+        <button class="top-btn" id="themeToggle">
+
+            <i class="fa-solid fa-moon"></i>
+
+        </button>
+
+
+        <div class="user">
+
+            <img src="{{ url_for('static', filename='images/profile.png') }}">
+
+            <div>
+
+                <strong>
+                    {{ session.get('user_name', 'Test User') }}
+                </strong>
+
+                <small>Student</small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="lesson-hero">
+
+
+    <div class="hero-text">
+
+        <span class="lesson-badge">
+
+            <i class="fa-solid fa-bolt"></i>
+
+            LESSON 5
+
+        </span>
+
+
+        <h1>Conditional Statements</h1>
+
+
+        <p>
+
+            Learn how Python makes decisions using
+            <strong>if, elif and else</strong> statements.
+
+        </p>
+
+
+        <div class="hero-info">
+
+            <span>
+
+                <i class="fa-regular fa-clock"></i>
+
+                20 min
+
+            </span>
+
+
+            <span>
+
+                <i class="fa-solid fa-signal"></i>
+
+                Beginner
+
+            </span>
+
+
+            <span class="xp">
+
+                <i class="fa-solid fa-star"></i>
+
+                +100 XP
+
+            </span>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="hero-character">
+
+        <div class="floating-star star-one">✦</div>
+
+        <div class="floating-star star-two">✦</div>
+
+
+        <div class="python-orb">
+
+            <i class="fa-brands fa-python"></i>
+
+        </div>
+
+
+        <span>Let's make decisions!</span>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PROGRESS
+===================================================== -->
+
+<section class="progress-card">
+
+    <div class="progress-top">
+
+        <div>
+
+            <span>LESSON JOURNEY</span>
+
+            <h3>Your Progress</h3>
+
+        </div>
+
+
+        <strong id="progressPercent">0%</strong>
+
+    </div>
+
+
+    <div class="progress-track">
+
+        <div class="progress-fill"
+             id="progressFill"
+             style="width:0%;">
+
+        </div>
+
+    </div>
+
+
+    <div class="steps">
+
+        <div class="step active" data-step="learn">
+
+            <div class="step-circle">
+
+                <i class="fa-solid fa-book-open"></i>
+
+            </div>
+
+            <span>Learn</span>
+
+        </div>
+
+
+        <div class="line"></div>
+
+
+        <div class="step" data-step="try">
+
+            <div class="step-circle">
+
+                <i class="fa-solid fa-code"></i>
+
+            </div>
+
+            <span>Try</span>
+
+        </div>
+
+
+        <div class="line"></div>
+
+
+        <div class="step" data-step="practice">
+
+            <div class="step-circle">
+
+                <i class="fa-solid fa-pen"></i>
+
+            </div>
+
+            <span>Practice</span>
+
+        </div>
+
+
+        <div class="line"></div>
+
+
+        <div class="step" data-step="quiz">
+
+            <div class="step-circle">
+
+                <i class="fa-solid fa-question"></i>
+
+            </div>
+
+            <span>Quiz</span>
+
+        </div>
+
+
+        <div class="line"></div>
+
+
+        <div class="step" data-step="complete">
+
+            <div class="step-circle">
+
+                <i class="fa-solid fa-trophy"></i>
+
+            </div>
+
+            <span>Complete</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     LEARNING NAVIGATION
+===================================================== -->
+
+<div class="learning-nav">
+
+
+    <button class="nav-tab active"
+            data-section="learn">
+
+        <i class="fa-solid fa-book-open"></i>
+
+        Learn
+
+    </button>
+
+
+    <button class="nav-tab"
+            data-section="try">
+
+        <i class="fa-solid fa-code"></i>
+
+        Try
+
+    </button>
+
+
+    <button class="nav-tab"
+            data-section="practice">
+
+        <i class="fa-solid fa-pen"></i>
+
+        Practice
+
+    </button>
+
+
+    <button class="nav-tab"
+            data-section="quiz">
+
+        <i class="fa-solid fa-circle-question"></i>
+
+        Quiz
+
+    </button>
+
+
+    <button class="nav-tab"
+            data-section="complete">
+
+        <i class="fa-solid fa-trophy"></i>
+
+        Finish
+
+    </button>
+
+</div>
+
+
+
+<!-- =====================================================
+     LEARN
+===================================================== -->
+
+<section class="learning-section active-section"
+         id="learn">
+
+
+    <div class="section-title">
+
+        <span class="number">01</span>
+
+        <div>
+
+            <small>LET'S BEGIN</small>
+
+            <h2>What are Conditional Statements?</h2>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="learning-grid">
+
+
+        <div class="lesson-card main-card">
+
+            <p>
+
+                Conditional statements allow a Python program
+                to make decisions based on a condition.
+
+            </p>
+
+
+            <p>
+
+                Python checks whether a condition is
+                <strong>True</strong> or <strong>False</strong>
+                and then executes the appropriate code.
+
+            </p>
+
+
+            <div class="highlight">
+
+                <i class="fa-solid fa-lightbulb"></i>
+
+                <div>
+
+                    <strong>Think about it</strong>
+
+                    <p>
+
+                        If it is raining, you take an umbrella.
+                        Otherwise, you don't.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="fact-card">
+
+            <div class="fact-icon">
+
+                <i class="fa-solid fa-code-branch"></i>
+
+            </div>
+
+
+            <h3>Conditional Keywords</h3>
+
+
+            <div class="fact">
+
+                <i class="fa-solid fa-check"></i>
+
+                <span>if</span>
+
+            </div>
+
+
+            <div class="fact">
+
+                <i class="fa-solid fa-check"></i>
+
+                <span>elif</span>
+
+            </div>
+
+
+            <div class="fact">
+
+                <i class="fa-solid fa-check"></i>
+
+                <span>else</span>
+
+            </div>
+
+
+            <div class="fact">
+
+                <i class="fa-solid fa-check"></i>
+
+                <span>Conditions</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+<!-- BASIC EXAMPLE -->
+
+<div class="real-world">
+
+    <div class="real-title">
+
+        <div class="real-icon">
+
+            <i class="fa-solid fa-code"></i>
+
+        </div>
+
+        <div>
+
+            <small>BASIC EXAMPLE</small>
+
+            <h2>Using an if Statement</h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="example-code">
+
+        <span>Python</span>
+
+        <pre><code>age = 20
+
+if age >= 18:
+    print("You are an adult")</code></pre>
+
+    </div>
+
+
+    <div class="world-grid">
+
+        <div class="world-item">
+
+            <i class="fa-solid fa-user"></i>
+
+            <h3>age</h3>
+
+            <p>Stores the number 20.</p>
+
+        </div>
+
+
+        <div class="world-item">
+
+            <i class="fa-solid fa-scale-balanced"></i>
+
+            <h3>age >= 18</h3>
+
+            <p>Checks whether age is at least 18.</p>
+
+        </div>
+
+
+        <div class="world-item">
+
+            <i class="fa-solid fa-code-branch"></i>
+
+            <h3>if</h3>
+
+            <p>Checks the condition.</p>
+
+        </div>
+
+
+        <div class="world-item">
+
+            <i class="fa-solid fa-comment"></i>
+
+            <h3>print()</h3>
+
+            <p>Displays the result.</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- IF ELSE -->
+
+<div class="mini-lesson">
+
+    <div class="mini-step">
+
+        <span>IMPORTANT CONCEPT</span>
+
+        <i class="fa-solid fa-circle-info"></i>
+
+    </div>
+
+
+    <h3>if...else</h3>
+
+    <p>
+
+        Use <strong>else</strong> when you want Python
+        to execute another block when the condition is False.
+
+    </p>
+
+
+    <div class="example-code">
+
+        <span>Example</span>
+
+        <pre><code>age = 16
+
+if age >= 18:
+    print("Adult")
+else:
+    print("Minor")</code></pre>
+
+    </div>
+
+</div>
+
+
+
+<!-- ELIF -->
+
+<div class="mini-lesson">
+
+    <div class="mini-step">
+
+        <span>MULTIPLE CONDITIONS</span>
+
+        <i class="fa-solid fa-code-branch"></i>
+
+    </div>
+
+
+    <h3>if...elif...else</h3>
+
+    <p>
+
+        Use <strong>elif</strong> when you need to check
+        more than one condition.
+
+    </p>
+
+
+    <div class="example-code">
+
+        <span>Example</span>
+
+        <pre><code>marks = 75
+
+if marks >= 90:
+    print("Excellent")
+elif marks >= 50:
+    print("Pass")
+else:
+    print("Fail")</code></pre>
+
+    </div>
+
+</div>
+
+
+
+<button class="next-btn"
+        onclick="goToSection('try')">
+
+    Continue to Try
+
+    <i class="fa-solid fa-arrow-right"></i>
+
+</button>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     TRY
+===================================================== -->
+
+<section class="learning-section"
+         id="try">
+
+
+    <div class="section-title">
+
+        <span class="number">02</span>
+
+        <div>
+
+            <small>LEARN BY DOING</small>
+
+            <h2>Let's Use Conditions</h2>
+
+        </div>
+
+    </div>
+
+
+
+<!-- STEP 1 -->
+
+<div class="mini-lesson">
+
+    <div class="mini-step">
+
+        <span>STEP 1</span>
+
+        <i class="fa-solid fa-lightbulb"></i>
+
+    </div>
+
+
+    <h3>Understanding a Condition</h3>
+
+    <p>
+
+        A condition produces either
+        <strong>True</strong> or <strong>False</strong>.
+
+    </p>
+
+
+    <div class="example-code">
+
+        <span>Example</span>
+
+        <pre><code>age = 20
+
+print(age >= 18)</code></pre>
+
+    </div>
+
+
+    <p>
+
+        Since 20 is greater than 18,
+        the result is <strong>True</strong>.
+
+    </p>
+
+</div>
+
+
+
+<!-- STEP 2 -->
+
+<div class="mini-lesson challenge">
+
+    <div class="mini-step">
+
+        <span>STEP 2</span>
+
+        <i class="fa-solid fa-puzzle-piece"></i>
+
+    </div>
+
+
+    <h3>Check the Age 🎯</h3>
+
+    <p>
+
+        Create an <strong>if</strong> statement that prints
+        <strong>"Adult"</strong> when age is 18 or above.
+
+    </p>
+
+
+    <div class="code-editor">
+
+        <div class="editor-bar">
+
+            <span>
+
+                <i class="fa-brands fa-python"></i>
+
+                Python
+
+            </span>
+
+
+            <button onclick="runAgeCondition()">
+
+                <i class="fa-solid fa-play"></i>
+
+                Run
+
+            </button>
+
+        </div>
+
+
+        <textarea
+            id="ageConditionCode"
+            placeholder="Type your code here..."></textarea>
+
+
+        <div class="output-box">
+
+            <small>OUTPUT</small>
+
+            <div id="ageConditionOutput">
+
+                Run your code to see the result.
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div id="ageConditionHint"
+         class="challenge-hint">
+
+        💡 Hint: Use <strong>if age >= 18:</strong>.
+
+    </div>
+
+</div>
+
+
+
+<!-- STEP 3 -->
+
+<div class="mini-lesson challenge">
+
+    <div class="mini-step">
+
+        <span>STEP 3</span>
+
+        <i class="fa-solid fa-code-branch"></i>
+
+    </div>
+
+
+    <h3>Pass or Fail 👨‍🎓</h3>
+
+    <p>
+
+        A student has <strong>marks = 65</strong>.
+        Use <strong>if</strong> and <strong>else</strong>
+        to print <strong>"Pass"</strong> when marks are
+        50 or above.
+
+    </p>
+
+
+    <div class="code-editor">
+
+        <div class="editor-bar">
+
+            <span>
+
+                <i class="fa-brands fa-python"></i>
+
+                Python
+
+            </span>
+
+
+            <button onclick="runPassChallenge()">
+
+                <i class="fa-solid fa-play"></i>
+
+                Run
+
+            </button>
+
+        </div>
+
+
+        <textarea
+            id="passConditionCode"
+            placeholder="Type your code here..."></textarea>
+
+
+        <div class="output-box">
+
+            <small>OUTPUT</small>
+
+            <div id="passConditionOutput">
+
+                Run your code to see the result.
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div id="passConditionHint"
+         class="challenge-hint">
+
+        💡 Hint: Use <strong>if marks >= 50:</strong>
+        followed by <strong>else</strong>.
+
+    </div>
+
+
+    <div id="passSuccess"
+         class="challenge-success">
+
+        🎉 Great job! You used if and else correctly.
+
+        <strong>+10 XP</strong>
+
+    </div>
+
+</div>
+
+
+
+<!-- STEP 4 -->
+
+<div class="mini-lesson final-challenge">
+
+    <div class="mini-step">
+
+        <span>FINAL CHALLENGE</span>
+
+        <i class="fa-solid fa-trophy"></i>
+
+    </div>
+
+
+    <h3>Create a Grade Checker 🏆</h3>
+
+    <p>
+
+        Create a program using
+        <strong>if, elif and else</strong>.
+
+    </p>
+
+
+    <p>
+
+        Use <strong>marks = 85</strong> and display:
+
+    </p>
+
+
+    <div class="target-output">
+
+        Good
+
+    </div>
+
+
+    <div class="final-editor">
+
+        <textarea
+            id="gradeCode"
+            placeholder="# Write your Python code here"></textarea>
+
+
+        <button onclick="checkGradeChallenge()">
+
+            <i class="fa-solid fa-play"></i>
+
+            Run My Code
+
+        </button>
+
+    </div>
+
+
+    <div id="gradeResult"
+         class="final-result">
+
+    </div>
+
+</div>
+
+
+
+<button class="next-btn"
+        onclick="goToSection('practice')">
+
+    Continue to Practice
+
+    <i class="fa-solid fa-arrow-right"></i>
+
+</button>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     PRACTICE
+===================================================== -->
+
+<section class="learning-section"
+         id="practice">
+
+
+    <div class="section-title">
+
+        <span class="number">03</span>
+
+        <div>
+
+            <small>MINI CHALLENGE</small>
+
+            <h2>Complete Your Assignment</h2>
+
+        </div>
+
+    </div>
+
+
+
+<div class="assignment-card">
+
+
+    <!-- HEADER -->
+
+    <div class="assignment-top">
+
+        <div class="assignment-icon">
+
+            <i class="fa-solid fa-flag-checkered"></i>
+
+        </div>
+
+
+        <div>
+
+            <span>MISSION 05</span>
+
+            <h3>Student Result Checker</h3>
+
+        </div>
+
+
+        <div class="reward">
+
+            <i class="fa-solid fa-star"></i>
+
+            +20 XP
+
+        </div>
+
+    </div>
+
+
+
+    <!-- TASK -->
+
+    <div class="assignment-task">
+
+        <h4>🎯 Your Mission</h4>
+
+
+        <p>
+
+            Create a Python program using
+            <strong>if, elif and else</strong>
+            to check a student's result.
+
+        </p>
+
+
+        <div class="required-output">
+
+            <div>
+
+                <span>marks = 75</span>
+
+            </div>
+
+
+            <div>
+
+                <span>90 or above → Excellent</span>
+
+            </div>
+
+
+            <div>
+
+                <span>50 or above → Pass</span>
+
+            </div>
+
+
+            <div>
+
+                <span>Below 50 → Fail</span>
+
+            </div>
+
+        </div>
+
+
+        <p class="task-note">
+
+            Then use conditional statements to display
+            the correct result.
+
+        </p>
+
+    </div>
+
+
+
+    <!-- EDITOR -->
+
+    <div class="assignment-editor">
+
+        <div class="editor-bar">
+
+            <span>
+
+                <i class="fa-brands fa-python"></i>
+
+                Python
+
+            </span>
+
+
+            <button onclick="runAssignment()">
+
+                <i class="fa-solid fa-play"></i>
+
+                Run
+
+            </button>
+
+        </div>
+
+
+        <textarea
+            id="assignmentCode"
+            placeholder="# Write your code here..."></textarea>
+
+
+        <div class="assignment-output">
+
+            <small>OUTPUT</small>
+
+            <div id="assignmentOutput">
+
+                Run your code to check the result.
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- HINT SYSTEM -->
+
+    <div class="hint-section">
+
+        <button class="hint-button"
+                onclick="showHint()">
+
+            <i class="fa-solid fa-lightbulb"></i>
+
+            Need a Hint?
+
+        </button>
+
+
+        <div id="hintBox"
+             class="hint-box">
+
+            <strong id="hintTitle">
+
+                💡 Hint 1
+
+            </strong>
+
+
+            <p id="hintText">
+
+                Start by creating marks = 75.
+
+            </p>
+
+
+            <button id="nextHint"
+                    onclick="showNextHint()">
+
+                Show Next Hint
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- SUCCESS -->
+
+    <div id="assignmentSuccess"
+         class="assignment-success">
+
+        <div class="success-icon">
+
+            <i class="fa-solid fa-check"></i>
+
+        </div>
+
+
+        <div>
+
+            <strong>🎉 Mission Complete!</strong>
+
+            <p>
+
+                Great work! You completed the coding challenge.
+
+                <b>+20 XP</b>
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<button class="next-btn"
+        id="practiceNext"
+        onclick="goToSection('quiz')">
+
+    Continue to Quiz
+
+    <i class="fa-solid fa-arrow-right"></i>
+
+</button>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     QUIZ
+===================================================== -->
+
+<section class="learning-section"
+         id="quiz">
+
+
+    <div class="section-title">
+
+        <span class="number">04</span>
+
+        <div>
+
+            <small>KNOWLEDGE CHECK</small>
+
+            <h2>Conditional Statements Quiz 🧠</h2>
+
+        </div>
+
+    </div>
+
+
+
+<div class="quiz-card">
+
+
+    <div class="quiz-top">
+
+        <div>
+
+            <span>LESSON 5 QUIZ</span>
+
+            <h3>Test What You Learned</h3>
+
+        </div>
+
+
+        <div class="quiz-xp">
+
+            ⭐ +50 XP
+
+        </div>
+
+    </div>
+
+
+
+    <div class="question-progress">
+
+        <div class="question-count">
+
+            Question
+
+            <strong id="questionNumber">1</strong>
+
+            of 5
+
+        </div>
+
+
+        <div class="question-bar">
+
+            <div id="questionProgress"></div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="question-area">
+
+        <div class="question-icon">
+
+            <i class="fa-solid fa-question"></i>
+
+        </div>
+
+
+        <h2 id="questionText">
+
+            Which keyword is used to check a condition?
+
+        </h2>
+
+
+        <div id="answerOptions"
+             class="answer-options">
+
+        </div>
+
+    </div>
+
+
+
+    <div id="quizFeedback"
+         class="quiz-feedback">
+
+        <strong id="feedbackTitle"></strong>
+
+        <p id="feedbackText"></p>
+
+    </div>
+
+
+
+    <button id="nextQuestionBtn"
+            class="quiz-next"
+            onclick="nextQuestion()"
+            disabled>
+
+        Select an Answer
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </button>
+
+
+</div>
+
+
+
+<!-- RESULT -->
+
+<div id="quizResult"
+     class="quiz-result">
+
+    <div class="result-trophy">
+
+        🏆
+
+    </div>
+
+
+    <span>QUIZ COMPLETE</span>
+
+
+    <h2>Great Job!</h2>
+
+
+    <p id="scoreText">
+
+        You scored 0 out of 5.
+
+    </p>
+
+
+    <div class="score-xp">
+
+        ⭐
+
+        <strong id="xpEarned">
+
+            0 XP
+
+        </strong>
+
+    </div>
+
+
+    <button class="continue-complete"
+            onclick="goToSection('complete')">
+
+        Continue
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </button>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     COMPLETE
+===================================================== -->
+
+<section class="learning-section"
+         id="complete">
+
+
+    <div class="completion">
+
+
+        <div class="trophy">
+
+            <i class="fa-solid fa-trophy"></i>
+
+        </div>
+
+
+        <span class="complete-label">
+
+            ALMOST THERE!
+
+        </span>
+
+
+        <h1>Complete Lesson 5</h1>
+
+
+        <p>
+
+            Finish the lesson and continue your Python journey.
+
+        </p>
+
+
+        <div class="reward-box">
+
+            <div>
+
+                <i class="fa-solid fa-star"></i>
+
+                <strong>+100 XP</strong>
+
+            </div>
+
+
+            <div>
+
+                <i class="fa-solid fa-fire"></i>
+
+                <strong>Keep your streak!</strong>
+
+            </div>
+
+        </div>
+
+
+        <button class="finish-btn"
+                onclick="finishLesson()">
+
+            <i class="fa-solid fa-check"></i>
+
+            Complete Lesson
+
+        </button>
+
+
+        <div id="completionMessage"
+             class="completion-message">
+
+
+            <div class="success-icon">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+            </div>
+
+
+            <h3>🎉 Great Job!</h3>
+
+
+            <p>
+
+                You completed Lesson 5:
+                Conditional Statements.
+
+            </p>
+
+
+            <div class="completion-xp">
+
+                <i class="fa-solid fa-star"></i>
+
+                +100 XP Earned
+
+            </div>
+
+
+            <a href="/lesson/python/6"
+               class="primary-btn">
+
+                Continue to Lesson 6
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MOTIVATION
+===================================================== -->
+
+<div class="motivation">
+
+    <i class="fa-solid fa-quote-left"></i>
+
+    <span>
+
+        Small steps every day lead to big results.
+
+    </span>
+
+    <i class="fa-solid fa-quote-right"></i>
+
+</div>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   THEME
+===================================================== */
+
+const themeBtn =
+    document.getElementById("themeToggle");
+
+
+if (themeBtn) {
+
+    const icon =
+        themeBtn.querySelector("i");
+
+
+    if (localStorage.getItem("theme") === "light") {
+
+        document.body.classList.add("light-mode");
+
+        icon.classList.remove("fa-moon");
+
+        icon.classList.add("fa-sun");
+
+    }
+
+
+    themeBtn.addEventListener("click", () => {
+
+        document.body.classList.toggle("light-mode");
+
+
+        if (document.body.classList.contains("light-mode")) {
+
+            localStorage.setItem("theme", "light");
+
+            icon.classList.remove("fa-moon");
+
+            icon.classList.add("fa-sun");
+
+        }
+
+        else {
+
+            localStorage.setItem("theme", "dark");
+
+            icon.classList.remove("fa-sun");
+
+            icon.classList.add("fa-moon");
+
+        }
+
+    });
+
+}
+
+
+
+/* =====================================================
+   SECTION NAVIGATION
+===================================================== */
+
+const tabs =
+    document.querySelectorAll(".nav-tab");
+
+const sections =
+    document.querySelectorAll(".learning-section");
+
+const steps =
+    document.querySelectorAll(".step");
+
+
+const sectionOrder = [
+
+    "learn",
+
+    "try",
+
+    "practice",
+
+    "quiz",
+
+    "complete"
+
+];
+
+
+function goToSection(sectionName) {
+
+
+    sections.forEach(section => {
+
+        section.classList.remove("active-section");
+
+    });
+
+
+    tabs.forEach(tab => {
+
+        tab.classList.remove("active");
+
+    });
+
+
+    steps.forEach(step => {
+
+        step.classList.remove("active");
+
+    });
+
+
+    const section =
+        document.getElementById(sectionName);
+
+
+    if (!section) return;
+
+
+    section.classList.add("active-section");
+
+
+    const tab =
+        document.querySelector(
+            `.nav-tab[data-section="${sectionName}"]`
+        );
+
+
+    if (tab) {
+
+        tab.classList.add("active");
+
+    }
+
+
+    const step =
+        document.querySelector(
+            `.step[data-step="${sectionName}"]`
+        );
+
+
+    if (step) {
+
+        step.classList.add("active");
+
+    }
+
+
+    updateProgress(sectionName);
+
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+
+    if (sectionName === "quiz") {
+
+        currentQuestion = 0;
+
+        quizScore = 0;
+
+        const quizCard =
+            document.querySelector(".quiz-card");
+
+        const quizResult =
+            document.querySelector(".quiz-result");
+
+
+        quizCard.style.display = "block";
+
+        quizResult.classList.remove("show");
+
+        loadQuestion();
+
+    }
+
+}
+
+
+tabs.forEach(tab => {
+
+    tab.addEventListener("click", () => {
+
+        goToSection(tab.dataset.section);
+
+    });
+
+});
+
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+function updateProgress(sectionName) {
+
+
+    const index =
+        sectionOrder.indexOf(sectionName);
+
+
+    const percent =
+        Math.round(
+            (index / (sectionOrder.length - 1)) * 100
+        );
+
+
+    document.getElementById("progressPercent")
+        .innerText = percent + "%";
+
+
+    document.getElementById("progressFill")
+        .style.width = percent + "%";
+
+
+    steps.forEach((step, i) => {
+
+        if (i <= index) {
+
+            step.classList.add("active");
+
+        }
+
+    });
+
+}
+
+
+
+/* =====================================================
+   AGE CHALLENGE
+===================================================== */
+
+function runAgeCondition() {
+
+
+    const code =
+        document.getElementById("ageConditionCode")
+            .value.trim();
+
+
+    const output =
+        document.getElementById("ageConditionOutput");
+
+
+    const hint =
+        document.getElementById("ageConditionHint");
+
+
+    if (code === "") {
+
+        output.innerText =
+            "Nothing to run yet.";
+
+        output.classList.remove("correct");
+
+        return;
+
+    }
+
+
+    const normalized =
+        code.replace(/\s/g, "").toLowerCase();
+
+
+    const valid =
+        normalized.includes("age=20") &&
+        normalized.includes("ifage>=18") &&
+        normalized.includes("print");
+
+
+    if (valid) {
+
+        output.innerText = "Adult";
+
+        output.classList.add("correct");
+
+
+        hint.innerHTML =
+            "🎉 Correct! Your if statement works.";
+
+        hint.classList.add("correct-hint");
+
+    }
+
+    else {
+
+        output.innerText =
+            "Try again!";
+
+        output.classList.remove("correct");
+
+
+        hint.innerHTML =
+            '💡 Hint: Use <strong>age = 20</strong> and <strong>if age >= 18:</strong>.';
+
+        hint.classList.remove("correct-hint");
+
+    }
+
+}
+
+
+
+/* =====================================================
+   PASS / FAIL CHALLENGE
+===================================================== */
+
+function runPassChallenge() {
+
+
+    const code =
+        document.getElementById("passConditionCode")
+            .value.trim();
+
+
+    const output =
+        document.getElementById("passConditionOutput");
+
+
+    const hint =
+        document.getElementById("passConditionHint");
+
+
+    const success =
+        document.getElementById("passSuccess");
+
+
+    if (code === "") {
+
+        output.innerText =
+            "Nothing to run yet.";
+
+        success.classList.remove("show");
+
+        return;
+
+    }
+
+
+    const normalized =
+        code.replace(/\s/g, "").toLowerCase();
+
+
+    const valid =
+        normalized.includes("marks=65") &&
+        normalized.includes("ifmarks>=50") &&
+        normalized.includes("else") &&
+        normalized.includes("print");
+
+
+    if (valid) {
+
+        output.innerText = "Pass";
+
+        output.classList.add("correct");
+
+
+        hint.innerHTML =
+            "✓ Correct! You used if and else.";
+
+        hint.classList.add("correct-hint");
+
+
+        success.classList.add("show");
+
+    }
+
+    else {
+
+        output.innerText =
+            "Something is not quite right.";
+
+        output.classList.remove("correct");
+
+
+        hint.innerHTML =
+            "💡 Hint: Create marks = 65 and check marks >= 50.";
+
+        hint.classList.remove("correct-hint");
+
+
+        success.classList.remove("show");
+
+    }
+
+}
+
+
+
+/* =====================================================
+   FINAL CHALLENGE
+===================================================== */
+
+function checkGradeChallenge() {
+
+
+    const code =
+        document.getElementById("gradeCode")
+            .value.trim();
+
+
+    const result =
+        document.getElementById("gradeResult");
+
+
+    if (code === "") {
+
+        result.innerHTML =
+            "💡 Write your code first.";
+
+        result.classList.remove("correct");
+
+        return;
+
+    }
+
+
+    const normalized =
+        code.replace(/\s/g, "").toLowerCase();
+
+
+    const valid =
+        normalized.includes("marks=85") &&
+        normalized.includes("if") &&
+        normalized.includes("elif") &&
+        normalized.includes("else") &&
+        normalized.includes("marks>=90") &&
+        normalized.includes("marks>=70") &&
+        normalized.includes("print");
+
+
+    if (valid) {
+
+        result.innerHTML =
+            "🎉 Amazing! Your grade checker is correct! <strong>+10 XP</strong>";
+
+        result.classList.add("correct");
+
+    }
+
+    else {
+
+        result.innerHTML =
+            'Almost! Use <code>if</code>, <code>elif</code> and <code>else</code> to check the marks.';
+
+        result.classList.remove("correct");
+
+    }
+
+}
+
+
+
+/* =====================================================
+   ASSIGNMENT HINTS
+===================================================== */
+
+let hintNumber = 0;
+
+
+const hints = [
+
+    "Start by creating marks = 75.",
+
+    "Use if, elif and else to check the three possible results.",
+
+    'For example: if marks >= 90:'
+
+];
+
+
+function showHint() {
+
+
+    const hintBox =
+        document.getElementById("hintBox");
+
+
+    hintBox.classList.add("show");
+
+
+    document.getElementById("hintTitle")
+        .innerText = "💡 Hint " + (hintNumber + 1);
+
+
+    document.getElementById("hintText")
+        .innerText = hints[hintNumber];
+
+}
+
+
+function showNextHint() {
+
+
+    if (hintNumber < hints.length - 1) {
+
+        hintNumber++;
+
+    }
+
+
+    document.getElementById("hintTitle")
+        .innerText = "💡 Hint " + (hintNumber + 1);
+
+
+    document.getElementById("hintText")
+        .innerText = hints[hintNumber];
+
+
+    if (hintNumber === hints.length - 1) {
+
+        document.getElementById("nextHint")
+            .innerText = "Last Hint";
+
+    }
+
+}
+
+
+
+/* =====================================================
+   ASSIGNMENT
+===================================================== */
+
+function runAssignment() {
+
+
+    const code =
+        document.getElementById("assignmentCode")
+            .value.trim();
+
+
+    const output =
+        document.getElementById("assignmentOutput");
+
+
+    const success =
+        document.getElementById("assignmentSuccess");
+
+
+    if (code === "") {
+
+        output.innerText =
+            "Write your code first.";
+
+        output.classList.remove("correct");
+
+        return;
+
+    }
+
+
+    const normalized =
+        code.replace(/\s/g, "").toLowerCase();
+
+
+    const hasMarks =
+        normalized.includes("marks=75");
+
+
+    const hasIf =
+        normalized.includes("if");
+
+
+    const hasElif =
+        normalized.includes("elif");
+
+
+    const hasElse =
+        normalized.includes("else");
+
+
+    const has90 =
+        normalized.includes("marks>=90");
+
+
+    const has50 =
+        normalized.includes("marks>=50");
+
+
+    const printCount =
+        (code.match(/\bprint\s*\(/gi) || []).length;
+
+
+    if (
+
+        hasMarks &&
+
+        hasIf &&
+
+        hasElif &&
+
+        hasElse &&
+
+        has90 &&
+
+        has50 &&
+
+        printCount >= 3
+
+    ) {
+
+        output.innerHTML =
+            "Pass";
+
+
+        output.classList.add("correct");
+
+
+        success.classList.add("show");
+
+
+        document.getElementById("practiceNext")
+            .classList.add("unlocked");
+
+    }
+
+    else {
+
+        output.innerText =
+            "Not quite! Check your conditions and print statements.";
+
+        output.classList.remove("correct");
+
+        success.classList.remove("show");
+
+    }
+
+}
+
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+const quizQuestions = [
+
+    {
+
+        question:
+            "Which keyword is used to check a condition in Python?",
+
+        options: [
+
+            "if",
+
+            "for",
+
+            "def",
+
+            "print"
+
+        ],
+
+        answer: 0,
+
+        explanation:
+            "The if keyword is used to check a condition."
+
+    },
+
+
+    {
+
+        question:
+            "Which keyword runs when the if condition is False?",
+
+        options: [
+
+            "elif",
+
+            "else",
+
+            "when",
+
+            "check"
+
+        ],
+
+        answer: 1,
+
+        explanation:
+            "The else block runs when the if condition is False."
+
+    },
+
+
+    {
+
+        question:
+            "Which keyword is used to check another condition?",
+
+        options: [
+
+            "else",
+
+            "elif",
+
+            "again",
+
+            "next"
+
+        ],
+
+        answer: 1,
+
+        explanation:
+            "The elif keyword is used to check another condition."
+
+    },
+
+
+    {
+
+        question:
+            "What is the result of 10 > 5?",
+
+        options: [
+
+            "True",
+
+            "False",
+
+            "10",
+
+            "5"
+
+        ],
+
+        answer: 0,
+
+        explanation:
+            "10 is greater than 5, so the result is True."
+
+    },
+
+
+    {
+
+        question:
+            "Which operator checks whether two values are equal?",
+
+        options: [
+
+            "=",
+
+            "==",
+
+            "!=",
+
+            ">"
+
+        ],
+
+        answer: 1,
+
+        explanation:
+            "The == operator checks whether two values are equal."
+
+    }
+
+];
+
+
+let currentQuestion = 0;
+
+let quizScore = 0;
+
+let answered = false;
+
+
+
+/* =====================================================
+   LOAD QUESTION
+===================================================== */
+
+function loadQuestion() {
+
+
+    const question =
+        quizQuestions[currentQuestion];
+
+
+    document.getElementById("questionNumber")
+        .innerText = currentQuestion + 1;
+
+
+    document.getElementById("questionText")
+        .innerText = question.question;
+
+
+    const progress =
+        ((currentQuestion + 1) /
+        quizQuestions.length) * 100;
+
+
+    document.getElementById("questionProgress")
+        .style.width = progress + "%";
+
+
+    const optionsContainer =
+        document.getElementById("answerOptions");
+
+
+    optionsContainer.innerHTML = "";
+
+
+    const feedback =
+        document.getElementById("quizFeedback");
+
+
+    feedback.classList.remove(
+        "show",
+        "correct-feedback",
+        "wrong-feedback"
+    );
+
+
+    const nextBtn =
+        document.getElementById("nextQuestionBtn");
+
+
+    nextBtn.disabled = true;
+
+
+    nextBtn.innerHTML =
+        'Select an Answer <i class="fa-solid fa-arrow-right"></i>';
+
+
+    answered = false;
+
+
+    question.options.forEach((option, index) => {
+
+
+        const button =
+            document.createElement("button");
+
+
+        button.className =
+            "answer-option";
+
+
+        button.innerHTML = `
+
+            <span class="option-letter">
+
+                ${String.fromCharCode(65 + index)}
+
+            </span>
+
+            <span>${option}</span>
+
+        `;
+
+
+        button.onclick =
+            () => selectAnswer(index);
+
+
+        optionsContainer.appendChild(button);
+
+    });
+
+}
+
+
+
+/* =====================================================
+   SELECT ANSWER
+===================================================== */
+
+function selectAnswer(selected) {
+
+
+    if (answered) return;
+
+
+    answered = true;
+
+
+    const question =
+        quizQuestions[currentQuestion];
+
+
+    const options =
+        document.querySelectorAll(".answer-option");
+
+
+    options.forEach((option, index) => {
+
+
+        option.disabled = true;
+
+
+        if (index === question.answer) {
+
+            option.classList.add("correct");
+
+        }
+
+
+        if (
+
+            index === selected &&
+
+            selected !== question.answer
+
+        ) {
+
+            option.classList.add("wrong");
+
+        }
+
+    });
+
+
+    const feedback =
+        document.getElementById("quizFeedback");
+
+
+    const feedbackTitle =
+        document.getElementById("feedbackTitle");
+
+
+    const feedbackText =
+        document.getElementById("feedbackText");
+
+
+    feedback.classList.add("show");
+
+
+    if (selected === question.answer) {
+
+
+        quizScore++;
+
+
+        feedback.classList.add(
+            "correct-feedback"
+        );
+
+
+        feedbackTitle.innerText =
+            "🎉 Correct!";
+
+
+        feedbackText.innerText =
+            question.explanation;
+
+    }
+
+    else {
+
+
+        feedback.classList.add(
+            "wrong-feedback"
+        );
+
+
+        feedbackTitle.innerText =
+            "💡 Not quite!";
+
+
+        feedbackText.innerText =
+            question.explanation;
+
+    }
+
+
+    const nextBtn =
+        document.getElementById("nextQuestionBtn");
+
+
+    nextBtn.disabled = false;
+
+
+    if (
+
+        currentQuestion ===
+        quizQuestions.length - 1
+
+    ) {
+
+        nextBtn.innerHTML =
+            'See My Result <i class="fa-solid fa-trophy"></i>';
+
+    }
+
+    else {
+
+        nextBtn.innerHTML =
+            'Next Question <i class="fa-solid fa-arrow-right"></i>';
+
+    }
+
+}
+
+
+
+/* =====================================================
+   NEXT QUESTION
+===================================================== */
+
+function nextQuestion() {
+
+
+    if (!answered) return;
+
+
+    if (
+
+        currentQuestion <
+        quizQuestions.length - 1
+
+    ) {
+
+        currentQuestion++;
+
+        loadQuestion();
+
+    }
+
+    else {
+
+        showQuizResult();
+
+    }
+
+}
+
+
+
+/* =====================================================
+   QUIZ RESULT
+===================================================== */
+
+function showQuizResult() {
+
+
+    document.querySelector(".quiz-card")
+        .style.display = "none";
+
+
+    document.querySelector(".quiz-result")
+        .classList.add("show");
+
+
+    const percentage =
+        Math.round(
+
+            (quizScore /
+            quizQuestions.length) * 100
+
+        );
+
+
+    document.getElementById("scoreText")
+        .innerText =
+        `You scored ${quizScore} out of 5 (${percentage}%).`;
+
+
+    const xp =
+        quizScore * 10;
+
+
+    document.getElementById("xpEarned")
+        .innerText =
+        `${xp} XP`;
+
+}
+
+
+
+/* =====================================================
+   COMPLETE LESSON
+===================================================== */
+
+function finishLesson() {
+
+
+    document.getElementById("progressFill")
+        .style.width = "100%";
+
+
+    document.getElementById("progressPercent")
+        .innerText = "100%";
+
+
+    const button =
+        document.querySelector(".finish-btn");
+
+
+    if (button) {
+
+        button.innerHTML =
+            '<i class="fa-solid fa-check"></i> Lesson Completed!';
+
+
+        button.disabled = true;
+
+    }
+
+
+    document.querySelectorAll(".step")
+        .forEach(step => {
+
+            step.classList.add("active");
+
+        });
+
+
+    const message =
+        document.getElementById("completionMessage");
+
+
+    if (message) {
+
+        message.classList.add("show");
+
+    }
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

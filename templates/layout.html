@@ -1,87 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>{% block title %}StudySense AI{% endblock %}</title>
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
 
     {% block css %}{% endblock %}
+
 </head>
 
 <body>
 
     <!-- Navigation -->
-<nav class="navbar">
+    <nav class="navbar">
 
-    <div class="logo">
-        <a href="/">StudySense <span>AI</span></a>
-    </div>
+        <!-- LOGO -->
+        <div class="logo">
+            <a href="/">
+                StudySense <span>AI</span>
+            </a>
+        </div>
 
-    <div class="nav-links">
 
-        {% if session.get('logged_in') %}
+        <!-- NAVIGATION LINKS -->
+        <div class="nav-links">
 
-            <a href="/">Home</a>
-            <a href="/courses">Courses</a>
-            <a href="/projects">Projects</a>
-            <a href="/dashboard">Dashboard</a>
-            <a href="/profile">Profile</a>
+            {% if session.get('logged_in') %}
 
-        {% endif %}
+                <a href="/">Home</a>
 
-    </div>
+                <a href="/courses">Courses</a>
 
-    <div class="nav-buttons">
+                <a href="/projects">Projects</a>
 
-        {% if session.get('logged_in') %}
+                <a href="/dashboard">Dashboard</a>
 
-            <a href="/logout" class="logout-btn">Logout</a>
+                <a href="/profile">Profile</a>
 
-        {% else %}
+            {% endif %}
 
-            <a href="/login" class="login-btn">Login</a>
-            <a href="/signup" class="signup-btn">Sign Up</a>
+        </div>
 
-        {% endif %}
 
-    </div>
+        <!-- RIGHT BUTTONS -->
+        <div class="nav-buttons">
 
-</nav>
+            {% if session.get('logged_in') %}
+
+                <a href="/logout" class="logout-btn">
+                    Logout
+                </a>
+
+            {% else %}
+
+                <a href="/login" class="login-btn">
+                    Login
+                </a>
+
+                <a href="/signup" class="signup-btn">
+                    Sign Up
+                </a>
+
+            {% endif %}
+
+        </div>
+
+    </nav>
 
 
     <!-- Main Content -->
-
     <main>
 
         {% block content %}
-
         {% endblock %}
 
     </main>
 
 
     <!-- Footer -->
-
     <footer>
 
-        <p>© 2026 StudySense AI. All Rights Reserved.</p>
+        <p>
+            © 2026 StudySense AI. All Rights Reserved.
+        </p>
 
     </footer>
 
+
+    <!-- JavaScript -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
     {% block js %}{% endblock %}
 
 </body>
+
 </html>

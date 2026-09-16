@@ -1,0 +1,2588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 6 | Python Loops</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/lesson.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        <i class="fa-solid fa-brain"></i>
+        <span>StudySense</span> <b>AI</b>
+    </div>
+
+    <nav>
+
+        <a href="/dashboard">
+            <i class="fa-solid fa-house"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="/courses" class="active">
+            <i class="fa-solid fa-book-open"></i>
+            <span>Courses</span>
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-robot"></i>
+            <span>AI Tutor</span>
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-circle-question"></i>
+            <span>Quiz</span>
+        </a>
+
+        <a href="/projects">
+            <i class="fa-solid fa-code"></i>
+            <span>Projects</span>
+        </a>
+
+        <a href="/profile">
+            <i class="fa-solid fa-user"></i>
+            <span>Profile</span>
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-gear"></i>
+            <span>Settings</span>
+        </a>
+
+    </nav>
+
+    <div class="logout">
+        <a href="/logout">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+        </a>
+    </div>
+
+</aside>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="main">
+
+<!-- =====================================================
+     TOPBAR
+===================================================== -->
+
+<header class="topbar">
+
+    <div class="breadcrumb">
+
+        <a href="/courses">Courses</a>
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+        <span>Python Programming</span>
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+        <strong>Lesson 6</strong>
+
+    </div>
+
+
+    <div class="top-right">
+
+        <button class="top-btn">
+            <i class="fa-regular fa-bell"></i>
+        </button>
+
+        <button class="top-btn" id="themeToggle">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+
+        <div class="user">
+
+            <img src="{{ url_for('static', filename='images/profile.png') }}">
+
+            <div>
+
+                <strong>
+                    {{ session.get('user_name', 'Test User') }}
+                </strong>
+
+                <small>Student</small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="lesson-hero">
+
+    <div class="hero-text">
+
+        <span class="lesson-badge">
+
+            <i class="fa-solid fa-bolt"></i>
+
+            LESSON 6
+
+        </span>
+
+        <h1>Python Loops</h1>
+
+        <p>
+            Learn how to repeat tasks using
+            <strong>for</strong> and <strong>while</strong> loops.
+        </p>
+
+        <div class="hero-info">
+
+            <span>
+                <i class="fa-regular fa-clock"></i>
+                20 min
+            </span>
+
+            <span>
+                <i class="fa-solid fa-signal"></i>
+                Beginner
+            </span>
+
+            <span class="xp">
+                <i class="fa-solid fa-star"></i>
+                +100 XP
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-character">
+
+        <div class="floating-star star-one">✦</div>
+
+        <div class="floating-star star-two">✦</div>
+
+        <div class="python-orb">
+            <i class="fa-brands fa-python"></i>
+        </div>
+
+        <span>Let's repeat!</span>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PROGRESS
+===================================================== -->
+
+<section class="progress-card">
+
+    <div class="progress-top">
+
+        <div>
+
+            <span>LESSON JOURNEY</span>
+
+            <h3>Your Progress</h3>
+
+        </div>
+
+        <strong id="progressPercent">0%</strong>
+
+    </div>
+
+
+    <div class="progress-track">
+
+        <div class="progress-fill"
+             id="progressFill"
+             style="width:0%;"></div>
+
+    </div>
+
+
+    <div class="steps">
+
+        <div class="step active" data-step="learn">
+
+            <div class="step-circle">
+                <i class="fa-solid fa-book-open"></i>
+            </div>
+
+            <span>Learn</span>
+
+        </div>
+
+
+        <div class="line"></div>
+
+
+        <div class="step" data-step="try">
+
+            <div class="step-circle">
+                <i class="fa-solid fa-code"></i>
+            </div>
+
+            <span>Try</span>
+
+        </div>
+
+
+        <div class="line"></div>
+
+
+        <div class="step" data-step="practice">
+
+            <div class="step-circle">
+                <i class="fa-solid fa-pen"></i>
+            </div>
+
+            <span>Practice</span>
+
+        </div>
+
+
+        <div class="line"></div>
+
+
+        <div class="step" data-step="quiz">
+
+            <div class="step-circle">
+                <i class="fa-solid fa-question"></i>
+            </div>
+
+            <span>Quiz</span>
+
+        </div>
+
+
+        <div class="line"></div>
+
+
+        <div class="step" data-step="complete">
+
+            <div class="step-circle">
+                <i class="fa-solid fa-trophy"></i>
+            </div>
+
+            <span>Complete</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     LEARNING NAVIGATION
+===================================================== -->
+
+<div class="learning-nav">
+
+    <button class="nav-tab active"
+            data-section="learn">
+
+        <i class="fa-solid fa-book-open"></i>
+
+        Learn
+
+    </button>
+
+
+    <button class="nav-tab"
+            data-section="try">
+
+        <i class="fa-solid fa-code"></i>
+
+        Try
+
+    </button>
+
+
+    <button class="nav-tab"
+            data-section="practice">
+
+        <i class="fa-solid fa-pen"></i>
+
+        Practice
+
+    </button>
+
+
+    <button class="nav-tab"
+            data-section="quiz">
+
+        <i class="fa-solid fa-circle-question"></i>
+
+        Quiz
+
+    </button>
+
+
+    <button class="nav-tab"
+            data-section="complete">
+
+        <i class="fa-solid fa-trophy"></i>
+
+        Finish
+
+    </button>
+
+</div>
+
+
+<!-- =====================================================
+     LEARN
+===================================================== -->
+
+<section class="learning-section active-section"
+         id="learn">
+
+
+    <div class="section-title">
+
+        <span class="number">01</span>
+
+        <div>
+
+            <small>LET'S BEGIN</small>
+
+            <h2>What is a Loop?</h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="learning-grid">
+
+
+        <div class="lesson-card main-card">
+
+            <p>
+
+                A loop is used to repeat a block of code
+                multiple times.
+
+            </p>
+
+
+            <p>
+
+                Instead of writing the same code again and again,
+                we can use a loop to perform the task automatically.
+
+            </p>
+
+
+            <div class="highlight">
+
+                <i class="fa-solid fa-lightbulb"></i>
+
+                <div>
+
+                    <strong>Think about it</strong>
+
+                    <p>
+
+                        If you want to print "Hello" five times,
+                        you don't need to write print() five times.
+                        A loop can do it for you.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="fact-card">
+
+            <div class="fact-icon">
+
+                <i class="fa-solid fa-repeat"></i>
+
+            </div>
+
+
+            <h3>Loops Can</h3>
+
+
+            <div class="fact">
+
+                <i class="fa-solid fa-check"></i>
+
+                <span>Repeat code</span>
+
+            </div>
+
+
+            <div class="fact">
+
+                <i class="fa-solid fa-check"></i>
+
+                <span>Save time</span>
+
+            </div>
+
+
+            <div class="fact">
+
+                <i class="fa-solid fa-check"></i>
+
+                <span>Process data</span>
+
+            </div>
+
+
+            <div class="fact">
+
+                <i class="fa-solid fa-check"></i>
+
+                <span>Automate tasks</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOR LOOP -->
+
+    <div class="real-world">
+
+        <div class="real-title">
+
+            <div class="real-icon">
+
+                <i class="fa-solid fa-code"></i>
+
+            </div>
+
+            <div>
+
+                <small>BASIC EXAMPLE</small>
+
+                <h2>The for Loop</h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="example-code">
+
+            <span>Python</span>
+
+            <pre><code>for i in range(5):
+    print("Hello")</code></pre>
+
+        </div>
+
+
+        <div class="world-grid">
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-repeat"></i>
+
+                <h3>for</h3>
+
+                <p>Starts a for loop.</p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-list-ol"></i>
+
+                <h3>range(5)</h3>
+
+                <p>Repeats the loop 5 times.</p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-code"></i>
+
+                <h3>print()</h3>
+
+                <p>The code that gets repeated.</p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-arrow-rotate-right"></i>
+
+                <h3>Repeat</h3>
+
+                <p>The code runs again and again.</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- WHILE LOOP -->
+
+    <div class="mini-lesson">
+
+        <div class="mini-step">
+
+            <span>IMPORTANT CONCEPT</span>
+
+            <i class="fa-solid fa-circle-info"></i>
+
+        </div>
+
+
+        <h3>The while Loop</h3>
+
+        <p>
+
+            A while loop keeps running as long as
+            its condition is True.
+
+        </p>
+
+
+        <div class="example-code">
+
+            <span>Example</span>
+
+            <pre><code>count = 1
+
+while count <= 3:
+    print(count)
+    count = count + 1</code></pre>
+
+        </div>
+
+    </div>
+
+
+    <!-- RANGE -->
+
+    <div class="mini-lesson">
+
+        <div class="mini-step">
+
+            <span>USEFUL FUNCTION</span>
+
+            <i class="fa-solid fa-list-ol"></i>
+
+        </div>
+
+
+        <h3>Using range()</h3>
+
+        <p>
+
+            The <strong>range()</strong> function generates
+            a sequence of numbers that can be used with loops.
+
+        </p>
+
+
+        <div class="example-code">
+
+            <span>Example</span>
+
+            <pre><code>for i in range(1, 6):
+    print(i)</code></pre>
+
+        </div>
+
+        <p>
+
+            This prints the numbers from
+            <strong>1 to 5</strong>.
+
+        </p>
+
+    </div>
+
+
+    <button class="next-btn"
+            onclick="goToSection('try')">
+
+        Continue to Try
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     TRY
+===================================================== -->
+
+<section class="learning-section"
+         id="try">
+
+
+    <div class="section-title">
+
+        <span class="number">02</span>
+
+        <div>
+
+            <small>LEARN BY DOING</small>
+
+            <h2>Let's Use Loops</h2>
+
+        </div>
+
+    </div>
+
+
+    <!-- STEP 1 -->
+
+    <div class="mini-lesson">
+
+        <div class="mini-step">
+
+            <span>STEP 1</span>
+
+            <i class="fa-solid fa-lightbulb"></i>
+
+        </div>
+
+
+        <h3>Repeat a Message</h3>
+
+        <p>
+
+            Use a <strong>for</strong> loop with
+            <strong>range(3)</strong> to print
+            <strong>"Hello"</strong> three times.
+
+        </p>
+
+
+        <div class="example-code">
+
+            <span>Example</span>
+
+            <pre><code>for i in range(3):
+    print("Hello")</code></pre>
+
+        </div>
+
+    </div>
+
+
+    <!-- STEP 2 -->
+
+    <div class="mini-lesson challenge">
+
+        <div class="mini-step">
+
+            <span>STEP 2</span>
+
+            <i class="fa-solid fa-puzzle-piece"></i>
+
+        </div>
+
+
+        <h3>Print Numbers 🎯</h3>
+
+        <p>
+
+            Write a for loop that prints the numbers
+            <strong>1, 2, 3, 4 and 5</strong>.
+
+        </p>
+
+
+        <div class="code-editor">
+
+            <div class="editor-bar">
+
+                <span>
+
+                    <i class="fa-brands fa-python"></i>
+
+                    Python
+
+                </span>
+
+
+                <button onclick="runNumberChallenge()">
+
+                    <i class="fa-solid fa-play"></i>
+
+                    Run
+
+                </button>
+
+            </div>
+
+
+            <textarea
+                id="numberCode"
+                placeholder="Type your code here..."></textarea>
+
+
+            <div class="output-box">
+
+                <small>OUTPUT</small>
+
+                <div id="numberOutput">
+
+                    Run your code to see the result.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div id="numberHint"
+             class="challenge-hint">
+
+            💡 Hint: Use
+            <strong>for i in range(1, 6):</strong>.
+
+        </div>
+
+    </div>
+
+
+    <!-- STEP 3 -->
+
+    <div class="mini-lesson challenge">
+
+        <div class="mini-step">
+
+            <span>STEP 3</span>
+
+            <i class="fa-solid fa-repeat"></i>
+
+        </div>
+
+
+        <h3>Repeat Using while 👨‍💻</h3>
+
+        <p>
+
+            Create a while loop that prints
+            <strong>1, 2 and 3</strong>.
+
+        </p>
+
+
+        <div class="code-editor">
+
+            <div class="editor-bar">
+
+                <span>
+
+                    <i class="fa-brands fa-python"></i>
+
+                    Python
+
+                </span>
+
+
+                <button onclick="runWhileChallenge()">
+
+                    <i class="fa-solid fa-play"></i>
+
+                    Run
+
+                </button>
+
+            </div>
+
+
+            <textarea
+                id="whileCode"
+                placeholder="Type your code here..."></textarea>
+
+
+            <div class="output-box">
+
+                <small>OUTPUT</small>
+
+                <div id="whileOutput">
+
+                    Run your code to see the result.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div id="whileHint"
+             class="challenge-hint">
+
+            💡 Hint: Start with
+            <strong>count = 1</strong> and use
+            <strong>while count <= 3:</strong>.
+
+        </div>
+
+
+        <div id="whileSuccess"
+             class="challenge-success">
+
+            🎉 Great job! You created a while loop.
+
+            <strong>+10 XP</strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- FINAL CHALLENGE -->
+
+    <div class="mini-lesson final-challenge">
+
+        <div class="mini-step">
+
+            <span>FINAL CHALLENGE</span>
+
+            <i class="fa-solid fa-trophy"></i>
+
+        </div>
+
+
+        <h3>Build a Multiplication Table 🏆</h3>
+
+        <p>
+
+            Create a for loop that prints the
+            multiplication table of <strong>2</strong>
+            from 1 to 5.
+
+        </p>
+
+
+        <div class="target-output">
+
+            2<br>
+            4<br>
+            6<br>
+            8<br>
+            10
+
+        </div>
+
+
+        <div class="final-editor">
+
+            <textarea
+                id="tableCode"
+                placeholder="# Write your Python code here"></textarea>
+
+
+            <button onclick="checkTableChallenge()">
+
+                <i class="fa-solid fa-play"></i>
+
+                Run My Code
+
+            </button>
+
+        </div>
+
+
+        <div id="tableResult"
+             class="final-result">
+
+        </div>
+
+    </div>
+
+
+    <button class="next-btn"
+            onclick="goToSection('practice')">
+
+        Continue to Practice
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     PRACTICE
+===================================================== -->
+
+<section class="learning-section"
+         id="practice">
+
+
+    <div class="section-title">
+
+        <span class="number">03</span>
+
+        <div>
+
+            <small>MINI CHALLENGE</small>
+
+            <h2>Complete Your Assignment</h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="assignment-card">
+
+
+        <!-- HEADER -->
+
+        <div class="assignment-top">
+
+            <div class="assignment-icon">
+
+                <i class="fa-solid fa-flag-checkered"></i>
+
+            </div>
+
+
+            <div>
+
+                <span>MISSION 06</span>
+
+                <h3>Number Printer</h3>
+
+            </div>
+
+
+            <div class="reward">
+
+                <i class="fa-solid fa-star"></i>
+
+                +20 XP
+
+            </div>
+
+        </div>
+
+
+        <!-- TASK -->
+
+        <div class="assignment-task">
+
+            <h4>🎯 Your Mission</h4>
+
+
+            <p>
+
+                Create a Python program using a
+                <strong>for loop</strong> to print
+                the numbers from <strong>1 to 10</strong>.
+
+            </p>
+
+
+            <div class="required-output">
+
+                <div>
+                    <span>1</span>
+                </div>
+
+                <div>
+                    <span>2</span>
+                </div>
+
+                <div>
+                    <span>3</span>
+                </div>
+
+                <div>
+                    <span>...</span>
+                </div>
+
+                <div>
+                    <span>10</span>
+                </div>
+
+            </div>
+
+
+            <p class="task-note">
+
+                Use <strong>range()</strong> to make the
+                loop repeat the correct number of times.
+
+            </p>
+
+        </div>
+
+
+        <!-- EDITOR -->
+
+        <div class="assignment-editor">
+
+            <div class="editor-bar">
+
+                <span>
+
+                    <i class="fa-brands fa-python"></i>
+
+                    Python
+
+                </span>
+
+
+                <button onclick="runAssignment()">
+
+                    <i class="fa-solid fa-play"></i>
+
+                    Run
+
+                </button>
+
+            </div>
+
+
+            <textarea
+                id="assignmentCode"
+                placeholder="# Write your code here..."></textarea>
+
+
+            <div class="assignment-output">
+
+                <small>OUTPUT</small>
+
+                <div id="assignmentOutput">
+
+                    Run your code to check the result.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- HINT SYSTEM -->
+
+        <div class="hint-section">
+
+            <button class="hint-button"
+                    onclick="showHint()">
+
+                <i class="fa-solid fa-lightbulb"></i>
+
+                Need a Hint?
+
+            </button>
+
+
+            <div id="hintBox"
+                 class="hint-box">
+
+                <strong id="hintTitle">
+
+                    💡 Hint 1
+
+                </strong>
+
+
+                <p id="hintText">
+
+                    Start with a for loop.
+
+                </p>
+
+
+                <button id="nextHint"
+                        onclick="showNextHint()">
+
+                    Show Next Hint
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- SUCCESS -->
+
+        <div id="assignmentSuccess"
+             class="assignment-success">
+
+            <div class="success-icon">
+
+                <i class="fa-solid fa-check"></i>
+
+            </div>
+
+
+            <div>
+
+                <strong>🎉 Mission Complete!</strong>
+
+                <p>
+
+                    Great work! You completed the coding challenge.
+
+                    <b>+20 XP</b>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <button class="next-btn"
+            id="practiceNext"
+            onclick="goToSection('quiz')">
+
+        Continue to Quiz
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     QUIZ
+===================================================== -->
+
+<section class="learning-section"
+         id="quiz">
+
+
+    <div class="section-title">
+
+        <span class="number">04</span>
+
+        <div>
+
+            <small>KNOWLEDGE CHECK</small>
+
+            <h2>Python Loops Quiz 🧠</h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="quiz-card">
+
+
+        <div class="quiz-top">
+
+            <div>
+
+                <span>LESSON 6 QUIZ</span>
+
+                <h3>Test What You Learned</h3>
+
+            </div>
+
+
+            <div class="quiz-xp">
+
+                ⭐ +50 XP
+
+            </div>
+
+        </div>
+
+
+        <div class="question-progress">
+
+            <div class="question-count">
+
+                Question
+
+                <strong id="questionNumber">1</strong>
+
+                of 5
+
+            </div>
+
+
+            <div class="question-bar">
+
+                <div id="questionProgress"></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="question-area">
+
+            <div class="question-icon">
+
+                <i class="fa-solid fa-question"></i>
+
+            </div>
+
+
+            <h2 id="questionText">
+
+                What is a loop used for?
+
+            </h2>
+
+
+            <div id="answerOptions"
+                 class="answer-options">
+
+            </div>
+
+        </div>
+
+
+        <div id="quizFeedback"
+             class="quiz-feedback">
+
+            <strong id="feedbackTitle"></strong>
+
+            <p id="feedbackText"></p>
+
+        </div>
+
+
+        <button id="nextQuestionBtn"
+                class="quiz-next"
+                onclick="nextQuestion()"
+                disabled>
+
+            Select an Answer
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </button>
+
+    </div>
+
+
+    <!-- RESULT -->
+
+    <div id="quizResult"
+         class="quiz-result">
+
+        <div class="result-trophy">
+
+            🏆
+
+        </div>
+
+
+        <span>QUIZ COMPLETE</span>
+
+
+        <h2>Great Job!</h2>
+
+
+        <p id="scoreText">
+
+            You scored 0 out of 5.
+
+        </p>
+
+
+        <div class="score-xp">
+
+            ⭐
+
+            <strong id="xpEarned">
+
+                0 XP
+
+            </strong>
+
+        </div>
+
+
+        <button class="continue-complete"
+                onclick="goToSection('complete')">
+
+            Continue
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     COMPLETE
+===================================================== -->
+
+<section class="learning-section"
+         id="complete">
+
+
+    <div class="completion">
+
+
+        <div class="trophy">
+
+            <i class="fa-solid fa-trophy"></i>
+
+        </div>
+
+
+        <span class="complete-label">
+
+            ALMOST THERE!
+
+        </span>
+
+
+        <h1>Complete Lesson 6</h1>
+
+
+        <p>
+
+            Finish the lesson and continue your Python journey.
+
+        </p>
+
+
+        <div class="reward-box">
+
+            <div>
+
+                <i class="fa-solid fa-star"></i>
+
+                <strong>+100 XP</strong>
+
+            </div>
+
+
+            <div>
+
+                <i class="fa-solid fa-fire"></i>
+
+                <strong>Keep your streak!</strong>
+
+            </div>
+
+        </div>
+
+
+        <button class="finish-btn"
+                onclick="finishLesson()">
+
+            <i class="fa-solid fa-check"></i>
+
+            Complete Lesson
+
+        </button>
+
+
+        <div id="completionMessage"
+             class="completion-message">
+
+
+            <div class="success-icon">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+            </div>
+
+
+            <h3>🎉 Great Job!</h3>
+
+
+            <p>
+
+                You completed Lesson 6:
+                Python Loops.
+
+            </p>
+
+
+            <div class="completion-xp">
+
+                <i class="fa-solid fa-star"></i>
+
+                +100 XP Earned
+
+            </div>
+
+
+            <a href="/lesson/python/7"
+               class="primary-btn">
+
+                Continue to Lesson 7
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MOTIVATION
+===================================================== -->
+
+<div class="motivation">
+
+    <i class="fa-solid fa-quote-left"></i>
+
+    <span>
+        Small steps every day lead to big results.
+    </span>
+
+    <i class="fa-solid fa-quote-right"></i>
+
+</div>
+
+
+</main>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   THEME
+===================================================== */
+
+const themeBtn =
+    document.getElementById("themeToggle");
+
+
+if (themeBtn) {
+
+    const icon =
+        themeBtn.querySelector("i");
+
+
+    if (localStorage.getItem("theme") === "light") {
+
+        document.body.classList.add("light-mode");
+
+        icon.classList.remove("fa-moon");
+
+        icon.classList.add("fa-sun");
+
+    }
+
+
+    themeBtn.addEventListener("click", () => {
+
+        document.body.classList.toggle("light-mode");
+
+
+        if (document.body.classList.contains("light-mode")) {
+
+            localStorage.setItem("theme", "light");
+
+            icon.classList.remove("fa-moon");
+
+            icon.classList.add("fa-sun");
+
+        }
+
+        else {
+
+            localStorage.setItem("theme", "dark");
+
+            icon.classList.remove("fa-sun");
+
+            icon.classList.add("fa-moon");
+
+        }
+
+    });
+
+}
+
+
+/* =====================================================
+   SECTION NAVIGATION
+===================================================== */
+
+const tabs =
+    document.querySelectorAll(".nav-tab");
+
+const sections =
+    document.querySelectorAll(".learning-section");
+
+const steps =
+    document.querySelectorAll(".step");
+
+
+const sectionOrder = [
+
+    "learn",
+    "try",
+    "practice",
+    "quiz",
+    "complete"
+
+];
+
+
+function goToSection(sectionName) {
+
+
+    sections.forEach(section => {
+
+        section.classList.remove("active-section");
+
+    });
+
+
+    tabs.forEach(tab => {
+
+        tab.classList.remove("active");
+
+    });
+
+
+    steps.forEach(step => {
+
+        step.classList.remove("active");
+
+    });
+
+
+    const section =
+        document.getElementById(sectionName);
+
+
+    if (!section) return;
+
+
+    section.classList.add("active-section");
+
+
+    const tab =
+        document.querySelector(
+            `.nav-tab[data-section="${sectionName}"]`
+        );
+
+
+    if (tab) {
+
+        tab.classList.add("active");
+
+    }
+
+
+    const step =
+        document.querySelector(
+            `.step[data-step="${sectionName}"]`
+        );
+
+
+    if (step) {
+
+        step.classList.add("active");
+
+    }
+
+
+    updateProgress(sectionName);
+
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+
+    if (sectionName === "quiz") {
+
+        currentQuestion = 0;
+
+        quizScore = 0;
+
+        const quizCard =
+            document.querySelector(".quiz-card");
+
+        const quizResult =
+            document.querySelector(".quiz-result");
+
+
+        quizCard.style.display = "block";
+
+        quizResult.classList.remove("show");
+
+        loadQuestion();
+
+    }
+
+}
+
+
+tabs.forEach(tab => {
+
+    tab.addEventListener("click", () => {
+
+        goToSection(tab.dataset.section);
+
+    });
+
+});
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+function updateProgress(sectionName) {
+
+
+    const index =
+        sectionOrder.indexOf(sectionName);
+
+
+    const percent =
+        Math.round(
+            (index / (sectionOrder.length - 1)) * 100
+        );
+
+
+    document.getElementById("progressPercent")
+        .innerText = percent + "%";
+
+
+    document.getElementById("progressFill")
+        .style.width = percent + "%";
+
+
+    steps.forEach((step, i) => {
+
+        if (i <= index) {
+
+            step.classList.add("active");
+
+        }
+
+    });
+
+}
+
+
+/* =====================================================
+   NUMBER CHALLENGE
+===================================================== */
+
+function runNumberChallenge() {
+
+
+    const code =
+        document.getElementById("numberCode")
+            .value.trim();
+
+
+    const output =
+        document.getElementById("numberOutput");
+
+
+    const hint =
+        document.getElementById("numberHint");
+
+
+    if (code === "") {
+
+        output.innerText =
+            "Nothing to run yet.";
+
+        return;
+
+    }
+
+
+    const normalized =
+        code.replace(/\s/g, "").toLowerCase();
+
+
+    const valid =
+        normalized.includes("for") &&
+        normalized.includes("range(1,6)") &&
+        normalized.includes("print");
+
+
+    if (valid) {
+
+        output.innerHTML =
+            "1<br>2<br>3<br>4<br>5";
+
+        output.classList.add("correct");
+
+
+        hint.innerHTML =
+            "🎉 Correct! Your for loop prints the numbers from 1 to 5.";
+
+        hint.classList.add("correct-hint");
+
+    }
+
+    else {
+
+        output.innerText =
+            "Try again!";
+
+        output.classList.remove("correct");
+
+
+        hint.innerHTML =
+            '💡 Hint: Use <strong>for i in range(1, 6):</strong>';
+
+        hint.classList.remove("correct-hint");
+
+    }
+
+}
+
+
+/* =====================================================
+   WHILE CHALLENGE
+===================================================== */
+
+function runWhileChallenge() {
+
+
+    const code =
+        document.getElementById("whileCode")
+            .value.trim();
+
+
+    const output =
+        document.getElementById("whileOutput");
+
+
+    const hint =
+        document.getElementById("whileHint");
+
+
+    const success =
+        document.getElementById("whileSuccess");
+
+
+    if (code === "") {
+
+        output.innerText =
+            "Nothing to run yet.";
+
+        success.classList.remove("show");
+
+        return;
+
+    }
+
+
+    const normalized =
+        code.replace(/\s/g, "").toLowerCase();
+
+
+    const valid =
+        normalized.includes("count=1") &&
+        normalized.includes("whilecount<=3") &&
+        normalized.includes("print") &&
+        normalized.includes("count=count+1");
+
+
+    if (valid) {
+
+        output.innerHTML =
+            "1<br>2<br>3";
+
+        output.classList.add("correct");
+
+
+        hint.innerHTML =
+            "✓ Correct! You created a working while loop.";
+
+        hint.classList.add("correct-hint");
+
+
+        success.classList.add("show");
+
+    }
+
+    else {
+
+        output.innerText =
+            "Something is not quite right.";
+
+        output.classList.remove("correct");
+
+
+        hint.innerHTML =
+            "💡 Hint: Remember to increase count inside the loop.";
+
+        hint.classList.remove("correct-hint");
+
+
+        success.classList.remove("show");
+
+    }
+
+}
+
+
+/* =====================================================
+   FINAL TABLE CHALLENGE
+===================================================== */
+
+function checkTableChallenge() {
+
+
+    const code =
+        document.getElementById("tableCode")
+            .value.trim();
+
+
+    const result =
+        document.getElementById("tableResult");
+
+
+    if (code === "") {
+
+        result.innerHTML =
+            "💡 Write your code first.";
+
+        result.classList.remove("correct");
+
+        return;
+
+    }
+
+
+    const normalized =
+        code.replace(/\s/g, "").toLowerCase();
+
+
+    const valid =
+        normalized.includes("for") &&
+        normalized.includes("range(1,6)") &&
+        normalized.includes("2*i") &&
+        normalized.includes("print");
+
+
+    if (valid) {
+
+        result.innerHTML =
+            "🎉 Amazing! Your multiplication table is correct! <strong>+10 XP</strong>";
+
+        result.classList.add("correct");
+
+    }
+
+    else {
+
+        result.innerHTML =
+            'Almost! Use <code>for i in range(1, 6):</code> and print <code>2 * i</code>.';
+
+        result.classList.remove("correct");
+
+    }
+
+}
+
+
+/* =====================================================
+   ASSIGNMENT HINTS
+===================================================== */
+
+let hintNumber = 0;
+
+
+const hints = [
+
+    "Start with a for loop.",
+
+    "Use range() to generate the numbers from 1 to 10.",
+
+    "Try: for i in range(1, 11):"
+
+];
+
+
+function showHint() {
+
+
+    const hintBox =
+        document.getElementById("hintBox");
+
+
+    hintBox.classList.add("show");
+
+
+    document.getElementById("hintTitle")
+        .innerText = "💡 Hint " + (hintNumber + 1);
+
+
+    document.getElementById("hintText")
+        .innerText = hints[hintNumber];
+
+}
+
+
+function showNextHint() {
+
+
+    if (hintNumber < hints.length - 1) {
+
+        hintNumber++;
+
+    }
+
+
+    document.getElementById("hintTitle")
+        .innerText = "💡 Hint " + (hintNumber + 1);
+
+
+    document.getElementById("hintText")
+        .innerText = hints[hintNumber];
+
+
+    if (hintNumber === hints.length - 1) {
+
+        document.getElementById("nextHint")
+            .innerText = "Last Hint";
+
+    }
+
+}
+
+
+/* =====================================================
+   ASSIGNMENT
+===================================================== */
+
+function runAssignment() {
+
+
+    const code =
+        document.getElementById("assignmentCode")
+            .value.trim();
+
+
+    const output =
+        document.getElementById("assignmentOutput");
+
+
+    const success =
+        document.getElementById("assignmentSuccess");
+
+
+    if (code === "") {
+
+        output.innerText =
+            "Write your code first.";
+
+        output.classList.remove("correct");
+
+        return;
+
+    }
+
+
+    const normalized =
+        code.replace(/\s/g, "").toLowerCase();
+
+
+    const valid =
+        normalized.includes("for") &&
+        normalized.includes("range(1,11)") &&
+        normalized.includes("print");
+
+
+    if (valid) {
+
+        output.innerHTML =
+            "1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10";
+
+
+        output.classList.add("correct");
+
+
+        success.classList.add("show");
+
+
+        document.getElementById("practiceNext")
+            .classList.add("unlocked");
+
+    }
+
+    else {
+
+        output.innerText =
+            "Not quite! Check your for loop and range().";
+
+        output.classList.remove("correct");
+
+        success.classList.remove("show");
+
+    }
+
+}
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+const quizQuestions = [
+
+    {
+
+        question:
+            "What is a loop used for?",
+
+        options: [
+
+            "Repeating code",
+
+            "Deleting code",
+
+            "Creating a computer",
+
+            "Closing Python"
+
+        ],
+
+        answer: 0,
+
+        explanation:
+            "A loop is used to repeat a block of code."
+
+    },
+
+
+    {
+
+        question:
+            "Which keyword is used to create a for loop?",
+
+        options: [
+
+            "repeat",
+
+            "for",
+
+            "loop",
+
+            "again"
+
+        ],
+
+        answer: 1,
+
+        explanation:
+            "The for keyword is used to create a for loop."
+
+    },
+
+
+    {
+
+        question:
+            "What does range(5) provide?",
+
+        options: [
+
+            "Numbers from 0 to 4",
+
+            "Numbers from 1 to 5",
+
+            "Only the number 5",
+
+            "Five strings"
+
+        ],
+
+        answer: 0,
+
+        explanation:
+            "range(5) generates the numbers 0, 1, 2, 3 and 4."
+
+    },
+
+
+    {
+
+        question:
+            "Which loop continues while a condition is True?",
+
+        options: [
+
+            "for",
+
+            "while",
+
+            "if",
+
+            "elif"
+
+        ],
+
+        answer: 1,
+
+        explanation:
+            "A while loop continues as long as its condition is True."
+
+    },
+
+
+    {
+
+        question:
+            "Which function is commonly used to repeat a for loop a fixed number of times?",
+
+        options: [
+
+            "print()",
+
+            "input()",
+
+            "range()",
+
+            "type()"
+
+        ],
+
+        answer: 2,
+
+        explanation:
+            "range() is commonly used to generate a sequence of numbers for a for loop."
+
+    }
+
+];
+
+
+let currentQuestion = 0;
+
+let quizScore = 0;
+
+let answered = false;
+
+
+/* =====================================================
+   LOAD QUESTION
+===================================================== */
+
+function loadQuestion() {
+
+
+    const question =
+        quizQuestions[currentQuestion];
+
+
+    document.getElementById("questionNumber")
+        .innerText = currentQuestion + 1;
+
+
+    document.getElementById("questionText")
+        .innerText = question.question;
+
+
+    const progress =
+        ((currentQuestion + 1) /
+        quizQuestions.length) * 100;
+
+
+    document.getElementById("questionProgress")
+        .style.width = progress + "%";
+
+
+    const optionsContainer =
+        document.getElementById("answerOptions");
+
+
+    optionsContainer.innerHTML = "";
+
+
+    const feedback =
+        document.getElementById("quizFeedback");
+
+
+    feedback.classList.remove(
+        "show",
+        "correct-feedback",
+        "wrong-feedback"
+    );
+
+
+    const nextBtn =
+        document.getElementById("nextQuestionBtn");
+
+
+    nextBtn.disabled = true;
+
+
+    nextBtn.innerHTML =
+        'Select an Answer <i class="fa-solid fa-arrow-right"></i>';
+
+
+    answered = false;
+
+
+    question.options.forEach((option, index) => {
+
+
+        const button =
+            document.createElement("button");
+
+
+        button.className =
+            "answer-option";
+
+
+        button.innerHTML = `
+
+            <span class="option-letter">
+
+                ${String.fromCharCode(65 + index)}
+
+            </span>
+
+            <span>${option}</span>
+
+        `;
+
+
+        button.onclick =
+            () => selectAnswer(index);
+
+
+        optionsContainer.appendChild(button);
+
+    });
+
+}
+
+
+/* =====================================================
+   SELECT ANSWER
+===================================================== */
+
+function selectAnswer(selected) {
+
+
+    if (answered) return;
+
+
+    answered = true;
+
+
+    const question =
+        quizQuestions[currentQuestion];
+
+
+    const options =
+        document.querySelectorAll(".answer-option");
+
+
+    options.forEach((option, index) => {
+
+
+        option.disabled = true;
+
+
+        if (index === question.answer) {
+
+            option.classList.add("correct");
+
+        }
+
+
+        if (
+
+            index === selected &&
+
+            selected !== question.answer
+
+        ) {
+
+            option.classList.add("wrong");
+
+        }
+
+    });
+
+
+    const feedback =
+        document.getElementById("quizFeedback");
+
+
+    const feedbackTitle =
+        document.getElementById("feedbackTitle");
+
+
+    const feedbackText =
+        document.getElementById("feedbackText");
+
+
+    feedback.classList.add("show");
+
+
+    if (selected === question.answer) {
+
+
+        quizScore++;
+
+
+        feedback.classList.add(
+            "correct-feedback"
+        );
+
+
+        feedbackTitle.innerText =
+            "🎉 Correct!";
+
+
+        feedbackText.innerText =
+            question.explanation;
+
+    }
+
+    else {
+
+
+        feedback.classList.add(
+            "wrong-feedback"
+        );
+
+
+        feedbackTitle.innerText =
+            "💡 Not quite!";
+
+
+        feedbackText.innerText =
+            question.explanation;
+
+    }
+
+
+    const nextBtn =
+        document.getElementById("nextQuestionBtn");
+
+
+    nextBtn.disabled = false;
+
+
+    if (
+
+        currentQuestion ===
+        quizQuestions.length - 1
+
+    ) {
+
+        nextBtn.innerHTML =
+            'See My Result <i class="fa-solid fa-trophy"></i>';
+
+    }
+
+    else {
+
+        nextBtn.innerHTML =
+            'Next Question <i class="fa-solid fa-arrow-right"></i>';
+
+    }
+
+}
+
+
+/* =====================================================
+   NEXT QUESTION
+===================================================== */
+
+function nextQuestion() {
+
+
+    if (!answered) return;
+
+
+    if (
+
+        currentQuestion <
+        quizQuestions.length - 1
+
+    ) {
+
+        currentQuestion++;
+
+        loadQuestion();
+
+    }
+
+    else {
+
+        showQuizResult();
+
+    }
+
+}
+
+
+/* =====================================================
+   QUIZ RESULT
+===================================================== */
+
+function showQuizResult() {
+
+
+    document.querySelector(".quiz-card")
+        .style.display = "none";
+
+
+    document.querySelector(".quiz-result")
+        .classList.add("show");
+
+
+    const percentage =
+        Math.round(
+
+            (quizScore /
+            quizQuestions.length) * 100
+
+        );
+
+
+    document.getElementById("scoreText")
+        .innerText =
+        `You scored ${quizScore} out of 5 (${percentage}%).`;
+
+
+    const xp =
+        quizScore * 10;
+
+
+    document.getElementById("xpEarned")
+        .innerText =
+        `${xp} XP`;
+
+}
+
+
+/* =====================================================
+   COMPLETE LESSON
+===================================================== */
+
+function finishLesson() {
+
+
+    document.getElementById("progressFill")
+        .style.width = "100%";
+
+
+    document.getElementById("progressPercent")
+        .innerText = "100%";
+
+
+    const button =
+        document.querySelector(".finish-btn");
+
+
+    if (button) {
+
+        button.innerHTML =
+            '<i class="fa-solid fa-check"></i> Lesson Completed!';
+
+
+        button.disabled = true;
+
+    }
+
+
+    document.querySelectorAll(".step")
+        .forEach(step => {
+
+            step.classList.add("active");
+
+        });
+
+
+    const message =
+        document.getElementById("completionMessage");
+
+
+    if (message) {
+
+        message.classList.add("show");
+
+    }
+
+}
+
+
+/* =====================================================
+   INITIALIZE QUIZ
+===================================================== */
+
+loadQuestion();
+
+</script>
+
+</body>
+
+</html>

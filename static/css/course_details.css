@@ -772,3 +772,16 @@ body.light-mode .profile span {
         margin-left: 0;
     }
 }
+
+
+.module-header {
+    cursor: pointer;
+}
+
+.module-header > i {
+    transition: transform 0.3s ease;
+}
+
+.lessons {
+    transition: 0.3s ease;
+}

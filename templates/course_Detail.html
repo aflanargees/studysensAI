@@ -7,7 +7,7 @@
     <title>Python Programming | StudySense AI</title>
 
     <link rel="stylesheet"
-          href="{{ url_for('static', filename='css/course_detail.css') }}">
+          href="{{ url_for('static', filename='css/course_details.css') }}">
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -209,7 +209,7 @@
 
         <div class="module">
 
-            <div class="module-header">
+            <div class="module-header" onclick="toggleModule(this)">
 
                 <div>
                     <span class="module-number">MODULE 01</span>
@@ -262,7 +262,7 @@
 
                     </div>
 
-                    <a href="#" class="start-btn">
+                    <a href="/lesson/python/1" class="start-btn">
                         Start Lesson
                         <i class="fa-solid fa-arrow-right"></i>
                     </a>
@@ -368,7 +368,7 @@
 
         <div class="module">
 
-            <div class="module-header">
+            <div class="module-header" onclick="toggleModule(this)">
 
                 <div>
                     <span class="module-number">MODULE 02</span>
@@ -432,7 +432,7 @@
 
         <div class="module">
 
-            <div class="module-header">
+            <div class="module-header" onclick="toggleModule(this)">
 
                 <div>
                     <span class="module-number">MODULE 03</span>
@@ -556,6 +556,20 @@ if (themeBtn) {
 
     });
 
+}
+
+function toggleModule(header) {
+    const module = header.parentElement;
+    const lessons = module.querySelector(".lessons");
+    const icon = header.querySelector(".fa-chevron-down");
+
+    if (lessons.style.display === "none") {
+        lessons.style.display = "block";
+        icon.style.transform = "rotate(0deg)";
+    } else {
+        lessons.style.display = "none";
+        icon.style.transform = "rotate(-90deg)";
+    }
 }
 
 </script>

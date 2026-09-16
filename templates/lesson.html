@@ -1,0 +1,1868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 1 | Introduction to Python</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/lesson.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        <i class="fa-solid fa-brain"></i>
+        <span>StudySense</span> <b>AI</b>
+    </div>
+
+    <nav>
+
+        <a href="/dashboard">
+            <i class="fa-solid fa-house"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="/courses" class="active">
+            <i class="fa-solid fa-book-open"></i>
+            <span>Courses</span>
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-robot"></i>
+            <span>AI Tutor</span>
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-circle-question"></i>
+            <span>Quiz</span>
+        </a>
+
+        <a href="/projects">
+            <i class="fa-solid fa-code"></i>
+            <span>Projects</span>
+        </a>
+
+        <a href="/profile">
+            <i class="fa-solid fa-user"></i>
+            <span>Profile</span>
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-gear"></i>
+            <span>Settings</span>
+        </a>
+
+    </nav>
+
+    <div class="logout">
+        <a href="/logout">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+        </a>
+    </div>
+
+</aside>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="main">
+
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+        <div class="breadcrumb">
+
+            <a href="/courses">Courses</a>
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+            <span>Python Programming</span>
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+            <strong>Lesson 1</strong>
+
+        </div>
+
+        <div class="top-right">
+
+            <button class="top-btn">
+                <i class="fa-regular fa-bell"></i>
+            </button>
+
+            <button class="top-btn" id="themeToggle">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+
+            <div class="user">
+
+                <img src="{{ url_for('static', filename='images/profile.png') }}">
+
+                <div>
+                    <strong>{{ session.get('user_name', 'Test User') }}</strong>
+                    <small>Student</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="lesson-hero">
+
+        <div class="hero-text">
+
+            <span class="lesson-badge">
+                <i class="fa-solid fa-bolt"></i>
+                LESSON 1
+            </span>
+
+            <h1>Introduction to Python</h1>
+
+            <p>
+                Let's start your Python journey. Learn the basics,
+                explore where Python is used, and write your first program.
+            </p>
+
+            <div class="hero-info">
+
+                <span>
+                    <i class="fa-regular fa-clock"></i>
+                    15 min
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-signal"></i>
+                    Beginner
+                </span>
+
+                <span class="xp">
+                    <i class="fa-solid fa-star"></i>
+                    +10 XP
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="hero-character">
+
+            <div class="floating-star star-one">✦</div>
+            <div class="floating-star star-two">✦</div>
+
+            <div class="python-orb">
+                <i class="fa-brands fa-python"></i>
+            </div>
+
+            <span>Let's learn!</span>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PROGRESS ================= -->
+
+    <section class="progress-card">
+
+        <div class="progress-top">
+
+            <div>
+                <span>LESSON JOURNEY</span>
+                <h3>Your Progress</h3>
+            </div>
+
+            <strong id="progressPercent">0%</strong>
+
+        </div>
+
+        <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="steps">
+
+            <div class="step active" data-step="learn">
+                <div class="step-circle">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+                <span>Learn</span>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="step" data-step="try">
+                <div class="step-circle">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+                <span>Try</span>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="step" data-step="practice">
+                <div class="step-circle">
+                    <i class="fa-solid fa-pen"></i>
+                </div>
+                <span>Practice</span>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="step" data-step="quiz">
+                <div class="step-circle">
+                    <i class="fa-solid fa-question"></i>
+                </div>
+                <span>Quiz</span>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="step" data-step="complete">
+                <div class="step-circle">
+                    <i class="fa-solid fa-trophy"></i>
+                </div>
+                <span>Complete</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= LEARNING NAV ================= -->
+
+    <div class="learning-nav">
+
+        <button class="nav-tab active" data-section="learn">
+            <i class="fa-solid fa-book-open"></i>
+            Learn
+        </button>
+
+        <button class="nav-tab" data-section="try">
+            <i class="fa-solid fa-code"></i>
+            Try
+        </button>
+
+        <button class="nav-tab" data-section="practice">
+            <i class="fa-solid fa-pen"></i>
+            Practice
+        </button>
+
+        <button class="nav-tab" data-section="quiz">
+            <i class="fa-solid fa-circle-question"></i>
+            Quiz
+        </button>
+
+        <button class="nav-tab" data-section="complete">
+            <i class="fa-solid fa-trophy"></i>
+            Finish
+        </button>
+
+    </div>
+
+
+    <!-- ================= LEARN ================= -->
+
+    <section class="learning-section active-section" id="learn">
+
+        <div class="section-title">
+
+            <span class="number">01</span>
+
+            <div>
+                <small>LET'S BEGIN</small>
+                <h2>What is Python?</h2>
+            </div>
+
+        </div>
+
+        <div class="learning-grid">
+
+            <div class="lesson-card main-card">
+
+                <p>
+                    Python is a high-level programming language known
+                    for its simple and readable syntax.
+                </p>
+
+                <p>
+                    It allows beginners to focus on solving problems
+                    instead of worrying about complicated syntax.
+                </p>
+
+                <div class="highlight">
+                    <i class="fa-solid fa-lightbulb"></i>
+
+                    <div>
+                        <strong>Think about it</strong>
+
+                        <p>
+                            Python is like giving instructions to a
+                            computer using simple and readable commands.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="fact-card">
+
+                <div class="fact-icon">
+                    <i class="fa-solid fa-rocket"></i>
+                </div>
+
+                <h3>Why Python?</h3>
+
+                <div class="fact">
+
+                    <i class="fa-solid fa-check"></i>
+                    <span>Easy to learn</span>
+
+                </div>
+
+                <div class="fact">
+
+                    <i class="fa-solid fa-check"></i>
+                    <span>Readable syntax</span>
+
+                </div>
+
+                <div class="fact">
+
+                    <i class="fa-solid fa-check"></i>
+                    <span>Used in AI</span>
+
+                </div>
+
+                <div class="fact">
+
+                    <i class="fa-solid fa-check"></i>
+                    <span>Used in web development</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- REAL WORLD -->
+
+        <div class="real-world">
+
+            <div class="real-title">
+
+                <div class="real-icon">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+
+                <div>
+                    <small>REAL WORLD</small>
+                    <h2>Where is Python used?</h2>
+                </div>
+
+            </div>
+
+            <div class="world-grid">
+
+                <div class="world-item">
+                    <i class="fa-solid fa-robot"></i>
+                    <h3>AI & ML</h3>
+                    <p>Build intelligent applications.</p>
+                </div>
+
+                <div class="world-item">
+                    <i class="fa-solid fa-globe"></i>
+                    <h3>Web</h3>
+                    <p>Create web applications.</p>
+                </div>
+
+                <div class="world-item">
+                    <i class="fa-solid fa-gears"></i>
+                    <h3>Automation</h3>
+                    <p>Automate repetitive tasks.</p>
+                </div>
+
+                <div class="world-item">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <h3>Data</h3>
+                    <p>Analyze and work with data.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button class="next-btn" onclick="goToSection('try')">
+            Continue to Try
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+    </section>
+
+
+    <!-- ================= TRY ================= -->
+
+    <section class="learning-section" id="try">
+
+    <div class="section-title">
+        <span class="number">02</span>
+
+        <div>
+            <small>LEARN BY DOING</small>
+            <h2>Let's Learn <code>print()</code></h2>
+        </div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="mini-lesson">
+
+        <div class="mini-step">
+            <span>STEP 1</span>
+            <i class="fa-solid fa-lightbulb"></i>
+        </div>
+
+        <h3>What does <code>print()</code> do?</h3>
+
+        <p>
+            The <strong>print()</strong> function is used to
+            display information on the screen.
+        </p>
+
+        <div class="code-explanation">
+
+            <div class="code-part">
+                <code>print</code>
+                <span>Function name</span>
+            </div>
+
+            <div class="code-part">
+                <code>( )</code>
+                <span>Holds what we want to display</span>
+            </div>
+
+            <div class="code-part">
+                <code>"Hello"</code>
+                <span>Text we want to display</span>
+            </div>
+
+        </div>
+
+        <div class="example-code">
+            <span>Example</span>
+            <pre><code>print("Hello")</code></pre>
+        </div>
+
+    </div>
+
+
+    <!-- STEP 2 -->
+    <div class="mini-lesson challenge">
+
+        <div class="mini-step">
+            <span>STEP 2</span>
+            <i class="fa-solid fa-puzzle-piece"></i>
+        </div>
+
+        <h3>Your First Challenge 🎯</h3>
+
+        <p>
+            Make Python display the word:
+            <strong>Hello</strong>
+        </p>
+
+        <div class="code-editor">
+
+            <div class="editor-bar">
+                <span>
+                    <i class="fa-brands fa-python"></i>
+                    Python
+                </span>
+
+                <button onclick="runPrintChallenge()">
+                    <i class="fa-solid fa-play"></i>
+                    Run
+                </button>
+            </div>
+
+            <textarea
+                id="printChallenge"
+                placeholder='Type your code here...'></textarea>
+
+            <div class="output-box">
+
+                <small>OUTPUT</small>
+
+                <div id="printOutput">
+                    Run your code to see the result.
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="challengeHint" class="challenge-hint">
+            💡 Hint: Use <strong>print("Hello")</strong>
+        </div>
+
+    </div>
+
+<!-- STEP 3 -->
+<div class="mini-lesson challenge">
+
+    <div class="mini-step">
+        <span>STEP 3</span>
+        <i class="fa-solid fa-user"></i>
+    </div>
+
+    <h3>Now Print Your Name 👤</h3>
+
+    <p>
+        You learned how <strong>print()</strong> works.
+        Now make Python display <strong>your own name</strong>.
+    </p>
+
+    <div class="name-mission">
+
+        <div class="instruction">
+            <i class="fa-solid fa-bullseye"></i>
+
+            <div>
+                <strong>Your Mission</strong>
+                <span>
+                    Write a print() statement using your name.
+                </span>
+            </div>
+        </div>
+
+        <div class="example-hint">
+
+            <span>Example:</span>
+
+            <code>print("Afa")</code>
+
+        </div>
+
+    </div>
+
+
+    <!-- NAME CODE EDITOR -->
+
+    <div class="code-editor">
+
+        <div class="editor-bar">
+
+            <span>
+                <i class="fa-brands fa-python"></i>
+                Python
+            </span>
+
+            <button onclick="runNameChallenge()">
+
+                <i class="fa-solid fa-play"></i>
+                Run
+
+            </button>
+
+        </div>
+
+        <textarea
+            id="nameCode"
+            placeholder='Example: print("Afa")'></textarea>
+
+
+        <div class="output-box">
+
+            <small>OUTPUT</small>
+
+            <div id="nameOutput">
+                Run your code to see the result.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div id="nameHint" class="challenge-hint">
+
+        💡 Hint:
+        Use <strong>print()</strong> and put your name inside
+        quotation marks.
+
+    </div>
+
+
+    <div id="nameSuccess" class="challenge-success">
+
+        🎉 Great job! You successfully used
+        <code>print()</code> to display your name!
+
+        <strong>+10 XP</strong>
+
+    </div>
+
+</div>
+
+
+    <!-- STEP 4 -->
+    <div class="mini-lesson final-challenge">
+
+        <div class="mini-step">
+            <span>FINAL CHALLENGE</span>
+            <i class="fa-solid fa-trophy"></i>
+        </div>
+
+        <h3>Write Your Own Program 🏆</h3>
+
+        <p>
+            Now write a program that displays:
+        </p>
+
+        <div class="target-output">
+            Hello, I am learning Python!
+        </div>
+
+        <div class="final-editor">
+
+            <textarea
+                id="finalCode"
+                placeholder="# Write your Python code here"></textarea>
+
+            <button onclick="checkFinalChallenge()">
+                <i class="fa-solid fa-play"></i>
+                Run My Code
+            </button>
+
+        </div>
+
+        <div id="finalResult" class="final-result"></div>
+
+    </div>
+
+
+    <button class="next-btn" onclick="goToSection('practice')">
+
+        Continue to Practice
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </button>
+
+</section>
+
+
+    <!-- ================= PRACTICE ================= -->
+
+ <!-- ================= PRACTICE ================= -->
+
+<section class="learning-section" id="practice">
+
+    <div class="section-title">
+
+        <span class="number">03</span>
+
+        <div>
+            <small>MINI CHALLENGE</small>
+            <h2>Complete Your Assignment</h2>
+        </div>
+
+    </div>
+
+
+    <div class="assignment-card">
+
+        <!-- ASSIGNMENT HEADER -->
+
+        <div class="assignment-top">
+
+            <div class="assignment-icon">
+                <i class="fa-solid fa-flag-checkered"></i>
+            </div>
+
+            <div>
+                <span>MISSION 01</span>
+                <h3>Your First Python Program</h3>
+            </div>
+
+            <div class="reward">
+                <i class="fa-solid fa-star"></i>
+                +20 XP
+            </div>
+
+        </div>
+
+
+        <!-- TASK -->
+
+        <div class="assignment-task">
+
+            <h4>🎯 Your Mission</h4>
+
+            <p>
+                Write a Python program that prints:
+            </p>
+
+            <div class="required-output">
+
+                <div>
+                    <span>Your Name</span>
+                </div>
+
+                <div>
+                    <span>Your College Name</span>
+                </div>
+
+            </div>
+
+            <p class="task-note">
+                You need to use <strong>two print() statements</strong>.
+            </p>
+
+        </div>
+
+
+        <!-- CODE EDITOR -->
+
+        <div class="assignment-editor">
+
+            <div class="editor-bar">
+
+                <span>
+                    <i class="fa-brands fa-python"></i>
+                    Python
+                </span>
+
+                <button onclick="runAssignment()">
+
+                    <i class="fa-solid fa-play"></i>
+                    Run
+
+                </button>
+
+            </div>
+
+
+            <textarea
+                id="assignmentCode"
+                placeholder="# Write your code here..."></textarea>
+
+
+            <div class="assignment-output">
+
+                <small>OUTPUT</small>
+
+                <div id="assignmentOutput">
+                    Run your code to check the result.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- HINT SYSTEM -->
+
+        <div class="hint-section">
+
+            <button
+                class="hint-button"
+                onclick="showHint()">
+
+                <i class="fa-solid fa-lightbulb"></i>
+                Need a Hint?
+
+            </button>
+
+
+            <div id="hintBox" class="hint-box">
+
+                <strong id="hintTitle">
+                    💡 Hint 1
+                </strong>
+
+                <p id="hintText">
+                    Which Python function is used to display text?
+                </p>
+
+                <button
+                    id="nextHint"
+                    onclick="showNextHint()">
+
+                    Show Next Hint
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- SUCCESS -->
+
+        <div id="assignmentSuccess"
+             class="assignment-success">
+
+            <div class="success-icon">
+                <i class="fa-solid fa-check"></i>
+            </div>
+
+            <div>
+
+                <strong>🎉 Mission Complete!</strong>
+
+                <p>
+                    Great work! You completed the coding challenge.
+                    <b>+20 XP</b>
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="next-btn"
+        id="practiceNext"
+        onclick="goToSection('quiz')">
+
+        Continue to Quiz
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </button>
+
+</section>
+
+
+  <!-- ================= QUIZ ================= -->
+
+<section class="learning-section" id="quiz">
+
+    <div class="section-title">
+
+        <span class="number">04</span>
+
+        <div>
+            <small>KNOWLEDGE CHECK</small>
+            <h2>Python Quick Quiz 🧠</h2>
+        </div>
+
+    </div>
+
+
+    <div class="quiz-card">
+
+        <!-- QUIZ TOP -->
+
+        <div class="quiz-top">
+
+            <div>
+                <span>LESSON 1 QUIZ</span>
+                <h3>Test What You Learned</h3>
+            </div>
+
+            <div class="quiz-xp">
+                ⭐ +50 XP
+            </div>
+
+        </div>
+
+
+        <!-- QUESTION PROGRESS -->
+
+        <div class="question-progress">
+
+            <div class="question-count">
+                Question <strong id="questionNumber">1</strong> of 5
+            </div>
+
+            <div class="question-bar">
+                <div id="questionProgress"></div>
+            </div>
+
+        </div>
+
+
+        <!-- QUESTION -->
+
+        <div class="question-area">
+
+            <div class="question-icon">
+                <i class="fa-solid fa-question"></i>
+            </div>
+
+            <h2 id="questionText">
+                What is Python?
+            </h2>
+
+            <div id="answerOptions" class="answer-options">
+            </div>
+
+        </div>
+
+
+        <!-- FEEDBACK -->
+
+        <div id="quizFeedback" class="quiz-feedback">
+
+            <strong id="feedbackTitle"></strong>
+
+            <p id="feedbackText"></p>
+
+        </div>
+
+
+        <!-- NEXT -->
+
+        <button
+            id="nextQuestionBtn"
+            class="quiz-next"
+            onclick="nextQuestion()"
+            disabled>
+
+            Select an Answer
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </button>
+
+    </div>
+
+
+    <!-- FINAL RESULT -->
+
+    <div id="quizResult" class="quiz-result">
+
+        <div class="result-trophy">
+            🏆
+        </div>
+
+        <span>QUIZ COMPLETE</span>
+
+        <h2>Great Job!</h2>
+
+        <p id="scoreText">
+            You scored 0 out of 5.
+        </p>
+
+        <div class="score-xp">
+            ⭐ <strong id="xpEarned">0 XP</strong>
+        </div>
+
+        <button
+            class="continue-complete"
+            onclick="goToSection('complete')">
+
+            Continue
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </button>
+
+    </div>
+
+</section>
+
+
+    <!-- ================= COMPLETE ================= -->
+
+    <section class="learning-section" id="complete">
+
+        <div class="completion">
+
+            <div class="trophy">
+                <i class="fa-solid fa-trophy"></i>
+            </div>
+
+            <span class="complete-label">ALMOST THERE!</span>
+
+            <h1>Complete Lesson 1</h1>
+
+            <p>
+                Finish the lesson and continue your Python journey.
+            </p>
+
+            <div class="reward-box">
+
+                <div>
+                    <i class="fa-solid fa-star"></i>
+                    <strong>+100 XP</strong>
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-fire"></i>
+                    <strong>Keep your streak!</strong>
+                </div>
+
+            </div>
+
+            <button class="finish-btn" onclick="finishLesson()">
+
+                <i class="fa-solid fa-check"></i>
+                Complete Lesson
+
+            </button>
+            <div id="completionMessage" class="completion-message">
+    <div class="success-icon">
+        <i class="fa-solid fa-circle-check"></i>
+    </div>
+
+    <h3>🎉 Great Job!</h3>
+
+    <p>
+        You completed Lesson 1: Introduction to Python.
+    </p>
+
+    <div class="completion-xp">
+        <i class="fa-solid fa-star"></i>
+        +100 XP Earned
+    </div>
+
+    <a href="/lesson/python/2" class="primary-btn">
+        Continue to Lesson 2
+        <i class="fa-solid fa-arrow-right"></i>
+    </a>
+</div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MOTIVATION ================= -->
+
+    <div class="motivation">
+
+        <i class="fa-solid fa-quote-left"></i>
+
+        <span>
+            Every expert was once a beginner.
+        </span>
+
+        <i class="fa-solid fa-quote-right"></i>
+
+    </div>
+
+
+</main>
+
+
+<script>
+
+    /* ================= THEME ================= */
+
+    const themeBtn = document.getElementById("themeToggle");
+
+    if (themeBtn) {
+
+        const icon = themeBtn.querySelector("i");
+
+        if (localStorage.getItem("theme") === "light") {
+
+            document.body.classList.add("light-mode");
+
+            icon.classList.remove("fa-moon");
+            icon.classList.add("fa-sun");
+
+        }
+
+        themeBtn.addEventListener("click", () => {
+
+            document.body.classList.toggle("light-mode");
+
+            if (document.body.classList.contains("light-mode")) {
+
+                localStorage.setItem("theme", "light");
+
+                icon.classList.remove("fa-moon");
+                icon.classList.add("fa-sun");
+
+            } else {
+
+                localStorage.setItem("theme", "dark");
+
+                icon.classList.remove("fa-sun");
+                icon.classList.add("fa-moon");
+
+            }
+
+        });
+
+    }
+
+
+    /* ================= SECTION NAVIGATION ================= */
+
+    const tabs = document.querySelectorAll(".nav-tab");
+    const sections = document.querySelectorAll(".learning-section");
+    const steps = document.querySelectorAll(".step");
+
+    const sectionOrder = [
+        "learn",
+        "try",
+        "practice",
+        "quiz",
+        "complete"
+    ];
+
+    function goToSection(sectionName) {
+
+        sections.forEach(section => {
+            section.classList.remove("active-section");
+        });
+
+        tabs.forEach(tab => {
+            tab.classList.remove("active");
+        });
+
+        steps.forEach(step => {
+            step.classList.remove("active");
+        });
+
+        document.getElementById(sectionName)
+            .classList.add("active-section");
+
+        document.querySelector(
+            `.nav-tab[data-section="${sectionName}"]`
+        ).classList.add("active");
+
+        document.querySelector(
+            `.step[data-step="${sectionName}"]`
+        ).classList.add("active");
+
+        updateProgress(sectionName);
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+
+
+    tabs.forEach(tab => {
+
+        tab.addEventListener("click", () => {
+
+            goToSection(tab.dataset.section);
+
+        });
+
+    });
+
+
+    /* ================= PROGRESS ================= */
+
+    function updateProgress(sectionName) {
+
+        const index = sectionOrder.indexOf(sectionName);
+
+        const percent = Math.round(
+            (index / (sectionOrder.length - 1)) * 100
+        );
+
+        document.getElementById("progressPercent")
+            .innerText = percent + "%";
+
+        document.getElementById("progressFill")
+            .style.width = percent + "%";
+
+        steps.forEach((step, i) => {
+
+            if (i <= index) {
+                step.classList.add("active");
+            }
+
+        });
+
+    }
+
+
+    /* ================= CODE RUNNER ================= */
+
+   /* ================= PRINT CHALLENGE ================= */
+
+function runPrintChallenge() {
+
+    const code =
+        document.getElementById("printChallenge").value.trim();
+
+    const output =
+        document.getElementById("printOutput");
+
+    const hint =
+        document.getElementById("challengeHint");
+
+    if (
+        code === 'print("Hello")' ||
+        code === "print('Hello')"
+    ) {
+
+        output.innerText = "Hello";
+        output.classList.add("correct");
+
+        hint.innerHTML =
+            "🎉 Correct! You used print() successfully!";
+
+        hint.classList.add("correct-hint");
+
+    } else if (code === "") {
+
+        output.innerText =
+            "Nothing to run yet.";
+
+        hint.innerHTML =
+            '💡 Hint: Use <strong>print("Hello")</strong>';
+
+    } else {
+
+        output.innerText =
+            "Try again!";
+
+        hint.innerHTML =
+            '💡 Hint: Use <strong>print("Hello")</strong>';
+
+    }
+
+}
+
+
+/* ================= NAME CHALLENGE ================= */
+
+function runNameChallenge() {
+
+    const code =
+        document.getElementById("nameCode").value.trim();
+
+    const output =
+        document.getElementById("nameOutput");
+
+    const hint =
+        document.getElementById("nameHint");
+
+    const success =
+        document.getElementById("nameSuccess");
+
+
+    if (code === "") {
+
+        output.innerText =
+            "Nothing to run yet.";
+
+        hint.innerHTML =
+            '💡 Hint: Use <strong>print("Your Name")</strong>';
+
+        return;
+    }
+
+
+    /*
+       Accept simple print statements.
+
+       Example:
+       print("Afa")
+       print('Afa')
+    */
+
+    const match =
+        code.match(/^print\s*\(\s*["'](.+)["']\s*\)$/);
+
+
+    if (match) {
+
+        const name = match[1];
+
+        output.innerText = name;
+
+        output.classList.add("correct");
+
+        hint.innerHTML =
+            "✓ Correct! Python displayed your name.";
+
+        hint.classList.add("correct-hint");
+
+        success.classList.add("show");
+
+    } else {
+
+        output.innerText =
+            "Something is not quite right.";
+
+        output.classList.remove("correct");
+
+        hint.innerHTML =
+            '💡 Hint: Write something like <strong>print("Afa")</strong>';
+
+        hint.classList.remove("correct-hint");
+
+        success.classList.remove("show");
+
+    }
+
+}
+/* ================= FINAL CHALLENGE ================= */
+
+function checkFinalChallenge() {
+
+    const code =
+        document.getElementById("finalCode").value.trim();
+
+    const result =
+        document.getElementById("finalResult");
+
+    if (
+        code.includes("Hello, I am learning Python!")
+    ) {
+
+        result.innerHTML =
+            "🎉 Amazing! Your program produced the correct message! <strong>+10 XP</strong>";
+
+        result.classList.add("correct");
+
+    } else if (code === "") {
+
+        result.innerHTML =
+            "💡 Write your print() statement first.";
+
+        result.classList.remove("correct");
+
+    } else {
+
+        result.innerHTML =
+            'Almost! Try using <code>print()</code> and make sure the message matches the target.';
+
+        result.classList.remove("correct");
+
+    }
+
+}
+
+
+    /* ================= ASSIGNMENT ================= */
+
+    /* ================= ASSIGNMENT ================= */
+
+let hintNumber = 0;
+
+const hints = [
+    "Which Python function is used to display text?",
+
+    "You need to use the print() function twice.",
+
+    'The basic structure is print("your text").'
+];
+
+
+function showHint() {
+
+    const hintBox =
+        document.getElementById("hintBox");
+
+    hintBox.classList.add("show");
+
+    if (hintNumber === 0) {
+
+        document.getElementById("hintTitle")
+            .innerText = "💡 Hint 1";
+
+        document.getElementById("hintText")
+            .innerText = hints[0];
+
+    }
+
+}
+
+
+/* NEXT HINT */
+
+function showNextHint() {
+
+    hintNumber++;
+
+    if (hintNumber >= hints.length) {
+
+        hintNumber = hints.length - 1;
+
+        document.getElementById("hintText")
+            .innerText = hints[hintNumber];
+
+        document.getElementById("nextHint")
+            .innerText = "Last Hint";
+
+        return;
+    }
+
+    document.getElementById("hintTitle")
+        .innerText = "💡 Hint " + (hintNumber + 1);
+
+    document.getElementById("hintText")
+        .innerText = hints[hintNumber];
+
+}
+
+
+/* RUN ASSIGNMENT */
+
+function runAssignment() {
+
+    const code =
+        document.getElementById("assignmentCode")
+        .value
+        .trim();
+
+    const output =
+        document.getElementById("assignmentOutput");
+
+    const success =
+        document.getElementById("assignmentSuccess");
+
+
+    if (code === "") {
+
+        output.innerText =
+            "Write your code first.";
+
+        output.classList.remove("correct");
+
+        return;
+
+    }
+
+
+    /*
+       Check whether the student used
+       two print statements.
+    */
+
+    const printMatches =
+        code.match(/\bprint\s*\(/g);
+
+
+    if (!printMatches || printMatches.length < 2) {
+
+        output.innerText =
+            "Not quite! Your program should use two print() statements.";
+
+        output.classList.remove("correct");
+
+        return;
+
+    }
+
+
+    /*
+       Extract text from print statements.
+    */
+
+    const matches =
+        [...code.matchAll(
+            /print\s*\(\s*["'](.+?)["']\s*\)/g
+        )];
+
+
+    if (matches.length >= 2) {
+
+        const first =
+            matches[0][1];
+
+        const second =
+            matches[1][1];
+
+
+        output.innerHTML =
+            first + "<br>" + second;
+
+        output.classList.add("correct");
+
+
+        success.classList.add("show");
+
+
+        document.getElementById("practiceNext")
+            .classList.add("unlocked");
+
+    } else {
+
+        output.innerText =
+            "Check your print() syntax and try again.";
+
+        output.classList.remove("correct");
+
+    }
+
+}
+
+
+    /* ================= QUIZ ================= */
+
+const quizQuestions = [
+
+    {
+        question: "What is Python?",
+        options: [
+            "A programming language",
+            "A web browser",
+            "An operating system",
+            "A database"
+        ],
+        answer: 0,
+        explanation: "Python is a high-level programming language."
+    },
+
+    {
+        question: "Which function is used to display text in Python?",
+        options: [
+            "display()",
+            "show()",
+            "print()",
+            "write()"
+        ],
+        answer: 2,
+        explanation: "The print() function is used to display output."
+    },
+
+    {
+        question: 'What will print("Hello") display?',
+        options: [
+            "Hello",
+            "print",
+            '"Hello"',
+            "Nothing"
+        ],
+        answer: 0,
+        explanation: 'print("Hello") displays the text Hello.'
+    },
+
+    {
+        question: "Which one is a correct Python statement?",
+        options: [
+            'print("Python")',
+            'print[Python]',
+            'Print("Python")',
+            'display("Python")'
+        ],
+        answer: 0,
+        explanation: 'print("Python") is the correct syntax.'
+    },
+
+    {
+        question: 'What does print("Afa") do?',
+        options: [
+            "Stores Afa in a variable",
+            "Displays Afa on the screen",
+            "Deletes Afa",
+            "Creates a Python file"
+        ],
+        answer: 1,
+        explanation: 'The print() function displays the given text as output.'
+    }
+
+];
+
+
+let currentQuestion = 0;
+let quizScore = 0;
+let answered = false;
+
+
+/* LOAD QUESTION */
+
+function loadQuestion() {
+
+    const question =
+        quizQuestions[currentQuestion];
+
+    document.getElementById("questionNumber")
+        .innerText = currentQuestion + 1;
+
+    document.getElementById("questionText")
+        .innerText = question.question;
+
+
+    /* Progress */
+
+    const progress =
+        ((currentQuestion + 1) /
+        quizQuestions.length) * 100;
+
+    document.getElementById("questionProgress")
+        .style.width = progress + "%";
+
+
+    /* Reset */
+
+    const optionsContainer =
+        document.getElementById("answerOptions");
+
+    optionsContainer.innerHTML = "";
+
+    document.getElementById("quizFeedback")
+        .classList.remove("show");
+
+    const nextBtn =
+        document.getElementById("nextQuestionBtn");
+
+    nextBtn.disabled = true;
+
+    nextBtn.innerHTML =
+        'Select an Answer <i class="fa-solid fa-arrow-right"></i>';
+
+    answered = false;
+
+
+    /* Options */
+
+    question.options.forEach((option, index) => {
+
+        const button =
+            document.createElement("button");
+
+        button.className = "answer-option";
+
+        button.innerHTML = `
+            <span class="option-letter">
+                ${String.fromCharCode(65 + index)}
+            </span>
+
+            <span>${option}</span>
+        `;
+
+        button.onclick = () =>
+            selectAnswer(index);
+
+        optionsContainer.appendChild(button);
+
+    });
+
+}
+
+
+/* SELECT ANSWER */
+
+function selectAnswer(selected) {
+
+    if (answered) return;
+
+    answered = true;
+
+    const question =
+        quizQuestions[currentQuestion];
+
+    const options =
+        document.querySelectorAll(".answer-option");
+
+    options.forEach((option, index) => {
+
+        option.disabled = true;
+
+        if (index === question.answer) {
+
+            option.classList.add("correct");
+
+        }
+
+        if (index === selected &&
+            selected !== question.answer) {
+
+            option.classList.add("wrong");
+
+        }
+
+    });
+
+
+    const feedback =
+        document.getElementById("quizFeedback");
+
+    const feedbackTitle =
+        document.getElementById("feedbackTitle");
+
+    const feedbackText =
+        document.getElementById("feedbackText");
+
+
+    feedback.classList.add("show");
+
+
+    if (selected === question.answer) {
+
+        quizScore++;
+
+        feedback.classList.add("correct-feedback");
+
+        feedbackTitle.innerText =
+            "🎉 Correct!";
+
+        feedbackText.innerText =
+            question.explanation;
+
+    } else {
+
+        feedback.classList.add("wrong-feedback");
+
+        feedbackTitle.innerText =
+            "💡 Not quite!";
+
+        feedbackText.innerText =
+            question.explanation;
+
+    }
+
+
+    const nextBtn =
+        document.getElementById("nextQuestionBtn");
+
+    nextBtn.disabled = false;
+
+    if (currentQuestion === quizQuestions.length - 1) {
+
+        nextBtn.innerHTML =
+            'See My Result <i class="fa-solid fa-trophy"></i>';
+
+    } else {
+
+        nextBtn.innerHTML =
+            'Next Question <i class="fa-solid fa-arrow-right"></i>';
+
+    }
+
+}
+
+
+/* NEXT QUESTION */
+
+function nextQuestion() {
+
+    if (!answered) return;
+
+    if (currentQuestion <
+        quizQuestions.length - 1) {
+
+        currentQuestion++;
+
+        loadQuestion();
+
+    } else {
+
+        showQuizResult();
+
+    }
+
+}
+
+
+/* RESULT */
+
+function showQuizResult() {
+
+    document.querySelector(".quiz-card")
+        .style.display = "none";
+
+    document.querySelector(".quiz-result")
+        .classList.add("show");
+
+
+    const percentage =
+        Math.round(
+            (quizScore / quizQuestions.length) * 100
+        );
+
+
+    document.getElementById("scoreText")
+        .innerText =
+        `You scored ${quizScore} out of 5 (${percentage}%).`;
+
+
+    const xp =
+        quizScore * 10;
+
+    document.getElementById("xpEarned")
+        .innerText =
+        `${xp} XP`;
+
+}
+
+
+/* START QUIZ WHEN TAB OPENS */
+
+const originalGoToSection =
+    goToSection;
+
+goToSection = function(sectionName) {
+
+    originalGoToSection(sectionName);
+
+    if (sectionName === "quiz") {
+
+        currentQuestion = 0;
+        quizScore = 0;
+
+        document.querySelector(".quiz-card")
+            .style.display = "block";
+
+        document.querySelector(".quiz-result")
+            .classList.remove("show");
+
+        loadQuestion();
+
+    }
+
+};
+
+
+
+    /* ================= COMPLETE ================= */
+/* ================= COMPLETE LESSON ================= */
+
+function finishLesson() {
+
+    // Set progress to 100%
+    document.getElementById("progressFill").style.width = "100%";
+    document.getElementById("progressPercent").innerText = "100%";
+
+    // Change complete button
+    const button = document.querySelector(".finish-btn");
+
+    if (button) {
+        button.innerHTML =
+            '<i class="fa-solid fa-check"></i> Lesson Completed!';
+
+        button.disabled = true;
+    }
+
+    // Mark all journey steps as completed
+    document.querySelectorAll(".step").forEach(step => {
+        step.classList.add("active");
+    });
+
+    // Show success message
+    const message = document.getElementById("completionMessage");
+
+    if (message) {
+        message.classList.add("show");
+    }
+}
+
+</script>
+
+</body>
+</html>

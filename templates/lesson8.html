@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 8 - Lists & Dictionaries | StudySense AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lesson.css') }}">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">
+        <i class="fa-solid fa-brain"></i>
+        <span>StudySense <b>AI</b></span>
+    </div>
+
+    <nav>
+        <a href="/">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
+
+        <a href="/courses">
+            <i class="fa-solid fa-book"></i>
+            <span>Courses</span>
+        </a>
+
+        <a href="/projects">
+            <i class="fa-solid fa-code"></i>
+            <span>Projects</span>
+        </a>
+
+        <a href="/dashboard">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="/ai-tutor">
+            <i class="fa-solid fa-robot"></i>
+            <span>AI Tutor</span>
+        </a>
+    </nav>
+
+    <a href="/logout" class="logout">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span>Logout</span>
+    </a>
+
+</div>
+
+
+<div class="main">
+
+    <div class="topbar">
+
+        <div class="breadcrumb">
+            <a href="/courses">Courses</a>
+            <i class="fa-solid fa-chevron-right"></i>
+            <span>Python Programming</span>
+            <i class="fa-solid fa-chevron-right"></i>
+            <span>Lesson 8</span>
+        </div>
+
+        <div class="top-right">
+
+            <button class="top-btn" id="themeToggle">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+
+            <button class="top-btn">
+                <i class="fa-solid fa-bell"></i>
+            </button>
+
+            <div class="user">
+                <div class="user-avatar">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <span>
+                    {{ session.get('user_name', 'Username') }}
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- HERO -->
+
+    <section class="lesson-hero">
+
+        <div class="hero-text">
+
+            <span class="lesson-badge">
+                LESSON 8
+            </span>
+
+            <h1>Lists & Dictionaries</h1>
+
+            <p>
+                Learn how to store and organize multiple pieces of data
+                using Python Lists and Dictionaries.
+            </p>
+
+            <div class="hero-info">
+
+                <span>
+                    <i class="fa-regular fa-clock"></i>
+                    25 min
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-signal"></i>
+                    Beginner
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-star"></i>
+                    +100 XP
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-character">
+
+            <div class="floating-star star-1">✦</div>
+            <div class="floating-star star-2">✦</div>
+            <div class="floating-star star-3">✦</div>
+
+            <div class="python-orb">
+                <i class="fa-brands fa-python"></i>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROGRESS -->
+
+    <div class="progress-card">
+
+        <div class="progress-top">
+
+            <span>Your Learning Journey</span>
+
+            <span>
+                <b id="progressPercent">0%</b>
+                Complete
+            </span>
+
+        </div>
+
+        <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="steps">
+
+            <div class="step active" data-step="1">
+                <div class="step-circle">1</div>
+                <span>Learn</span>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="step" data-step="2">
+                <div class="step-circle">2</div>
+                <span>Try</span>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="step" data-step="3">
+                <div class="step-circle">3</div>
+                <span>Practice</span>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="step" data-step="4">
+                <div class="step-circle">4</div>
+                <span>Quiz</span>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="step" data-step="5">
+                <div class="step-circle">5</div>
+                <span>Complete</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- LEARNING NAV -->
+
+    <div class="learning-nav">
+
+        <button class="nav-tab active" data-section="learn"
+                onclick="goToSection('learn')">
+            <i class="fa-solid fa-book-open"></i>
+            Learn
+        </button>
+
+        <button class="nav-tab" data-section="try"
+                onclick="goToSection('try')">
+            <i class="fa-solid fa-code"></i>
+            Try
+        </button>
+
+        <button class="nav-tab" data-section="practice"
+                onclick="goToSection('practice')">
+            <i class="fa-solid fa-dumbbell"></i>
+            Practice
+        </button>
+
+        <button class="nav-tab" data-section="quiz"
+                onclick="goToSection('quiz')">
+            <i class="fa-solid fa-circle-question"></i>
+            Quiz
+        </button>
+
+    </div>
+
+
+    <!-- ================= LEARN ================= -->
+
+    <section class="learning-section active-section" id="learn">
+
+        <div class="section-title">
+            <span class="number">01</span>
+
+            <div>
+                <h2>Lists & Dictionaries</h2>
+                <p>Learn how Python stores multiple values.</p>
+            </div>
+        </div>
+
+
+        <div class="learning-grid">
+
+            <div class="lesson-card main-card">
+
+                <h3>
+                    <i class="fa-solid fa-list"></i>
+                    What is a List?
+                </h3>
+
+                <p>
+                    A <b>list</b> is used to store multiple values in a
+                    single variable. Lists are written using square
+                    brackets <b>[ ]</b>.
+                </p>
+
+                <div class="example-code">
+<pre>fruits = ["apple", "banana", "orange"]
+
+print(fruits)</pre>
+                </div>
+
+                <div class="highlight">
+                    <i class="fa-solid fa-lightbulb"></i>
+
+                    <div>
+                        <b>Remember:</b>
+                        Lists can store multiple items and the items
+                        can be changed.
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="fact-card">
+
+                <div class="fact-icon">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+
+                <div class="fact">
+                    <h4>List Example</h4>
+
+                    <p>
+                        <code>colors = ["red", "blue", "green"]</code>
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="lesson-card main-card">
+
+                <h3>
+                    <i class="fa-solid fa-arrow-pointer"></i>
+                    Accessing List Items
+                </h3>
+
+                <p>
+                    List items are accessed using their
+                    <b>index number</b>.
+                    Python starts counting from <b>0</b>.
+                </p>
+
+                <div class="example-code">
+<pre>fruits = ["apple", "banana", "orange"]
+
+print(fruits[0])
+print(fruits[1])</pre>
+                </div>
+
+                <div class="highlight">
+                    <i class="fa-solid fa-lightbulb"></i>
+
+                    <div>
+                        The first item has index <b>0</b>,
+                        the second item has index <b>1</b>.
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="lesson-card main-card">
+
+                <h3>
+                    <i class="fa-solid fa-pen"></i>
+                    Changing List Items
+                </h3>
+
+                <p>
+                    List items can be changed by assigning a new value
+                    to an index.
+                </p>
+
+                <div class="example-code">
+<pre>fruits = ["apple", "banana", "orange"]
+
+fruits[1] = "mango"
+
+print(fruits)</pre>
+                </div>
+
+            </div>
+
+
+            <div class="lesson-card main-card">
+
+                <h3>
+                    <i class="fa-solid fa-database"></i>
+                    What is a Dictionary?
+                </h3>
+
+                <p>
+                    A <b>dictionary</b> stores data as
+                    <b>key-value pairs</b>.
+                    Dictionaries use curly brackets <b>{ }</b>.
+                </p>
+
+                <div class="example-code">
+<pre>student = {
+    "name": "Rahul",
+    "age": 20,
+    "city": "Kochi"
+}
+
+print(student["name"])</pre>
+                </div>
+
+            </div>
+
+
+            <div class="fact-card">
+
+                <div class="fact-icon">
+                    <i class="fa-solid fa-key"></i>
+                </div>
+
+                <div class="fact">
+                    <h4>Key + Value</h4>
+
+                    <p>
+                        <b>name</b> is the key and
+                        <b>Rahul</b> is its value.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="lesson-card main-card">
+
+                <h3>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    Accessing Dictionary Values
+                </h3>
+
+                <p>
+                    Dictionary values can be accessed using their keys.
+                </p>
+
+                <div class="example-code">
+<pre>student = {
+    "name": "Rahul",
+    "age": 20
+}
+
+print(student["name"])
+print(student["age"])</pre>
+                </div>
+
+            </div>
+
+
+            <div class="real-world">
+
+                <div class="real-title">
+
+                    <div class="real-icon">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+
+                    <div>
+                        <h3>Where are Lists & Dictionaries Used?</h3>
+                        <p>They are useful in real-world applications.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="world-grid">
+
+                    <div class="world-item">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span>Shopping Items</span>
+                    </div>
+
+                    <div class="world-item">
+                        <i class="fa-solid fa-users"></i>
+                        <span>User Information</span>
+                    </div>
+
+                    <div class="world-item">
+                        <i class="fa-solid fa-database"></i>
+                        <span>Database Data</span>
+                    </div>
+
+                    <div class="world-item">
+                        <i class="fa-solid fa-gamepad"></i>
+                        <span>Game Data</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="mini-lesson">
+
+                <div class="mini-step">
+                    <span>1</span>
+
+                    <div>
+                        <b>Create a List</b>
+                        <p>Use square brackets [ ].</p>
+                    </div>
+                </div>
+
+                <div class="mini-step">
+                    <span>2</span>
+
+                    <div>
+                        <b>Use an Index</b>
+                        <p>Access items using numbers starting from 0.</p>
+                    </div>
+                </div>
+
+                <div class="mini-step">
+                    <span>3</span>
+
+                    <div>
+                        <b>Create a Dictionary</b>
+                        <p>Use key-value pairs inside { }.</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <button class="next-btn" onclick="goToSection('try')">
+                Continue to Try
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= TRY ================= -->
+
+    <section class="learning-section" id="try">
+
+        <div class="section-title">
+
+            <span class="number">02</span>
+
+            <div>
+                <h2>Try It Yourself</h2>
+                <p>Write Python code and see the result.</p>
+            </div>
+
+        </div>
+
+
+        <!-- CHALLENGE 1 -->
+
+        <div class="mini-lesson">
+
+            <h3>
+                <i class="fa-solid fa-list"></i>
+                Step 1: Create a List
+            </h3>
+
+            <p>
+                Create a list called <b>fruits</b> containing
+                "apple", "banana", and "orange".
+            </p>
+
+            <div class="challenge">
+
+                <div class="code-editor">
+
+                    <div class="editor-bar">
+                        <span>Python</span>
+                        <button onclick="runListChallenge()">
+                            <i class="fa-solid fa-play"></i>
+                            Run
+                        </button>
+                    </div>
+
+                    <textarea id="listCode"
+placeholder="Write your Python code here..."></textarea>
+
+                </div>
+
+                <div class="output-box" id="listOutput">
+                    <span>Output will appear here...</span>
+                </div>
+
+                <div class="challenge-hint" id="listHint">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    Hint: Use square brackets [ ] to create a list.
+                </div>
+
+                <div class="challenge-success" id="listSuccess">
+                    <i class="fa-solid fa-circle-check"></i>
+                    Great! You created a Python list.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CHALLENGE 2 -->
+
+        <div class="mini-lesson">
+
+            <h3>
+                <i class="fa-solid fa-arrow-pointer"></i>
+                Step 2: Access a List Item
+            </h3>
+
+            <p>
+                Create a list called <b>numbers</b> with
+                10, 20, 30 and print the first item.
+            </p>
+
+            <div class="challenge">
+
+                <div class="code-editor">
+
+                    <div class="editor-bar">
+                        <span>Python</span>
+
+                        <button onclick="runIndexChallenge()">
+                            <i class="fa-solid fa-play"></i>
+                            Run
+                        </button>
+
+                    </div>
+
+                    <textarea id="indexCode"
+placeholder="Write your Python code here..."></textarea>
+
+                </div>
+
+                <div class="output-box" id="indexOutput">
+                    <span>Output will appear here...</span>
+                </div>
+
+                <div class="challenge-hint" id="indexHint">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    Hint: The first list item has index 0.
+                </div>
+
+                <div class="challenge-success" id="indexSuccess">
+                    <i class="fa-solid fa-circle-check"></i>
+                    Excellent! You accessed the list correctly.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CHALLENGE 3 -->
+
+        <div class="mini-lesson">
+
+            <h3>
+                <i class="fa-solid fa-key"></i>
+                Step 3: Create a Dictionary
+            </h3>
+
+            <p>
+                Create a dictionary called <b>student</b> with
+                name = "Rahul" and age = 20.
+            </p>
+
+            <div class="challenge">
+
+                <div class="code-editor">
+
+                    <div class="editor-bar">
+
+                        <span>Python</span>
+
+                        <button onclick="runDictionaryChallenge()">
+                            <i class="fa-solid fa-play"></i>
+                            Run
+                        </button>
+
+                    </div>
+
+                    <textarea id="dictionaryCode"
+placeholder="Write your Python code here..."></textarea>
+
+                </div>
+
+                <div class="output-box" id="dictionaryOutput">
+                    <span>Output will appear here...</span>
+                </div>
+
+                <div class="challenge-hint" id="dictionaryHint">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    Hint: Dictionaries use key-value pairs.
+                </div>
+
+                <div class="challenge-success" id="dictionarySuccess">
+                    <i class="fa-solid fa-circle-check"></i>
+                    Perfect! You created a dictionary.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FINAL CHALLENGE -->
+
+        <div class="mini-lesson">
+
+            <h3>
+                <i class="fa-solid fa-trophy"></i>
+                Final Challenge: Student Information
+            </h3>
+
+            <p>
+                Create a dictionary named <b>student</b> containing
+                name, age and city. Then print the student's name.
+            </p>
+
+            <div class="challenge final-challenge">
+
+                <div class="target-output">
+
+                    <span>Expected Output</span>
+
+                    <strong>Rahul</strong>
+
+                </div>
+
+
+                <div class="code-editor final-editor">
+
+                    <div class="editor-bar">
+
+                        <span>Python</span>
+
+                        <button onclick="runFinalChallenge()">
+                            <i class="fa-solid fa-play"></i>
+                            Run
+                        </button>
+
+                    </div>
+
+                    <textarea id="finalCode"
+placeholder="Write your Python code here..."></textarea>
+
+                </div>
+
+
+                <div class="output-box" id="finalOutput">
+                    <span>Output will appear here...</span>
+                </div>
+
+
+                <div class="challenge-success" id="finalSuccess">
+                    <i class="fa-solid fa-circle-check"></i>
+                    Amazing! You completed the final challenge.
+                    <b>+10 XP</b>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PRACTICE ================= -->
+
+    <section class="learning-section" id="practice">
+
+        <div class="section-title">
+
+            <span class="number">03</span>
+
+            <div>
+                <h2>Practice Mission</h2>
+                <p>Use Lists and Dictionaries to complete the mission.</p>
+            </div>
+
+        </div>
+
+
+        <div class="assignment-card">
+
+            <div class="assignment-top">
+
+                <div class="assignment-icon">
+                    <i class="fa-solid fa-flag"></i>
+                </div>
+
+                <div>
+
+                    <h3>Mission 08: Student Information</h3>
+
+                    <p>
+                        Create a list of subjects and a dictionary
+                        containing student information.
+                    </p>
+
+                </div>
+
+                <div class="reward">
+                    <i class="fa-solid fa-star"></i>
+                    +20 XP
+                </div>
+
+            </div>
+
+
+            <div class="assignment-task">
+
+                <p>
+                    Create a list named <b>subjects</b> containing:
+                </p>
+
+                <ul>
+                    <li>"Python"</li>
+                    <li>"DBMS"</li>
+                    <li>"OS"</li>
+                </ul>
+
+                <p>
+                    Then create a dictionary named <b>student</b>
+                    containing:
+                </p>
+
+                <ul>
+                    <li>name = "Daisy"</li>
+                    <li>age = 20</li>
+                    <li>city = "Kochi"</li>
+                </ul>
+
+                <p>
+                    Finally, print the student's name.
+                </p>
+
+            </div>
+
+
+            <div class="required-output">
+
+                <span>Required Output</span>
+
+                <strong>Daisy</strong>
+
+            </div>
+
+
+            <div class="task-note">
+
+                <i class="fa-solid fa-circle-info"></i>
+
+                Use both a list and a dictionary in your solution.
+
+            </div>
+
+
+            <div class="assignment-editor">
+
+                <div class="editor-bar">
+
+                    <span>Python</span>
+
+                    <button onclick="runAssignment()">
+                        <i class="fa-solid fa-play"></i>
+                        Run
+                    </button>
+
+                </div>
+
+                <textarea id="assignmentCode"
+placeholder="Write your solution here..."></textarea>
+
+            </div>
+
+
+            <div class="assignment-output" id="assignmentOutput">
+                Output will appear here...
+            </div>
+
+
+            <div class="hint-section">
+
+                <button class="hint-button" onclick="showHint()">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    Show Hint
+                </button>
+
+                <div class="hint-box" id="hintBox">
+                    <p>
+                        Hint 1: Create the list using square brackets.
+                    </p>
+
+                    <p>
+                        Hint 2: Create the dictionary using
+                        key-value pairs.
+                    </p>
+
+                    <p>
+                        Hint 3: Use <code>student["name"]</code>
+                        to access the name.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="assignment-success" id="assignmentSuccess">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                Mission completed! <b>+20 XP</b>
+
+            </div>
+
+
+            <button class="next-btn practiceNext"
+                    onclick="goToSection('quiz')">
+
+                Take the Quiz
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= QUIZ ================= -->
+
+    <section class="learning-section" id="quiz">
+
+        <div class="section-title">
+
+            <span class="number">04</span>
+
+            <div>
+                <h2>Quick Quiz</h2>
+                <p>Test your knowledge of Lists and Dictionaries.</p>
+            </div>
+
+        </div>
+
+
+        <div class="quiz-card">
+
+            <div class="quiz-top">
+
+                <span>
+                    <i class="fa-solid fa-brain"></i>
+                    Python Quiz
+                </span>
+
+                <span class="quiz-xp">
+                    +20 XP
+                </span>
+
+            </div>
+
+
+            <div class="question-progress">
+
+                <span class="question-count" id="questionCount">
+                    Question 1 of 5
+                </span>
+
+                <div class="question-bar">
+                    <div id="quizProgress"></div>
+                </div>
+
+            </div>
+
+
+            <div class="question-area">
+
+                <div class="question-icon">
+                    <i class="fa-solid fa-question"></i>
+                </div>
+
+                <h3 id="questionText"></h3>
+
+                <div class="answer-options" id="answerOptions"></div>
+
+                <div class="quiz-feedback" id="quizFeedback"></div>
+
+                <button class="quiz-next" id="quizNext"
+                        onclick="nextQuestion()" disabled>
+
+                    Next Question
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </div>
+
+
+            <div class="quiz-result" id="quizResult">
+
+                <div class="result-trophy">
+                    🏆
+                </div>
+
+                <h2>Quiz Completed!</h2>
+
+                <p>Your Score</p>
+
+                <div class="score-xp">
+                    <span id="quizScore">0</span>/5
+                </div>
+
+                <p>
+                    Great job! Keep practicing to improve your
+                    Python skills.
+                </p>
+
+                <button class="continue-complete"
+                        onclick="goToSection('complete')">
+
+                    Continue
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= COMPLETE ================= -->
+
+    <section class="learning-section" id="complete">
+
+        <div class="completion">
+
+            <div class="trophy">
+                🏆
+            </div>
+
+            <span class="complete-label">
+                LESSON COMPLETED
+            </span>
+
+            <h1>Fantastic Work!</h1>
+
+            <p>
+                You learned how to use Lists and Dictionaries
+                in Python.
+            </p>
+
+
+            <div class="reward-box">
+
+                <span>
+                    <i class="fa-solid fa-star"></i>
+                    XP Earned
+                </span>
+
+                <strong>+100 XP</strong>
+
+            </div>
+
+
+            <button class="finish-btn"
+                    onclick="finishLesson()">
+
+                <i class="fa-solid fa-check"></i>
+                Finish Lesson
+
+            </button>
+
+
+            <div class="completion-message"
+                 id="completionMessage">
+
+                🎉 Lesson 8 completed successfully!
+
+            </div>
+
+
+            <div class="completion-xp">
+
+                <i class="fa-solid fa-bolt"></i>
+                Keep going! Your next lesson is waiting.
+
+            </div>
+
+
+            <a href="/lesson/python/9"
+               class="next-btn">
+
+                Continue to Lesson 9
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- MOTIVATION -->
+
+    <div class="motivation">
+
+        <i class="fa-solid fa-quote-left"></i>
+
+        <p>
+            Every line of code you write makes you a better programmer.
+        </p>
+
+        <i class="fa-solid fa-quote-right"></i>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* ================= THEME ================= */
+
+const themeToggle = document.getElementById("themeToggle");
+
+if (localStorage.getItem("theme") === "light") {
+    document.body.classList.add("light-mode");
+}
+
+themeToggle.addEventListener("click", function () {
+
+    document.body.classList.toggle("light-mode");
+
+    if (document.body.classList.contains("light-mode")) {
+        localStorage.setItem("theme", "light");
+    } else {
+        localStorage.setItem("theme", "dark");
+    }
+
+});
+
+
+/* ================= SECTION NAVIGATION ================= */
+
+const sectionOrder = [
+    "learn",
+    "try",
+    "practice",
+    "quiz",
+    "complete"
+];
+
+function goToSection(section) {
+
+    document.querySelectorAll(".learning-section")
+        .forEach(item => {
+            item.classList.remove("active-section");
+        });
+
+    const target = document.getElementById(section);
+
+    if (target) {
+        target.classList.add("active-section");
+    }
+
+    document.querySelectorAll(".nav-tab")
+        .forEach(tab => {
+            tab.classList.remove("active");
+        });
+
+    const activeTab =
+        document.querySelector(`.nav-tab[data-section="${section}"]`);
+
+    if (activeTab) {
+        activeTab.classList.add("active");
+    }
+
+    updateProgress(section);
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* ================= PROGRESS ================= */
+
+function updateProgress(section) {
+
+    const index = sectionOrder.indexOf(section);
+
+    if (index === -1) return;
+
+    const percentage =
+        (index / (sectionOrder.length - 1)) * 100;
+
+    document.getElementById("progressFill")
+        .style.width = percentage + "%";
+
+    document.getElementById("progressPercent")
+        .innerText = Math.round(percentage) + "%";
+
+    document.querySelectorAll(".step")
+        .forEach((step, i) => {
+
+            if (i <= index) {
+                step.classList.add("active");
+            } else {
+                step.classList.remove("active");
+            }
+
+        });
+
+}
+
+
+/* ================= LIST CHALLENGE ================= */
+
+function runListChallenge() {
+
+    const code =
+        document.getElementById("listCode").value
+        .toLowerCase()
+        .replace(/\s/g, "");
+
+    const output =
+        document.getElementById("listOutput");
+
+    const success =
+        document.getElementById("listSuccess");
+
+    if (
+        code.includes("fruits=") &&
+        code.includes("[") &&
+        code.includes("apple") &&
+        code.includes("banana") &&
+        code.includes("orange")
+    ) {
+
+        output.innerHTML = "['apple', 'banana', 'orange']";
+
+        success.classList.add("show");
+
+        updateProgress("try");
+
+    } else {
+
+        output.innerHTML =
+            "Try again. Create a list named fruits.";
+
+    }
+
+}
+
+
+/* ================= INDEX CHALLENGE ================= */
+
+function runIndexChallenge() {
+
+    const code =
+        document.getElementById("indexCode").value
+        .toLowerCase()
+        .replace(/\s/g, "");
+
+    const output =
+        document.getElementById("indexOutput");
+
+    const success =
+        document.getElementById("indexSuccess");
+
+    if (
+        code.includes("numbers=") &&
+        code.includes("10") &&
+        code.includes("20") &&
+        code.includes("30") &&
+        code.includes("numbers[0]") &&
+        code.includes("print")
+    ) {
+
+        output.innerHTML = "10";
+
+        success.classList.add("show");
+
+    } else {
+
+        output.innerHTML =
+            "Try again. Remember that the first item has index 0.";
+
+    }
+
+}
+
+
+/* ================= DICTIONARY CHALLENGE ================= */
+
+function runDictionaryChallenge() {
+
+    const code =
+        document.getElementById("dictionaryCode").value
+        .toLowerCase()
+        .replace(/\s/g, "");
+
+    const output =
+        document.getElementById("dictionaryOutput");
+
+    const success =
+        document.getElementById("dictionarySuccess");
+
+    if (
+        code.includes("student=") &&
+        code.includes("name") &&
+        code.includes("rahul") &&
+        code.includes("age") &&
+        code.includes("20")
+    ) {
+
+        output.innerHTML =
+            "{'name': 'Rahul', 'age': 20}";
+
+        success.classList.add("show");
+
+    } else {
+
+        output.innerHTML =
+            "Try again. Use key-value pairs.";
+
+    }
+
+}
+
+
+/* ================= FINAL CHALLENGE ================= */
+
+function runFinalChallenge() {
+
+    const code =
+        document.getElementById("finalCode").value
+        .toLowerCase()
+        .replace(/\s/g, "");
+
+    const output =
+        document.getElementById("finalOutput");
+
+    const success =
+        document.getElementById("finalSuccess");
+
+    if (
+        code.includes("student=") &&
+        code.includes("name") &&
+        code.includes("rahul") &&
+        code.includes("age") &&
+        code.includes("20") &&
+        code.includes("city") &&
+        code.includes("koch") &&
+        code.includes('student["name"]') &&
+        code.includes("print")
+    ) {
+
+        output.innerHTML = "Rahul";
+
+        success.classList.add("show");
+
+    } else {
+
+        output.innerHTML =
+            "Check your dictionary and make sure you print the student's name.";
+
+    }
+
+}
+
+
+/* ================= PRACTICE ================= */
+
+function runAssignment() {
+
+    const code =
+        document.getElementById("assignmentCode").value
+        .toLowerCase()
+        .replace(/\s/g, "");
+
+    const output =
+        document.getElementById("assignmentOutput");
+
+    const success =
+        document.getElementById("assignmentSuccess");
+
+    if (
+        code.includes("subjects=") &&
+        code.includes("python") &&
+        code.includes("dbms") &&
+        code.includes("os") &&
+        code.includes("student=") &&
+        code.includes("daisy") &&
+        code.includes("20") &&
+        code.includes("koch") &&
+        code.includes("student[\"name\"]") &&
+        code.includes("print")
+    ) {
+
+        output.innerHTML = "Daisy";
+
+        success.classList.add("show");
+
+        updateProgress("practice");
+
+    } else {
+
+        output.innerHTML =
+            "Not quite. Check that you used both a list and a dictionary.";
+
+    }
+
+}
+
+
+/* ================= HINT ================= */
+
+function showHint() {
+
+    const hintBox =
+        document.getElementById("hintBox");
+
+    hintBox.classList.toggle("show");
+
+}
+
+
+/* ================= QUIZ ================= */
+
+const questions = [
+
+    {
+        question: "Which brackets are used to create a Python list?",
+        options: [
+            "( )",
+            "[ ]",
+            "{ }",
+            "< >"
+        ],
+        answer: 1
+    },
+
+    {
+        question: "What is the index of the first item in a Python list?",
+        options: [
+            "0",
+            "1",
+            "-1",
+            "10"
+        ],
+        answer: 0
+    },
+
+    {
+        question: "Which brackets are used to create a dictionary?",
+        options: [
+            "[ ]",
+            "( )",
+            "{ }",
+            "< >"
+        ],
+        answer: 2
+    },
+
+    {
+        question: "How do you access the value of the name key?",
+        options: [
+            "student(name)",
+            "student.name",
+            "student['name']",
+            "student[name]"
+        ],
+        answer: 2
+    },
+
+    {
+        question: "Can list items be changed after creating a list?",
+        options: [
+            "Yes",
+            "No",
+            "Only strings",
+            "Only numbers"
+        ],
+        answer: 0
+    }
+
+];
+
+
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+
+
+function loadQuestion() {
+
+    const question =
+        questions[currentQuestion];
+
+    document.getElementById("questionText")
+        .innerText = question.question;
+
+    document.getElementById("questionCount")
+        .innerText =
+        `Question ${currentQuestion + 1} of ${questions.length}`;
+
+    document.getElementById("quizProgress")
+        .style.width =
+        ((currentQuestion + 1) / questions.length * 100) + "%";
+
+
+    const options =
+        document.getElementById("answerOptions");
+
+    options.innerHTML = "";
+
+    question.options.forEach((option, index) => {
+
+        const button =
+            document.createElement("button");
+
+        button.innerText = option;
+
+        button.onclick =
+            () => selectAnswer(index);
+
+        options.appendChild(button);
+
+    });
+
+
+    document.getElementById("quizFeedback")
+        .innerHTML = "";
+
+    document.getElementById("quizNext")
+        .disabled = true;
+
+    answered = false;
+
+}
+
+
+function selectAnswer(index) {
+
+    if (answered) return;
+
+    answered = true;
+
+    const question =
+        questions[currentQuestion];
+
+    const buttons =
+        document.querySelectorAll(".answer-options button");
+
+    buttons.forEach(button => {
+        button.disabled = true;
+    });
+
+
+    if (index === question.answer) {
+
+        score++;
+
+        buttons[index].classList.add("correct");
+
+        document.getElementById("quizFeedback")
+            .innerHTML =
+            '<i class="fa-solid fa-circle-check"></i> Correct!';
+
+    } else {
+
+        buttons[index].classList.add("wrong");
+
+        buttons[question.answer]
+            .classList.add("correct");
+
+        document.getElementById("quizFeedback")
+            .innerHTML =
+            '<i class="fa-solid fa-circle-xmark"></i> Incorrect.';
+
+    }
+
+
+    document.getElementById("quizNext")
+        .disabled = false;
+
+}
+
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+    if (currentQuestion < questions.length) {
+
+        loadQuestion();
+
+    } else {
+
+        document.querySelector(".question-area")
+            .style.display = "none";
+
+        document.getElementById("quizResult")
+            .classList.add("show");
+
+        document.getElementById("quizScore")
+            .innerText = score;
+
+        updateProgress("quiz");
+
+    }
+
+}
+
+
+/* ================= COMPLETE ================= */
+
+function finishLesson() {
+
+    document.getElementById("progressFill")
+        .style.width = "100%";
+
+    document.getElementById("progressPercent")
+        .innerText = "100%";
+
+
+    const button =
+        document.querySelector(".finish-btn");
+
+    if (button) {
+
+        button.innerHTML =
+            '<i class="fa-solid fa-check"></i> Lesson Completed!';
+
+        button.disabled = true;
+
+    }
+
+
+    document.querySelectorAll(".step")
+        .forEach(step => {
+            step.classList.add("active");
+        });
+
+
+    const message =
+        document.getElementById("completionMessage");
+
+    if (message) {
+        message.classList.add("show");
+    }
+
+}
+
+
+/* LOAD FIRST QUESTION */
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>

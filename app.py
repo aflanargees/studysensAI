@@ -137,6 +137,58 @@ def python_course():
     return render_template('course_detail.html')
 
 
+@app.route('/lesson/python/1')
+def python_lesson_1():
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+    return render_template('lesson.html')
+
+
+@app.route('/lesson/python/2')
+def python_lesson_2():
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+
+    return render_template('lesson2.html')
+
+@app.route('/lesson/python/3')
+def python_lesson_3():
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+    return render_template('lesson3.html')
+
+@app.route('/lesson/python/4')
+def python_lesson_4():
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+    return render_template('lesson4.html')
+
+@app.route('/lesson/python/5')
+def python_lesson_5():
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+    return render_template('lesson5.html')
+
+@app.route('/lesson/python/6')
+def python_lesson_6():
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+    return render_template('lesson6.html')
+
+@app.route('/lesson/python/7')
+def python_lesson_7():
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+    return render_template('lesson7.html')
+
+
+
+@app.route('/lesson/python/8')
+def python_lesson_8():
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+    return render_template('lesson8.html')
+
 # =========================
 # RUN APP
 # =========================
