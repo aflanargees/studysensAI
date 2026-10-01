@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Tutor | StudySense AI</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- IMPORTANT: Use the SAME dashboard CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+    <!-- AI Tutor CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/ai_tutor.css') }}">
+</head>
+
+
+<body>
+
+<div class="dashboard">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div>
+
+            <div class="logo">
+                <i class="fa-solid fa-brain"></i>
+                <h2>StudySense AI</h2>
+            </div>
+
+
+            <ul class="menu">
+
+                <li>
+                    <a href="/dashboard">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="/courses">
+                        <i class="fa-solid fa-book-open"></i>
+                        <span>Courses</span>
+                    </a>
+                </li>
+
+
+                <li class="active">
+                    <a href="/ai-tutor">
+                        <i class="fa-solid fa-robot"></i>
+                        <span>AI Tutor</span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="/quiz">
+                        <i class="fa-solid fa-circle-question"></i>
+                        <span>Quiz</span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="/projects">
+                        <i class="fa-solid fa-code"></i>
+                        <span>Projects</span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="/profile">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-gear"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- LOGOUT -->
+
+        <div class="logout">
+
+            <a href="/logout">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <span>Logout</span>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="main">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div class="search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    placeholder="Search courses..."
+                    aria-label="Search courses">
+
+            </div>
+
+
+            <div class="top-icons">
+
+                <button
+                    id="notificationBtn"
+                    type="button"
+                    title="Notifications">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                </button>
+
+
+                <button
+                    id="themeToggle"
+                    type="button"
+                    title="Toggle dark mode">
+
+                    <i class="fa-solid fa-moon"></i>
+
+                </button>
+
+
+                <img
+                    src="{{ url_for('static', filename='images/profile.png') }}"
+                    alt="Profile">
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =====================================================
+             AI TUTOR PAGE
+        ====================================================== -->
+
+        <div class="ai-tutor-page">
+
+
+            <!-- HERO -->
+
+            <section class="tutor-header">
+
+                <div class="header-content">
+
+                    <span class="ai-badge">
+
+                        <i class="fa-solid fa-sparkles"></i>
+
+                        AI POWERED
+
+                    </span>
+
+
+                    <h1>
+                        Meet Your
+                        <span>AI Tutor</span>
+                    </h1>
+
+
+                    <p>
+                        Learn smarter, ask questions, debug your code,
+                        and get personalized guidance whenever you need it.
+                    </p>
+
+                </div>
+
+
+                <div class="header-robot">
+
+                    <i class="fa-solid fa-robot"></i>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 CHAT + TOOLS
+            ================================================== -->
+
+            <section class="tutor-layout">
+
+
+                <!-- =================================================
+                     CHAT
+                ================================================== -->
+
+                <div class="chat-card">
+
+
+                    <!-- CHAT HEADER -->
+
+                    <div class="chat-header">
+
+                        <div class="tutor-profile">
+
+                            <div class="tutor-avatar">
+
+                                <i class="fa-solid fa-robot"></i>
+
+                            </div>
+
+
+                            <div>
+
+                                <h3>StudySense Tutor</h3>
+
+                                <div class="online-status">
+
+                                    <span></span>
+
+                                    Online
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            class="clear-btn"
+                            type="button"
+                            onclick="clearChat()"
+                            title="Clear chat">
+
+                            <i class="fa-solid fa-trash"></i>
+
+                        </button>
+
+                    </div>
+
+
+
+                    <!-- CHAT MESSAGES -->
+
+                    <div
+                        class="chat-messages"
+                        id="chatMessages">
+
+
+                        <!-- INITIAL AI MESSAGE -->
+
+                        <div class="message ai-message">
+
+                            <div class="message-avatar">
+
+                                <i class="fa-solid fa-robot"></i>
+
+                            </div>
+
+
+                            <div class="message-content">
+
+                                <div class="message-name">
+                                    AI Tutor
+                                </div>
+
+
+                                <div class="message-bubble">
+
+                                    Hi! 👋 I'm your
+                                    <strong>StudySense AI Tutor.</strong>
+
+                                    <br><br>
+
+                                    What would you like to learn today?
+
+                                </div>
+
+
+                                <span class="message-time">
+                                    Just now
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- INPUT AREA -->
+
+                    <div class="chat-input-area">
+
+                        <span class="try-label">
+                            Try asking:
+                        </span>
+
+
+                        <div class="suggestions">
+
+
+                            <button
+                                type="button"
+                                onclick="askSuggestion('Explain Python loops')">
+
+                                <i class="fa-solid fa-lightbulb"></i>
+
+                                Explain Python loops
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                onclick="askSuggestion('Explain functions')">
+
+                                <i class="fa-solid fa-code"></i>
+
+                                Explain functions
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                onclick="askSuggestion('Help me debug my code')">
+
+                                <i class="fa-solid fa-bug"></i>
+
+                                Debug my code
+
+                            </button>
+
+                        </div>
+
+
+
+                        <div class="input-row">
+
+                            <textarea
+                                id="userInput"
+                                rows="1"
+                                placeholder="Ask your AI Tutor anything..."
+                                aria-label="Ask your AI Tutor"></textarea>
+
+
+                            <button
+                                class="send-btn"
+                                type="button"
+                                onclick="sendMessage()"
+                                title="Send message">
+
+                                <i class="fa-solid fa-paper-plane"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     RIGHT SIDE
+                ================================================== -->
+
+                <aside class="tutor-tools">
+
+
+                    <h2>
+                        What can I help with?
+                    </h2>
+
+
+                    <p class="tools-description">
+                        Choose a learning mode to get started.
+                    </p>
+
+
+
+                    <!-- EXPLAIN -->
+
+                    <button
+                        class="tool-card"
+                        type="button"
+                        onclick="selectTool('Explain Concept')">
+
+                        <div class="tool-icon purple">
+
+                            <i class="fa-solid fa-lightbulb"></i>
+
+                        </div>
+
+
+                        <div class="tool-text">
+
+                            <h4>
+                                Explain Concept
+                            </h4>
+
+                            <p>
+                                Understand difficult topics simply.
+                            </p>
+
+                        </div>
+
+
+                        <i class="fa-solid fa-chevron-right tool-arrow"></i>
+
+                    </button>
+
+
+
+                    <!-- DEBUG -->
+
+                    <button
+                        class="tool-card"
+                        type="button"
+                        onclick="selectTool('Debug Code')">
+
+                        <div class="tool-icon red">
+
+                            <i class="fa-solid fa-bug"></i>
+
+                        </div>
+
+
+                        <div class="tool-text">
+
+                            <h4>
+                                Debug Code
+                            </h4>
+
+                            <p>
+                                Find errors and understand why they happen.
+                            </p>
+
+                        </div>
+
+
+                        <i class="fa-solid fa-chevron-right tool-arrow"></i>
+
+                    </button>
+
+
+
+                    <!-- PRACTICE -->
+
+                    <button
+                        class="tool-card"
+                        type="button"
+                        onclick="selectTool('Practice')">
+
+                        <div class="tool-icon blue">
+
+                            <i class="fa-solid fa-pen"></i>
+
+                        </div>
+
+
+                        <div class="tool-text">
+
+                            <h4>
+                                Practice
+                            </h4>
+
+                            <p>
+                                Get coding questions based on your level.
+                            </p>
+
+                        </div>
+
+
+                        <i class="fa-solid fa-chevron-right tool-arrow"></i>
+
+                    </button>
+
+
+
+                    <!-- QUIZ -->
+
+                    <button
+                        class="tool-card"
+                        type="button"
+                        onclick="selectTool('Quiz Me')">
+
+                        <div class="tool-icon orange">
+
+                            <i class="fa-solid fa-trophy"></i>
+
+                        </div>
+
+
+                        <div class="tool-text">
+
+                            <h4>
+                                Quiz Me
+                            </h4>
+
+                            <p>
+                                Test your knowledge with quick questions.
+                            </p>
+
+                        </div>
+
+
+                        <i class="fa-solid fa-chevron-right tool-arrow"></i>
+
+                    </button>
+
+
+
+                    <!-- STUDY TIP -->
+
+                    <div class="tutor-tip">
+
+                        <div class="tip-icon">
+
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Study Tip
+                            </strong>
+
+                            <p>
+                                Don't just ask for answers.
+                                Ask the tutor to explain <b>why</b>.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </aside>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+
+<!-- AI TUTOR JAVASCRIPT -->
+
+<script src="{{ url_for('static', filename='js/ai_tutor.js') }}"></script>
+
+</body>
+</html>

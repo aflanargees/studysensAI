@@ -189,6 +189,11 @@ def python_lesson_8():
         return redirect(url_for('login'))
     return render_template('lesson8.html')
 
+
+@app.route("/ai-tutor")
+def ai_tutor():
+    return render_template("ai_tutor.html")
+
 # =========================
 # RUN APP
 # =========================
