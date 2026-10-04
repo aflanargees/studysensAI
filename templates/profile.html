@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Profile | StudySense AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/profile.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div>
+
+            <div class="logo">
+                <i class="fa-solid fa-brain"></i>
+                <h2>StudySense AI</h2>
+            </div>
+
+            <ul class="menu">
+
+                <li>
+                    <a href="/dashboard">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/courses">
+                        <i class="fa-solid fa-book-open"></i>
+                        <span>Courses</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/ai-tutor">
+                        <i class="fa-solid fa-brain"></i>
+                        <span>AI Learning</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/quiz">
+                        <i class="fa-solid fa-circle-question"></i>
+                        <span>Quiz</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/projects">
+                        <i class="fa-solid fa-code"></i>
+                        <span>Projects</span>
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="/profile">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/settings">
+                        <i class="fa-solid fa-gear"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div class="logout">
+            <a href="/logout">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </a>
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="page-title">
+
+                <div class="title-icon">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <div>
+                    <h1>My Profile</h1>
+                    <p>Manage your profile and learning preferences</p>
+                </div>
+
+            </div>
+
+
+            <div class="top-icons">
+
+                <button id="notificationBtn">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+
+                <button id="themeToggle">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <div class="profile-avatar">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= PROFILE HEADER ================= -->
+
+        <section class="profile-header">
+
+            <div class="profile-main">
+
+                <div class="large-avatar">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <div class="profile-info">
+
+                    <h2 id="profileName">Test User</h2>
+
+                    <p id="profileEmail">
+                        test@gmail.com
+                    </p>
+
+                    <span class="student-badge">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        Student
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <button class="edit-button" id="editProfileBtn">
+
+                <i class="fa-solid fa-pen"></i>
+                Edit Profile
+
+            </button>
+
+        </section>
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <div class="profile-grid">
+
+
+            <!-- ================= PERSONAL INFORMATION ================= -->
+
+            <section class="profile-card personal-card">
+
+                <div class="card-heading">
+
+                    <div class="heading-icon purple">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <div>
+                        <h3>Personal Information</h3>
+                        <p>Your basic profile information</p>
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>Full Name</label>
+
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-user"></i>
+
+                            <input
+                                type="text"
+                                id="nameInput"
+                                value="Test User"
+                                disabled
+                            >
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Email Address</label>
+
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-envelope"></i>
+
+                            <input
+                                type="email"
+                                id="emailInput"
+                                value="test@gmail.com"
+                                disabled
+                            >
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Phone Number</label>
+
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-phone"></i>
+
+                            <input
+                                type="text"
+                                id="phoneInput"
+                                placeholder="Add phone number"
+                                disabled
+                            >
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>College</label>
+
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-building-columns"></i>
+
+                            <input
+                                type="text"
+                                id="collegeInput"
+                                placeholder="Add your college"
+                                disabled
+                            >
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Course</label>
+
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-book"></i>
+
+                            <input
+                                type="text"
+                                id="courseInput"
+                                placeholder="B.Tech CSE"
+                                disabled
+                            >
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Year</label>
+
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-calendar"></i>
+
+                            <input
+                                type="text"
+                                id="yearInput"
+                                placeholder="4th Year"
+                                disabled
+                            >
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="save-area" id="saveArea">
+
+                    <button class="cancel-button"
+                            id="cancelBtn">
+                        Cancel
+                    </button>
+
+                    <button class="save-button"
+                            id="saveBtn">
+                        <i class="fa-solid fa-check"></i>
+                        Save Changes
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= ACCOUNT ================= -->
+
+            <section class="profile-card account-card">
+
+                <div class="card-heading">
+
+                    <div class="heading-icon blue">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+
+                    <div>
+                        <h3>Account</h3>
+                        <p>Manage your account settings</p>
+                    </div>
+
+                </div>
+
+
+                <div class="account-option">
+
+                    <div class="option-icon">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+
+                    <div class="option-text">
+
+                        <h4>Password</h4>
+
+                        <p>
+                            Keep your account secure
+                        </p>
+
+                    </div>
+
+                    <button
+                        class="option-button"
+                        onclick="showMessage('Password change will be available soon.')">
+
+                        Change
+
+                    </button>
+
+                </div>
+
+
+                <div class="account-option">
+
+                    <div class="option-icon">
+                        <i class="fa-solid fa-bell"></i>
+                    </div>
+
+                    <div class="option-text">
+
+                        <h4>Notifications</h4>
+
+                        <p>
+                            Manage your notifications
+                        </p>
+
+                    </div>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="notificationToggle"
+                            checked
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="account-option">
+
+                    <div class="option-icon">
+                        <i class="fa-solid fa-moon"></i>
+                    </div>
+
+                    <div class="option-text">
+
+                        <h4>Appearance</h4>
+
+                        <p>
+                            Switch between light and dark mode
+                        </p>
+
+                    </div>
+
+                    <button
+                        class="option-button"
+                        id="appearanceButton">
+
+                        Dark
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= LEARNING PREFERENCES ================= -->
+
+            <section class="profile-card preferences-card">
+
+                <div class="card-heading">
+
+                    <div class="heading-icon green">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+
+                    <div>
+                        <h3>Learning Preferences</h3>
+                        <p>Customize your learning experience</p>
+                    </div>
+
+                </div>
+
+
+                <div class="preference-item">
+
+                    <div class="preference-text">
+
+                        <h4>Preferred Programming Language</h4>
+
+                        <p>
+                            Choose the language you want to practice
+                        </p>
+
+                    </div>
+
+                    <select id="languageSelect">
+
+                        <option value="python">
+                            Python
+                        </option>
+
+                        <option value="javascript">
+                            JavaScript
+                        </option>
+
+                        <option value="java">
+                            Java
+                        </option>
+
+                        <option value="c">
+                            C
+                        </option>
+
+                        <option value="cpp">
+                            C++
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="preference-item">
+
+                    <div class="preference-text">
+
+                        <h4>Current Learning Goal</h4>
+
+                        <p>
+                            What do you want to focus on?
+                        </p>
+
+                    </div>
+
+                    <select id="goalSelect">
+
+                        <option value="web">
+                            Web Development
+                        </option>
+
+                        <option value="python">
+                            Python Development
+                        </option>
+
+                        <option value="programming">
+                            Programming Fundamentals
+                        </option>
+
+                        <option value="fullstack">
+                            Full Stack Development
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= ACCOUNT INFO ================= -->
+
+            <section class="profile-card info-card">
+
+                <div class="info-content">
+
+                    <div class="info-icon">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>Make learning personal</h3>
+
+                        <p>
+                            Your preferences will help StudySense
+                            provide a more personalized learning
+                            experience in the future.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='js/profile.js') }}"></script>
+
+</body>
+</html>

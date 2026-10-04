@@ -194,6 +194,24 @@ def python_lesson_8():
 def ai_tutor():
     return render_template("ai_tutor.html")
 
+
+@app.route('/quiz')
+def quiz():
+    return render_template('quiz.html')
+
+
+# =========================
+# SETTINGS
+# =========================
+
+@app.route('/settings')
+def settings():
+
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+
+    return render_template('settings.html')
+
 # =========================
 # RUN APP
 # =========================

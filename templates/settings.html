@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Settings | StudySense AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/settings.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div>
+
+            <div class="logo">
+                <i class="fa-solid fa-brain"></i>
+                <h2>StudySense AI</h2>
+            </div>
+
+            <ul class="menu">
+
+                <li>
+                    <a href="/dashboard">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/courses">
+                        <i class="fa-solid fa-book-open"></i>
+                        <span>Courses</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/ai-tutor">
+                        <i class="fa-solid fa-brain"></i>
+                        <span>AI Learning</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/quiz">
+                        <i class="fa-solid fa-circle-question"></i>
+                        <span>Quiz</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/projects">
+                        <i class="fa-solid fa-code"></i>
+                        <span>Projects</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/profile">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="/settings">
+                        <i class="fa-solid fa-gear"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div class="logout">
+            <a href="/logout">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </a>
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="page-title">
+
+                <div class="title-icon">
+                    <i class="fa-solid fa-gear"></i>
+                </div>
+
+                <div>
+                    <h1>Settings</h1>
+                    <p>Customize your StudySense experience</p>
+                </div>
+
+            </div>
+
+
+            <div class="top-icons">
+
+                <button id="notificationBtn">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+
+                <button id="themeToggle">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <a href="/profile" class="profile-avatar">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= SETTINGS CONTENT ================= -->
+
+        <div class="settings-container">
+
+
+            <!-- ================= APPEARANCE ================= -->
+
+            <section class="settings-card">
+
+                <div class="card-heading">
+
+                    <div class="heading-icon purple">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+
+                    <div>
+                        <h3>Appearance</h3>
+                        <p>Customize how StudySense looks</p>
+                    </div>
+
+                </div>
+
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+
+                        <div class="setting-icon">
+                            <i class="fa-solid fa-moon"></i>
+                        </div>
+
+                        <div>
+                            <h4>Dark Mode</h4>
+                            <p>
+                                Use a darker appearance for comfortable
+                                studying at night.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="darkModeToggle">
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= NOTIFICATIONS ================= -->
+
+            <section class="settings-card">
+
+                <div class="card-heading">
+
+                    <div class="heading-icon blue">
+                        <i class="fa-solid fa-bell"></i>
+                    </div>
+
+                    <div>
+                        <h3>Notifications</h3>
+                        <p>Choose what StudySense can notify you about</p>
+                    </div>
+
+                </div>
+
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+
+                        <div class="setting-icon">
+                            <i class="fa-solid fa-bell"></i>
+                        </div>
+
+                        <div>
+                            <h4>Learning Reminders</h4>
+                            <p>
+                                Receive reminders to continue learning.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="learningReminder"
+                            checked>
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+
+                        <div class="setting-icon">
+                            <i class="fa-solid fa-circle-question"></i>
+                        </div>
+
+                        <div>
+                            <h4>Quiz Notifications</h4>
+                            <p>
+                                Get notified about quizzes and practice.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="quizNotification"
+                            checked>
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+
+                        <div class="setting-icon">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+
+                        <div>
+                            <h4>Project Notifications</h4>
+                            <p>
+                                Receive updates related to your projects.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="projectNotification"
+                            checked>
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= LEARNING ================= -->
+
+            <section class="settings-card">
+
+                <div class="card-heading">
+
+                    <div class="heading-icon green">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+
+                    <div>
+                        <h3>Learning Preferences</h3>
+                        <p>Personalize your learning experience</p>
+                    </div>
+
+                </div>
+
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+
+                        <div class="setting-icon">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+
+                        <div>
+                            <h4>Preferred Language</h4>
+                            <p>
+                                Choose your preferred coding language.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <select id="languageSelect">
+
+                        <option value="python">Python</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="java">Java</option>
+                        <option value="c">C</option>
+                        <option value="cpp">C++</option>
+                        <option value="sql">SQL</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+
+                        <div class="setting-icon">
+                            <i class="fa-solid fa-chart-simple"></i>
+                        </div>
+
+                        <div>
+                            <h4>Preferred Difficulty</h4>
+                            <p>
+                                Set the default difficulty for practice.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <select id="difficultySelect">
+
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+
+                    </select>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= AI TUTOR ================= -->
+
+            <section class="settings-card">
+
+                <div class="card-heading">
+
+                    <div class="heading-icon orange">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+
+                    <div>
+                        <h3>AI Tutor</h3>
+                        <p>Customize how your AI Tutor helps you</p>
+                    </div>
+
+                </div>
+
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+
+                        <div class="setting-icon">
+                            <i class="fa-solid fa-message"></i>
+                        </div>
+
+                        <div>
+                            <h4>Response Style</h4>
+                            <p>
+                                Choose how the AI Tutor explains concepts.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <select id="responseStyle">
+
+                        <option value="simple">Simple</option>
+                        <option value="balanced">Balanced</option>
+                        <option value="detailed">Detailed</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+
+                        <div class="setting-icon">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+
+                        <div>
+                            <h4>Code Explanations</h4>
+                            <p>
+                                Prefer simpler code explanations when possible.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="simpleCode"
+                            checked>
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= SECURITY ================= -->
+
+            <section class="settings-card">
+
+                <div class="card-heading">
+
+                    <div class="heading-icon red">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+
+                    <div>
+                        <h3>Security</h3>
+                        <p>Manage your account security</p>
+                    </div>
+
+                </div>
+
+
+                <div class="action-row">
+
+                    <div class="setting-info">
+
+                        <div class="setting-icon">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+
+                        <div>
+                            <h4>Change Password</h4>
+                            <p>
+                                Update your account password.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="action-button"
+                        onclick="showMessage('Password change will be available when the backend is connected.')">
+
+                        Change
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= ACCOUNT ================= -->
+
+            <section class="settings-card danger-card">
+
+                <div class="card-heading">
+
+                    <div class="heading-icon red">
+                        <i class="fa-solid fa-user-gear"></i>
+                    </div>
+
+                    <div>
+                        <h3>Account</h3>
+                        <p>Manage your StudySense account</p>
+                    </div>
+
+                </div>
+
+
+                <div class="action-row">
+
+                    <div class="setting-info">
+
+                        <div class="setting-icon">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </div>
+
+                        <div>
+                            <h4>Logout</h4>
+                            <p>
+                                Sign out from your StudySense account.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <a href="/logout" class="logout-button">
+                        Logout
+                    </a>
+
+                </div>
+
+
+                <div class="action-row delete-row">
+
+                    <div class="setting-info">
+
+                        <div class="setting-icon delete-icon">
+                            <i class="fa-solid fa-trash"></i>
+                        </div>
+
+                        <div>
+                            <h4>Delete Account</h4>
+                            <p>
+                                Permanently delete your account.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="delete-button"
+                        id="deleteAccountBtn">
+
+                        Delete
+
+                    </button>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='js/settings.js') }}"></script>
+
+</body>
+</html>

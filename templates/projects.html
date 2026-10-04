@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Projects | StudySense AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/projects.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div>
+
+            <div class="logo">
+                <i class="fa-solid fa-brain"></i>
+                <h2>StudySense AI</h2>
+            </div>
+
+            <ul class="menu">
+
+                <li>
+                    <a href="/dashboard">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/courses">
+                        <i class="fa-solid fa-book-open"></i>
+                        <span>Courses</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/ai-tutor">
+                        <i class="fa-solid fa-brain"></i>
+                        <span>AI Learning</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/quiz">
+                        <i class="fa-solid fa-circle-question"></i>
+                        <span>Quiz</span>
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="/projects">
+                        <i class="fa-solid fa-code"></i>
+                        <span>Projects</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/profile">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-gear"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div class="logout">
+            <a href="/logout">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </a>
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="page-title">
+
+                <div class="title-icon">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+
+                <div>
+                    <h1>Projects</h1>
+                    <p>Build, practice, and turn your learning into real projects</p>
+                </div>
+
+            </div>
+
+
+            <div class="top-icons">
+
+                <button id="notificationBtn">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+
+                <button id="themeToggle">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <img src="{{ url_for('static', filename='images/profile.png') }}"
+                     alt="Profile">
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= HERO ================= -->
+
+        <section class="project-hero">
+
+            <div class="hero-content">
+
+                <div class="hero-badge">
+                    <i class="fa-solid fa-rocket"></i>
+                    Learn • Build • Create
+                </div>
+
+                <h1>
+                    Build something
+                    <span>you're proud of.</span>
+                </h1>
+
+                <p>
+                    Apply what you learn through practical projects,
+                    strengthen your skills, and turn your ideas into
+                    something real.
+                </p>
+
+                <button class="hero-button"
+                        onclick="scrollToProjects()">
+
+                    Explore Projects
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </div>
+
+
+            <div class="hero-visual">
+
+                <div class="floating-card card-one">
+                    <i class="fa-brands fa-html5"></i>
+                    <span>HTML</span>
+                </div>
+
+                <div class="floating-card card-two">
+                    <i class="fa-brands fa-python"></i>
+                    <span>Python</span>
+                </div>
+
+                <div class="floating-card card-three">
+                    <i class="fa-brands fa-js"></i>
+                    <span>JavaScript</span>
+                </div>
+
+                <div class="code-window">
+
+                    <div class="window-top">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <div class="code-lines">
+                        <div><b>01</b> <span>function</span> build() {</div>
+                        <div><b>02</b>&nbsp;&nbsp; learn();</div>
+                        <div><b>03</b>&nbsp;&nbsp; practice();</div>
+                        <div><b>04</b>&nbsp;&nbsp; create();</div>
+                        <div><b>05</b> }</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= STATS ================= -->
+
+        <section class="project-stats">
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    <i class="fa-solid fa-folder-open"></i>
+                </div>
+
+                <div>
+                    <span>Projects Started</span>
+                    <strong>0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+
+                <div>
+                    <span>Completed</span>
+                    <strong>0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+
+                <div>
+                    <span>Skills Practiced</span>
+                    <strong>0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    <i class="fa-solid fa-fire"></i>
+                </div>
+
+                <div>
+                    <span>Build Streak</span>
+                    <strong>0</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= MY PROJECTS ================= -->
+
+        <section class="section-block">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>My Projects</h2>
+                    <p>Your projects and current progress</p>
+                </div>
+
+            </div>
+
+
+            <div class="empty-project">
+
+                <div class="empty-icon">
+                    <i class="fa-solid fa-folder-plus"></i>
+                </div>
+
+                <h3>No projects yet</h3>
+
+                <p>
+                    You haven't started a project yet.
+                    Choose a project below and turn your learning
+                    into something real.
+                </p>
+
+                <button onclick="scrollToProjects()">
+                    Explore Projects
+                    <i class="fa-solid fa-arrow-down"></i>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= RECOMMENDED ================= -->
+
+        <section class="section-block" id="recommendedProjects">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>Recommended Projects</h2>
+                    <p>Projects designed around the skills you're learning</p>
+                </div>
+
+                <button class="view-all"
+                        onclick="showAllProjects()">
+
+                    View All
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </div>
+
+
+            <div class="project-grid">
+
+
+                <!-- PORTFOLIO -->
+
+                <div class="project-card">
+
+                    <div class="project-image portfolio">
+
+                        <i class="fa-solid fa-globe"></i>
+
+                        <span class="difficulty beginner">
+                            Beginner
+                        </span>
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <div class="project-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                        </div>
+
+                        <h3>Personal Portfolio</h3>
+
+                        <p>
+                            Create a responsive personal portfolio
+                            website to showcase your skills and work.
+                        </p>
+
+                        <div class="project-info">
+
+                            <span>
+                                <i class="fa-regular fa-clock"></i>
+                                2–3 Hours
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-layer-group"></i>
+                                Beginner
+                            </span>
+
+                        </div>
+
+                        <button class="project-button"
+                                onclick="startProject('Personal Portfolio')">
+
+                            Start Project
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TODO -->
+
+                <div class="project-card">
+
+                    <div class="project-image todo">
+
+                        <i class="fa-solid fa-list-check"></i>
+
+                        <span class="difficulty beginner">
+                            Beginner
+                        </span>
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <div class="project-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+
+                        <h3>To-Do List</h3>
+
+                        <p>
+                            Build an interactive task manager where
+                            users can add, complete, and remove tasks.
+                        </p>
+
+                        <div class="project-info">
+
+                            <span>
+                                <i class="fa-regular fa-clock"></i>
+                                3–4 Hours
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-layer-group"></i>
+                                Beginner
+                            </span>
+
+                        </div>
+
+                        <button class="project-button"
+                                onclick="startProject('To-Do List')">
+
+                            Start Project
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- WEATHER -->
+
+                <div class="project-card">
+
+                    <div class="project-image weather">
+
+                        <i class="fa-solid fa-cloud-sun"></i>
+
+                        <span class="difficulty intermediate">
+                            Intermediate
+                        </span>
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <div class="project-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+
+                        <h3>Weather App</h3>
+
+                        <p>
+                            Create a weather application that displays
+                            real-time weather information.
+                        </p>
+
+                        <div class="project-info">
+
+                            <span>
+                                <i class="fa-regular fa-clock"></i>
+                                5–6 Hours
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-layer-group"></i>
+                                Intermediate
+                            </span>
+
+                        </div>
+
+                        <button class="project-button"
+                                onclick="startProject('Weather App')">
+
+                            Start Project
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EXPENSE -->
+
+                <div class="project-card">
+
+                    <div class="project-image expense">
+
+                        <i class="fa-solid fa-wallet"></i>
+
+                        <span class="difficulty intermediate">
+                            Intermediate
+                        </span>
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <div class="project-tags">
+                            <span>Python</span>
+                            <span>SQL</span>
+                        </div>
+
+                        <h3>Expense Tracker</h3>
+
+                        <p>
+                            Build an application to record expenses,
+                            organize them, and track spending.
+                        </p>
+
+                        <div class="project-info">
+
+                            <span>
+                                <i class="fa-regular fa-clock"></i>
+                                5–7 Hours
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-layer-group"></i>
+                                Intermediate
+                            </span>
+
+                        </div>
+
+                        <button class="project-button"
+                                onclick="startProject('Expense Tracker')">
+
+                            Start Project
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STUDENT MANAGEMENT -->
+
+                <div class="project-card">
+
+                    <div class="project-image student">
+
+                        <i class="fa-solid fa-users"></i>
+
+                        <span class="difficulty advanced">
+                            Advanced
+                        </span>
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <div class="project-tags">
+                            <span>Python</span>
+                            <span>SQL</span>
+                        </div>
+
+                        <h3>Student Management System</h3>
+
+                        <p>
+                            Create a system to manage student records,
+                            courses, marks, and information.
+                        </p>
+
+                        <div class="project-info">
+
+                            <span>
+                                <i class="fa-regular fa-clock"></i>
+                                8–10 Hours
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-layer-group"></i>
+                                Advanced
+                            </span>
+
+                        </div>
+
+                        <button class="project-button"
+                                onclick="startProject('Student Management System')">
+
+                            Start Project
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BLOG -->
+
+                <div class="project-card">
+
+                    <div class="project-image blog">
+
+                        <i class="fa-solid fa-pen-nib"></i>
+
+                        <span class="difficulty advanced">
+                            Advanced
+                        </span>
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <div class="project-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+
+                        <h3>Mini Blog Platform</h3>
+
+                        <p>
+                            Design a mini blogging platform with
+                            posts, categories, and interactive elements.
+                        </p>
+
+                        <div class="project-info">
+
+                            <span>
+                                <i class="fa-regular fa-clock"></i>
+                                8–10 Hours
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-layer-group"></i>
+                                Advanced
+                            </span>
+
+                        </div>
+
+                        <button class="project-button"
+                                onclick="startProject('Mini Blog Platform')">
+
+                            Start Project
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= AI ASSISTANT ================= -->
+
+        <section class="ai-project-section">
+
+            <div class="ai-project-content">
+
+                <div class="ai-project-icon">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+
+                <div>
+
+                    <span class="ai-label">
+                        STUDYSENSE AI
+                    </span>
+
+                    <h2>
+                        Need help building your project?
+                    </h2>
+
+                    <p>
+                        Get guidance, understand difficult concepts,
+                        debug your code, and learn how to approach
+                        problems without simply being given the answer.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button onclick="openAITutor()">
+
+                Ask AI Tutor
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='js/projects.js') }}"></script>
+
+</body>
+</html>

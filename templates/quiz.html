@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quiz | StudySense AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/quiz.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div>
+
+            <div class="logo">
+                <i class="fa-solid fa-brain"></i>
+                <h2>StudySense AI</h2>
+            </div>
+
+            <ul class="menu">
+
+                <li>
+                    <a href="/dashboard">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/courses">
+                        <i class="fa-solid fa-book-open"></i>
+                        <span>Courses</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/ai-tutor">
+                        <i class="fa-solid fa-brain"></i>
+                        <span>AI Learning</span>
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="/quiz">
+                        <i class="fa-solid fa-circle-question"></i>
+                        <span>Quiz</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/projects">
+                        <i class="fa-solid fa-code"></i>
+                        <span>Projects</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/profile">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-gear"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div class="logout">
+            <a href="/logout">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </a>
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="page-title">
+
+                <div class="title-icon">
+                    <i class="fa-solid fa-circle-question"></i>
+                </div>
+
+                <div>
+                    <h1>Quiz</h1>
+                    <p>Challenge yourself and strengthen your skills</p>
+                </div>
+
+            </div>
+
+
+            <div class="top-icons">
+
+                <button id="notificationBtn">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+
+                <button id="themeToggle">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <img src="{{ url_for('static', filename='images/profile.png') }}"
+                     alt="Profile">
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= QUIZ HOME ================= -->
+
+        <section id="quizHome">
+
+            <div class="quiz-intro">
+
+                <div class="quiz-badge">
+                    <i class="fa-solid fa-bolt"></i>
+                    Test • Learn • Improve
+                </div>
+
+                <h1>
+                    Challenge your
+                    <span>knowledge</span>
+                </h1>
+
+                <p>
+                    Test what you've learned, discover your strengths,
+                    identify learning gaps and improve your skills
+                    through interactive challenges.
+                </p>
+
+            </div>
+
+
+            <!-- STATS -->
+
+            <div class="quiz-stats">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+
+                    <div>
+                        <span>Best Score</span>
+                        <strong>--</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+
+                    <div>
+                        <span>Average Score</span>
+                        <strong>--</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        <i class="fa-solid fa-check-double"></i>
+                    </div>
+
+                    <div>
+                        <span>Quizzes Completed</span>
+                        <strong>0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        <i class="fa-solid fa-fire"></i>
+                    </div>
+
+                    <div>
+                        <span>Current Streak</span>
+                        <strong>0</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUIZ TYPES -->
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>Choose your challenge</h2>
+                    <p>How would you like to test your knowledge?</p>
+                </div>
+
+            </div>
+
+
+            <div class="quiz-type-grid">
+
+                <!-- MCQ -->
+
+                <div class="quiz-type-card mcq-card"
+                     onclick="openQuizType('mcq')">
+
+                    <div class="card-glow"></div>
+
+                    <div class="quiz-type-icon">
+                        <i class="fa-solid fa-list-check"></i>
+                    </div>
+
+                    <div class="card-number">
+                        01
+                    </div>
+
+                    <h2>MCQ Quiz</h2>
+
+                    <p>
+                        Test your conceptual understanding through
+                        carefully designed multiple-choice questions.
+                    </p>
+
+
+                    <div class="type-features">
+
+                        <span>
+                            <i class="fa-solid fa-check"></i>
+                            Multiple subjects
+                        </span>
+
+                        <span>
+                            <i class="fa-solid fa-check"></i>
+                            Easy to Tough
+                        </span>
+
+                        <span>
+                            <i class="fa-solid fa-check"></i>
+                            Performance tracking
+                        </span>
+
+                    </div>
+
+
+                    <button>
+                        Explore MCQ
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </div>
+
+
+                <!-- CODING -->
+
+                <div class="quiz-type-card coding-card"
+                     onclick="openQuizType('coding')">
+
+                    <div class="card-glow"></div>
+
+                    <div class="quiz-type-icon">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+
+                    <div class="card-number">
+                        02
+                    </div>
+
+                    <h2>Coding Quiz</h2>
+
+                    <p>
+                        Solve programming problems and prove that you
+                        can apply what you've learned.
+                    </p>
+
+
+                    <div class="type-features">
+
+                        <span>
+                            <i class="fa-solid fa-check"></i>
+                            Multiple languages
+                        </span>
+
+                        <span>
+                            <i class="fa-solid fa-check"></i>
+                            Problem solving
+                        </span>
+
+                        <span>
+                            <i class="fa-solid fa-check"></i>
+                            Coding performance
+                        </span>
+
+                    </div>
+
+
+                    <button>
+                        Start Coding
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SUBJECT SELECTION ================= -->
+
+        <section id="subjectSection" class="hidden">
+
+            <div class="selection-header">
+
+                <button class="back-button" onclick="goHome()">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Back
+                </button>
+
+                <div class="selection-title">
+
+                    <div class="selection-icon">
+                        <i id="selectionIcon"
+                           class="fa-solid fa-list-check"></i>
+                    </div>
+
+                    <div>
+                        <h2 id="selectionTitle">
+                            Choose a Subject
+                        </h2>
+
+                        <p id="selectionSubtitle">
+                            Select what you want to practice
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="subjects-grid" id="subjectsGrid">
+
+                <!-- Generated by JavaScript -->
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= DIFFICULTY ================= -->
+
+        <section id="difficultySection" class="hidden">
+
+            <div class="selection-header">
+
+                <button class="back-button"
+                        onclick="backToSubjects()">
+
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Back
+
+                </button>
+
+                <div class="selection-title">
+
+                    <div class="selection-icon">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+
+                    <div>
+                        <h2 id="difficultyTitle">
+                            Choose Difficulty
+                        </h2>
+
+                        <p>
+                            Select a level that matches your
+                            current ability
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="difficulty-grid">
+
+                <!-- EASY / SIMPLE -->
+
+                <div class="difficulty-card easy"
+                     onclick="startQuiz('easy')">
+
+                    <div class="difficulty-icon">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+
+                    <span class="difficulty-label">
+                        Easy
+                    </span>
+
+                    <h2>Build Your Foundation</h2>
+
+                    <p>
+                        Start with simple questions and strengthen
+                        your basic understanding.
+                    </p>
+
+                    <div class="question-count">
+                        <strong id="easyCount">10</strong>
+                        <span>Questions</span>
+                    </div>
+
+                    <div class="difficulty-footer">
+                        <span>
+                            <i class="fa-regular fa-clock"></i>
+                            Beginner friendly
+                        </span>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+
+                </div>
+
+
+                <!-- MEDIUM -->
+
+                <div class="difficulty-card medium"
+                     onclick="startQuiz('medium')">
+
+                    <div class="difficulty-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+
+                    <span class="difficulty-label">
+                        Medium
+                    </span>
+
+                    <h2>Test Your Understanding</h2>
+
+                    <p>
+                        Go deeper and apply the concepts you've
+                        learned to different situations.
+                    </p>
+
+                    <div class="question-count">
+                        <strong id="mediumCount">20</strong>
+                        <span>Questions</span>
+                    </div>
+
+                    <div class="difficulty-footer">
+                        <span>
+                            <i class="fa-solid fa-brain"></i>
+                            Intermediate
+                        </span>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+
+                </div>
+
+
+                <!-- TOUGH -->
+
+                <div class="difficulty-card tough"
+                     onclick="startQuiz('tough')">
+
+                    <div class="difficulty-icon">
+                        <i class="fa-solid fa-fire"></i>
+                    </div>
+
+                    <span class="difficulty-label">
+                        Tough
+                    </span>
+
+                    <h2>Challenge Your Mastery</h2>
+
+                    <p>
+                        Push your knowledge to the limit with
+                        challenging questions and problems.
+                    </p>
+
+                    <div class="question-count">
+                        <strong id="toughCount">30</strong>
+                        <span id="toughText">Questions</span>
+                    </div>
+
+                    <div class="difficulty-footer">
+                        <span>
+                            <i class="fa-solid fa-bolt"></i>
+                            Advanced
+                        </span>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= COMING SOON QUIZ SCREEN ================= -->
+
+        <section id="quizScreen" class="hidden">
+
+            <div class="quiz-top">
+
+                <button class="back-button"
+                        onclick="backToDifficulty()">
+
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Exit Quiz
+
+                </button>
+
+                <div class="quiz-progress-info">
+
+                    <span id="currentQuestion">
+                        Question 1
+                    </span>
+
+                    <span id="totalQuestions">
+                        / 10
+                    </span>
+
+                </div>
+
+                <div class="quiz-timer">
+                    <i class="fa-regular fa-clock"></i>
+                    <span id="timer">00:00</span>
+                </div>
+
+            </div>
+
+
+            <div class="progress-bar">
+
+                <div id="progressFill"></div>
+
+            </div>
+
+
+            <div class="question-container">
+
+                <span class="question-topic"
+                      id="questionTopic">
+                    HTML
+                </span>
+
+                <h2 id="questionText">
+                    Your question will appear here.
+                </h2>
+
+
+                <div id="answersContainer"
+                     class="answers-container">
+
+                    <!-- Answers generated later -->
+
+                </div>
+
+
+                <div class="question-footer">
+
+                    <span id="questionHint">
+                        Choose the best answer.
+                    </span>
+
+                    <button id="nextQuestion">
+                        Next
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= RESULT SCREEN ================= -->
+
+        <section id="resultScreen" class="hidden">
+
+            <div class="result-card">
+
+                <div class="result-icon">
+                    <i class="fa-solid fa-trophy"></i>
+                </div>
+
+                <span class="result-label">
+                    QUIZ COMPLETE
+                </span>
+
+                <h1>Great Work! 🎉</h1>
+
+                <p>
+                    Here's how you performed.
+                </p>
+
+
+                <div class="score-circle">
+
+                    <strong id="finalScore">
+                        0%
+                    </strong>
+
+                    <span>
+                        Score
+                    </span>
+
+                </div>
+
+
+                <div class="result-stats">
+
+                    <div>
+                        <i class="fa-solid fa-check"></i>
+                        <strong id="correctAnswers">
+                            0
+                        </strong>
+                        <span>Correct</span>
+                    </div>
+
+                    <div>
+                        <i class="fa-solid fa-xmark"></i>
+                        <strong id="wrongAnswers">
+                            0
+                        </strong>
+                        <span>Incorrect</span>
+                    </div>
+
+                    <div>
+                        <i class="fa-regular fa-clock"></i>
+                        <strong id="finalTime">
+                            00:00
+                        </strong>
+                        <span>Time</span>
+                    </div>
+
+                </div>
+
+
+                <div class="result-actions">
+
+                    <button onclick="retryQuiz()">
+                        <i class="fa-solid fa-rotate-right"></i>
+                        Try Again
+                    </button>
+
+                    <button class="secondary"
+                            onclick="goHome()">
+                        Back to Quiz
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='js/quiz.js') }}"></script>
+
+</body>
+</html>
