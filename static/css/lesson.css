@@ -2391,3 +2391,596 @@ body.light-mode .question-bar {
 .completion-message .primary-btn:hover {
     transform: translateY(-2px);
 }
+
+/* =====================================================
+   PYTHON COURSE COMPLETION
+===================================================== */
+
+#complete {
+    position: relative;
+    overflow: hidden;
+    min-height: 650px;
+}
+
+/* Celebration background */
+
+#complete::before,
+#complete::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+#complete::before {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(
+        circle,
+        rgba(124, 92, 255, 0.18),
+        transparent 70%
+    );
+    top: -200px;
+    left: -180px;
+    animation: glowFloat 5s ease-in-out infinite;
+}
+
+#complete::after {
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(
+        circle,
+        rgba(186, 92, 255, 0.15),
+        transparent 70%
+    );
+    right: -180px;
+    bottom: -150px;
+    animation: glowFloat 6s ease-in-out infinite reverse;
+}
+
+@keyframes glowFloat {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-25px) scale(1.08);
+    }
+}
+
+
+/* Main completion card */
+
+.completion-card {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 65px 50px 55px;
+    border-radius: 32px;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(125, 92, 255, 0.22),
+            transparent 40%
+        ),
+        linear-gradient(
+            135deg,
+            #111a35,
+            #171b3d 50%,
+            #241746
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    animation: completionAppear 0.8s ease forwards;
+}
+
+@keyframes completionAppear {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* Trophy */
+
+.completion-icon {
+    width: 105px;
+    height: 105px;
+    margin: 0 auto 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #7055ff,
+        #b05cff
+    );
+
+    box-shadow:
+        0 0 0 12px rgba(124, 92, 255, 0.08),
+        0 0 50px rgba(144, 88, 255, 0.55);
+
+    animation:
+        trophyFloat 2.5s ease-in-out infinite,
+        trophyGlow 2s ease-in-out infinite alternate;
+}
+
+.completion-icon i {
+    font-size: 44px;
+    color: white;
+    animation: trophyBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes trophyFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(2deg);
+    }
+}
+
+@keyframes trophyGlow {
+    from {
+        box-shadow:
+            0 0 0 12px rgba(124, 92, 255, 0.08),
+            0 0 30px rgba(144, 88, 255, 0.35);
+    }
+
+    to {
+        box-shadow:
+            0 0 0 18px rgba(124, 92, 255, 0.04),
+            0 0 65px rgba(144, 88, 255, 0.7);
+    }
+}
+
+@keyframes trophyBounce {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+
+/* Completion label */
+
+.completion-label {
+    display: inline-block;
+
+    padding: 8px 18px;
+
+    border-radius: 30px;
+
+    background: rgba(124, 92, 255, 0.13);
+
+    border: 1px solid rgba(150, 120, 255, 0.4);
+
+    color: #bcaeff;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    animation: labelAppear 0.8s ease 0.3s both;
+}
+
+@keyframes labelAppear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Main title */
+
+.completion-card h1 {
+    margin: 22px 0 5px;
+
+    font-size: clamp(42px, 6vw, 68px);
+
+    font-weight: 800;
+
+    line-height: 1.05;
+
+    color: white;
+
+    animation: titleAppear 0.8s ease 0.4s both;
+}
+
+.completion-card h1::first-line {
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #c7a4ff,
+        #8f7cff
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@keyframes titleAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Python Complete */
+
+.completion-card > p {
+    max-width: 700px;
+    margin: 15px auto 30px;
+
+    color: #b8c0d8;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    animation: fadeUp 0.8s ease 0.55s both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Stats */
+
+.completion-stats {
+    max-width: 700px;
+
+    margin: 0 auto 35px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+.completion-stats > div {
+    padding: 20px 15px;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.055);
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+
+    transition: 0.3s ease;
+
+    animation: statPop 0.6s ease both;
+}
+
+.completion-stats > div:nth-child(1) {
+    animation-delay: 0.7s;
+}
+
+.completion-stats > div:nth-child(2) {
+    animation-delay: 0.85s;
+}
+
+.completion-stats > div:nth-child(3) {
+    animation-delay: 1s;
+}
+
+.completion-stats > div:hover {
+    transform: translateY(-6px);
+
+    background: rgba(124, 92, 255, 0.12);
+
+    border-color: rgba(160, 130, 255, 0.35);
+}
+
+@keyframes statPop {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.completion-stats strong {
+    display: block;
+
+    font-size: 27px;
+
+    color: #a98cff;
+
+    margin-bottom: 5px;
+}
+
+.completion-stats span {
+    color: #9da7c1;
+
+    font-size: 13px;
+}
+
+
+/* Skills */
+
+.skills-earned {
+    max-width: 850px;
+
+    margin: 0 auto 35px;
+}
+
+.skills-earned h3 {
+    color: white;
+
+    font-size: 18px;
+
+    margin-bottom: 18px;
+}
+
+.skill-list {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.skill-list span {
+    padding: 10px 15px;
+
+    border-radius: 30px;
+
+    color: #d8d2ff;
+
+    background: rgba(124, 92, 255, 0.1);
+
+    border: 1px solid rgba(142, 119, 255, 0.22);
+
+    font-size: 13px;
+
+    transition: all 0.3s ease;
+
+    animation: skillPop 0.5s ease both;
+}
+
+.skill-list span:nth-child(1) {
+    animation-delay: 1.1s;
+}
+
+.skill-list span:nth-child(2) {
+    animation-delay: 1.2s;
+}
+
+.skill-list span:nth-child(3) {
+    animation-delay: 1.3s;
+}
+
+.skill-list span:nth-child(4) {
+    animation-delay: 1.4s;
+}
+
+.skill-list span:nth-child(5) {
+    animation-delay: 1.5s;
+}
+
+.skill-list span:nth-child(6) {
+    animation-delay: 1.6s;
+}
+
+.skill-list span:hover {
+    transform: translateY(-4px);
+
+    background: rgba(124, 92, 255, 0.2);
+
+    border-color: rgba(170, 140, 255, 0.5);
+}
+
+@keyframes skillPop {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* Buttons */
+
+.completion-actions {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    flex-wrap: wrap;
+}
+
+.completion-actions .next-btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    min-width: 210px;
+
+    padding: 14px 22px;
+
+    border-radius: 14px;
+
+    background: linear-gradient(
+        135deg,
+        #7055ff,
+        #a14fff
+    );
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    box-shadow:
+        0 10px 30px rgba(111, 79, 255, 0.35);
+
+    transition: all 0.3s ease;
+}
+
+.completion-actions .next-btn:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 15px 40px rgba(111, 79, 255, 0.55);
+}
+
+.completion-actions .secondary-btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    min-width: 190px;
+
+    padding: 14px 22px;
+
+    border-radius: 14px;
+
+    color: #c5baff;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    transition: all 0.3s ease;
+}
+
+.completion-actions .secondary-btn:hover {
+    transform: translateY(-4px);
+
+    background: rgba(255, 255, 255, 0.09);
+}
+
+
+/* =====================================================
+   CONFETTI
+===================================================== */
+
+.confetti {
+    position: fixed;
+
+    width: 10px;
+    height: 16px;
+
+    top: -30px;
+
+    z-index: 99999;
+
+    pointer-events: none;
+
+    animation:
+        confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+        opacity: 0;
+    }
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .completion-card {
+        padding: 45px 20px;
+    }
+
+    .completion-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .completion-card h1 {
+        font-size: 42px;
+    }
+
+    .completion-icon {
+        width: 85px;
+        height: 85px;
+    }
+
+}

@@ -1,0 +1,2038 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 9 | Python Tuples & Sets</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/lesson.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        <i class="fa-solid fa-brain"></i>
+        <span>StudySense</span> <b>AI</b>
+    </div>
+
+    <nav>
+
+        <a href="/dashboard">
+            <i class="fa-solid fa-house"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="/courses" class="active">
+            <i class="fa-solid fa-book-open"></i>
+            <span>Courses</span>
+        </a>
+
+        <a href="/ai-tutor">
+            <i class="fa-solid fa-robot"></i>
+            <span>AI Tutor</span>
+        </a>
+
+        <a href="/quiz">
+            <i class="fa-solid fa-circle-question"></i>
+            <span>Quiz</span>
+        </a>
+
+        <a href="/projects">
+            <i class="fa-solid fa-code"></i>
+            <span>Projects</span>
+        </a>
+
+        <a href="/profile">
+            <i class="fa-solid fa-user"></i>
+            <span>Profile</span>
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-gear"></i>
+            <span>Settings</span>
+        </a>
+
+    </nav>
+
+    <div class="logout">
+
+        <a href="/logout">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+        </a>
+
+    </div>
+
+</aside>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="main">
+
+
+<!-- =====================================================
+     TOPBAR
+===================================================== -->
+
+<header class="topbar">
+
+    <div class="breadcrumb">
+
+        <a href="/courses">Courses</a>
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+        <span>Python Programming</span>
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+        <strong>Lesson 9</strong>
+
+    </div>
+
+
+    <div class="top-right">
+
+        <button class="top-btn">
+
+            <i class="fa-regular fa-bell"></i>
+
+        </button>
+
+
+        <button class="top-btn" id="themeToggle">
+
+            <i class="fa-solid fa-moon"></i>
+
+        </button>
+
+
+        <div class="user">
+
+            <img src="{{ url_for('static', filename='images/profile.png') }}">
+
+            <div>
+
+                <strong>
+                    {{ session.get('user_name', 'Test User') }}
+                </strong>
+
+                <small>Student</small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="lesson-hero">
+
+    <div class="hero-text">
+
+        <span class="lesson-badge">
+
+            <i class="fa-solid fa-bolt"></i>
+
+            LESSON 9
+
+        </span>
+
+
+        <h1>Python Tuples & Sets</h1>
+
+
+        <p>
+
+            Learn how to work with tuples and sets,
+            two powerful Python collections for storing
+            and organizing data.
+
+        </p>
+
+
+        <div class="hero-info">
+
+            <span>
+
+                <i class="fa-regular fa-clock"></i>
+
+                25 min
+
+            </span>
+
+
+            <span>
+
+                <i class="fa-solid fa-signal"></i>
+
+                Beginner
+
+            </span>
+
+
+            <span class="xp">
+
+                <i class="fa-solid fa-star"></i>
+
+                +100 XP
+
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-character">
+
+        <div class="floating-star star-one">
+            ✦
+        </div>
+
+        <div class="floating-star star-two">
+            ✦
+        </div>
+
+
+        <div class="python-orb">
+
+            <i class="fa-brands fa-python"></i>
+
+        </div>
+
+
+        <span>
+            Let's explore collections!
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PROGRESS
+===================================================== -->
+
+<section class="progress-card">
+
+    <div class="progress-top">
+
+        <div>
+
+            <span>LESSON JOURNEY</span>
+
+            <h3>Your Progress</h3>
+
+        </div>
+
+        <strong id="progressPercent">0%</strong>
+
+    </div>
+
+
+    <div class="progress-track">
+
+        <div class="progress-fill"
+             id="progressFill"
+             style="width:0%;">
+
+        </div>
+
+    </div>
+
+
+    <div class="steps">
+
+        <div class="step active" data-step="learn">
+
+            <div class="step-circle">
+
+                <i class="fa-solid fa-book-open"></i>
+
+            </div>
+
+            <span>Learn</span>
+
+        </div>
+
+
+        <div class="line"></div>
+
+
+        <div class="step" data-step="try">
+
+            <div class="step-circle">
+
+                <i class="fa-solid fa-code"></i>
+
+            </div>
+
+            <span>Try</span>
+
+        </div>
+
+
+        <div class="line"></div>
+
+
+        <div class="step" data-step="practice">
+
+            <div class="step-circle">
+
+                <i class="fa-solid fa-pen"></i>
+
+            </div>
+
+            <span>Practice</span>
+
+        </div>
+
+
+        <div class="line"></div>
+
+
+        <div class="step" data-step="quiz">
+
+            <div class="step-circle">
+
+                <i class="fa-solid fa-question"></i>
+
+            </div>
+
+            <span>Quiz</span>
+
+        </div>
+
+
+        <div class="line"></div>
+
+
+        <div class="step" data-step="complete">
+
+            <div class="step-circle">
+
+                <i class="fa-solid fa-trophy"></i>
+
+            </div>
+
+            <span>Complete</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     LEARNING NAVIGATION
+===================================================== -->
+
+<div class="learning-nav">
+
+    <button class="nav-tab active"
+            data-section="learn">
+
+        <i class="fa-solid fa-book-open"></i>
+
+        Learn
+
+    </button>
+
+
+    <button class="nav-tab"
+            data-section="try">
+
+        <i class="fa-solid fa-code"></i>
+
+        Try
+
+    </button>
+
+
+    <button class="nav-tab"
+            data-section="practice">
+
+        <i class="fa-solid fa-pen"></i>
+
+        Practice
+
+    </button>
+
+
+    <button class="nav-tab"
+            data-section="quiz">
+
+        <i class="fa-solid fa-circle-question"></i>
+
+        Quiz
+
+    </button>
+
+
+    <button class="nav-tab"
+            data-section="complete">
+
+        <i class="fa-solid fa-trophy"></i>
+
+        Finish
+
+    </button>
+
+</div>
+
+
+<!-- =====================================================
+     LEARN SECTION
+===================================================== -->
+
+<section class="learning-section active-section"
+         id="learn">
+
+
+    <div class="section-title">
+
+        <span class="number">01</span>
+
+        <div>
+
+            <small>LET'S BEGIN</small>
+
+            <h2>Tuples & Sets</h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="learning-grid">
+
+
+        <div class="lesson-card main-card">
+
+            <p>
+
+                Python provides different ways to store
+                collections of data.
+
+            </p>
+
+
+            <p>
+
+                In the previous lesson, we learned about
+                <strong>lists</strong> and
+                <strong>dictionaries</strong>.
+
+                Now we will learn about
+                <strong>tuples</strong> and
+                <strong>sets</strong>.
+
+            </p>
+
+
+            <div class="highlight">
+
+                <i class="fa-solid fa-lightbulb"></i>
+
+                <div>
+
+                    <strong>Remember</strong>
+
+                    <p>
+
+                        A tuple is similar to a list,
+                        but its values cannot be changed.
+
+                        A set stores unique values and
+                        automatically removes duplicates.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="fact-card">
+
+            <div class="fact-icon">
+
+                <i class="fa-solid fa-layer-group"></i>
+
+            </div>
+
+
+            <h3>Today's Topics</h3>
+
+
+            <div class="fact">
+
+                <i class="fa-solid fa-check"></i>
+
+                <span>Tuples</span>
+
+            </div>
+
+
+            <div class="fact">
+
+                <i class="fa-solid fa-check"></i>
+
+                <span>Tuple indexing</span>
+
+            </div>
+
+
+            <div class="fact">
+
+                <i class="fa-solid fa-check"></i>
+
+                <span>Sets</span>
+
+            </div>
+
+
+            <div class="fact">
+
+                <i class="fa-solid fa-check"></i>
+
+                <span>Unique values</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         TUPLES
+    ================================================= -->
+
+    <div class="real-world">
+
+        <div class="real-title">
+
+            <div class="real-icon">
+
+                <i class="fa-solid fa-box"></i>
+
+            </div>
+
+
+            <div>
+
+                <small>COLLECTION TYPE</small>
+
+                <h2>Python Tuples</h2>
+
+            </div>
+
+        </div>
+
+
+        <p>
+
+            A tuple is a collection of values that is
+            <strong>ordered</strong> and
+            <strong>unchangeable</strong>.
+
+        </p>
+
+
+        <div class="example-code">
+
+            <span>Python</span>
+
+<pre><code>colors = ("red", "blue", "green")
+
+print(colors)</code></pre>
+
+        </div>
+
+
+        <div class="world-grid">
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-list"></i>
+
+                <h3>Ordered</h3>
+
+                <p>
+                    Items keep their position.
+                </p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-lock"></i>
+
+                <h3>Unchangeable</h3>
+
+                <p>
+                    Items cannot be modified.
+                </p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-hashtag"></i>
+
+                <h3>Indexed</h3>
+
+                <p>
+                    Items can be accessed using indexes.
+                </p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-code"></i>
+
+                <h3>Parentheses</h3>
+
+                <p>
+                    Tuples normally use ( ).
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         TUPLE INDEXING
+    ================================================= -->
+
+    <div class="mini-lesson">
+
+        <div class="mini-step">
+
+            <span>IMPORTANT CONCEPT</span>
+
+            <i class="fa-solid fa-hashtag"></i>
+
+        </div>
+
+
+        <h3>Accessing Tuple Items</h3>
+
+
+        <p>
+
+            Just like lists, tuples use indexes.
+            Remember that indexing starts from
+            <strong>0</strong>.
+
+        </p>
+
+
+        <div class="example-code">
+
+            <span>Example</span>
+
+<pre><code>colors = ("red", "blue", "green")
+
+print(colors[0])
+print(colors[2])</code></pre>
+
+        </div>
+
+
+        <p>
+
+            Output:
+
+            <strong>red</strong>
+
+            and
+
+            <strong>green</strong>.
+
+        </p>
+
+    </div>
+
+
+    <!-- =================================================
+         IMMUTABLE
+    ================================================= -->
+
+    <div class="mini-lesson">
+
+        <div class="mini-step">
+
+            <span>IMPORTANT</span>
+
+            <i class="fa-solid fa-lock"></i>
+
+        </div>
+
+
+        <h3>Why Can't We Change a Tuple?</h3>
+
+
+        <p>
+
+            Tuples are <strong>immutable</strong>.
+            That means their values cannot be changed
+            after the tuple is created.
+
+        </p>
+
+
+        <div class="example-code">
+
+            <span>Example</span>
+
+<pre><code>colors = ("red", "blue", "green")
+
+# This will cause an error
+
+colors[0] = "yellow"</code></pre>
+
+        </div>
+
+
+        <div class="highlight">
+
+            <i class="fa-solid fa-lightbulb"></i>
+
+            <div>
+
+                <strong>Simple way to remember</strong>
+
+                <p>
+
+                    List = can change
+
+                    <br>
+
+                    Tuple = cannot change
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         SETS
+    ================================================= -->
+
+    <div class="real-world">
+
+        <div class="real-title">
+
+            <div class="real-icon">
+
+                <i class="fa-solid fa-layer-group"></i>
+
+            </div>
+
+
+            <div>
+
+                <small>COLLECTION TYPE</small>
+
+                <h2>Python Sets</h2>
+
+            </div>
+
+        </div>
+
+
+        <p>
+
+            A set is a collection that stores
+            <strong>unique values</strong>.
+
+            Duplicate values are automatically removed.
+
+        </p>
+
+
+        <div class="example-code">
+
+            <span>Python</span>
+
+<pre><code>numbers = {1, 2, 3, 3, 4, 4}
+
+print(numbers)</code></pre>
+
+        </div>
+
+
+        <div class="world-grid">
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-filter"></i>
+
+                <h3>Unique</h3>
+
+                <p>
+                    Duplicate values are removed.
+                </p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-arrows-up-down"></i>
+
+                <h3>Unordered</h3>
+
+                <p>
+                    Items don't have fixed positions.
+                </p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-plus"></i>
+
+                <h3>Add</h3>
+
+                <p>
+                    New values can be added.
+                </p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-trash"></i>
+
+                <h3>Remove</h3>
+
+                <p>
+                    Values can be removed.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         SET METHODS
+    ================================================= -->
+
+    <div class="mini-lesson">
+
+        <div class="mini-step">
+
+            <span>USEFUL METHODS</span>
+
+            <i class="fa-solid fa-wrench"></i>
+
+        </div>
+
+
+        <h3>Adding and Removing Set Items</h3>
+
+
+        <p>
+
+            Use <strong>add()</strong> to add a value
+            and <strong>remove()</strong> to remove a value.
+
+        </p>
+
+
+        <div class="example-code">
+
+            <span>Example</span>
+
+<pre><code>numbers = {1, 2, 3}
+
+numbers.add(4)
+
+numbers.remove(2)
+
+print(numbers)</code></pre>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         COMPARISON
+    ================================================= -->
+
+    <div class="real-world">
+
+        <div class="real-title">
+
+            <div class="real-icon">
+
+                <i class="fa-solid fa-scale-balanced"></i>
+
+            </div>
+
+
+            <div>
+
+                <small>REMEMBER THIS</small>
+
+                <h2>List vs Tuple vs Set</h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="world-grid">
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-list"></i>
+
+                <h3>List</h3>
+
+                <p>
+
+                    Ordered<br>
+                    Changeable<br>
+                    Allows duplicates
+
+                </p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-lock"></i>
+
+                <h3>Tuple</h3>
+
+                <p>
+
+                    Ordered<br>
+                    Unchangeable<br>
+                    Allows duplicates
+
+                </p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-filter"></i>
+
+                <h3>Set</h3>
+
+                <p>
+
+                    Unordered<br>
+                    Changeable<br>
+                    No duplicates
+
+                </p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-book"></i>
+
+                <h3>Dictionary</h3>
+
+                <p>
+
+                    Key → Value<br>
+                    Changeable<br>
+                    Keys are unique
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <button class="next-btn"
+            onclick="goToSection('try')">
+
+        Continue to Try
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     TRY SECTION
+===================================================== -->
+
+<section class="learning-section"
+         id="try">
+
+
+    <div class="section-title">
+
+        <span class="number">02</span>
+
+        <div>
+
+            <small>LEARN BY DOING</small>
+
+            <h2>Try It Yourself</h2>
+
+        </div>
+
+    </div>
+
+
+    <!-- CHALLENGE 1 -->
+
+    <div class="mini-lesson challenge">
+
+        <div class="mini-step">
+
+            <span>STEP 1</span>
+
+            <i class="fa-solid fa-box"></i>
+
+        </div>
+
+
+        <h3>Create a Tuple</h3>
+
+
+        <p>
+
+            Create a tuple containing three colors
+            and print the first color.
+
+        </p>
+
+
+        <div class="code-editor">
+
+            <div class="editor-bar">
+
+                <span>
+
+                    <i class="fa-brands fa-python"></i>
+
+                    Python
+
+                </span>
+
+
+                <button onclick="runTupleChallenge()">
+
+                    <i class="fa-solid fa-play"></i>
+
+                    Run
+
+                </button>
+
+            </div>
+
+
+            <textarea
+                id="tupleCode"
+                placeholder="Type your Python code here..."></textarea>
+
+
+            <div class="output-box">
+
+                <small>OUTPUT</small>
+
+                <div id="tupleOutput">
+
+                    Run your code to see the result.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="challenge-hint">
+
+            💡 Hint: Use parentheses
+            <strong>( )</strong> and index
+            <strong>[0]</strong>.
+
+        </div>
+
+    </div>
+
+
+    <!-- CHALLENGE 2 -->
+
+    <div class="mini-lesson challenge">
+
+        <div class="mini-step">
+
+            <span>STEP 2</span>
+
+            <i class="fa-solid fa-filter"></i>
+
+        </div>
+
+
+        <h3>Remove Duplicates</h3>
+
+
+        <p>
+
+            Create a set containing repeated numbers.
+            Python will automatically keep only unique values.
+
+        </p>
+
+
+        <div class="code-editor">
+
+            <div class="editor-bar">
+
+                <span>
+
+                    <i class="fa-brands fa-python"></i>
+
+                    Python
+
+                </span>
+
+
+                <button onclick="runSetChallenge()">
+
+                    <i class="fa-solid fa-play"></i>
+
+                    Run
+
+                </button>
+
+            </div>
+
+
+            <textarea
+                id="setCode"
+                placeholder="Type your Python code here..."></textarea>
+
+
+            <div class="output-box">
+
+                <small>OUTPUT</small>
+
+                <div id="setOutput">
+
+                    Run your code to see the result.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="challenge-hint">
+
+            💡 Hint: Use curly brackets
+            <strong>{ }</strong>.
+
+        </div>
+
+    </div>
+
+
+    <!-- CHALLENGE 3 -->
+
+    <div class="mini-lesson challenge">
+
+        <div class="mini-step">
+
+            <span>STEP 3</span>
+
+            <i class="fa-solid fa-plus"></i>
+
+        </div>
+
+
+        <h3>Add an Item to a Set</h3>
+
+
+        <p>
+
+            Create a set containing three numbers
+            and use <strong>add()</strong> to add another number.
+
+        </p>
+
+
+        <div class="code-editor">
+
+            <div class="editor-bar">
+
+                <span>
+
+                    <i class="fa-brands fa-python"></i>
+
+                    Python
+
+                </span>
+
+
+                <button onclick="runAddSetChallenge()">
+
+                    <i class="fa-solid fa-play"></i>
+
+                    Run
+
+                </button>
+
+            </div>
+
+
+            <textarea
+                id="addSetCode"
+                placeholder="Type your Python code here..."></textarea>
+
+
+            <div class="output-box">
+
+                <small>OUTPUT</small>
+
+                <div id="addSetOutput">
+
+                    Run your code to see the result.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="challenge-hint">
+
+            💡 Hint: Use
+
+            <strong>numbers.add(4)</strong>.
+
+        </div>
+
+    </div>
+
+
+    <button class="next-btn"
+            onclick="goToSection('practice')">
+
+        Continue to Practice
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     PRACTICE
+===================================================== -->
+
+<section class="learning-section"
+         id="practice">
+
+
+    <div class="section-title">
+
+        <span class="number">03</span>
+
+        <div>
+
+            <small>MINI CHALLENGE</small>
+
+            <h2>Collection Master</h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="assignment-card">
+
+
+        <div class="assignment-top">
+
+            <div class="assignment-icon">
+
+                <i class="fa-solid fa-flag-checkered"></i>
+
+            </div>
+
+
+            <div>
+
+                <span>MISSION 09</span>
+
+                <h3>Clean the Data</h3>
+
+            </div>
+
+        </div>
+
+
+        <p>
+
+            You are given repeated numbers.
+
+            Create a set from them to remove duplicates.
+
+            Then add the number <strong>10</strong>.
+
+        </p>
+
+
+        <div class="target-output">
+
+            Input:
+
+            <br>
+
+            1, 2, 2, 3, 3, 4
+
+            <br><br>
+
+            Expected unique values:
+
+            <br>
+
+            1, 2, 3, 4, 10
+
+        </div>
+
+
+        <div class="final-editor">
+
+            <textarea
+                id="practiceCode"
+                placeholder="# Write your Python code here"></textarea>
+
+
+            <button onclick="checkPracticeChallenge()">
+
+                <i class="fa-solid fa-play"></i>
+
+                Run My Code
+
+            </button>
+
+        </div>
+
+
+        <div id="practiceResult"
+             class="final-result">
+
+        </div>
+
+    </div>
+
+
+    <button class="next-btn"
+            onclick="goToSection('quiz')">
+
+        Continue to Quiz
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     QUIZ
+===================================================== -->
+
+<section class="learning-section"
+         id="quiz">
+
+
+    <div class="section-title">
+
+        <span class="number">04</span>
+
+        <div>
+
+            <small>CHECK YOUR KNOWLEDGE</small>
+
+            <h2>Quick Quiz</h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="assignment-card">
+
+
+        <div class="assignment-top">
+
+            <div class="assignment-icon">
+
+                <i class="fa-solid fa-question"></i>
+
+            </div>
+
+
+            <div>
+
+                <span>QUESTION 01</span>
+
+                <h3>
+
+                    Which collection cannot be changed
+                    after it is created?
+
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="quiz-options">
+
+
+            <button class="quiz-option"
+                    onclick="checkAnswer(this, false)">
+
+                A. List
+
+            </button>
+
+
+            <button class="quiz-option"
+                    onclick="checkAnswer(this, true)">
+
+                B. Tuple
+
+            </button>
+
+
+            <button class="quiz-option"
+                    onclick="checkAnswer(this, false)">
+
+                C. Set
+
+            </button>
+
+
+            <button class="quiz-option"
+                    onclick="checkAnswer(this, false)">
+
+                D. Dictionary
+
+            </button>
+
+        </div>
+
+
+        <div id="quizResult"
+             class="final-result">
+
+        </div>
+
+    </div>
+
+
+    <button class="continue-complete"
+            onclick="goToSection('complete')">
+
+        Continue
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     COMPLETE
+===================================================== -->
+
+<section class="learning-section"
+         id="complete">
+
+
+    <div class="section-title">
+
+        <span class="number">05</span>
+
+        <div>
+
+            <small>LESSON COMPLETE</small>
+
+            <h2>You Did It! 🎉</h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="assignment-card">
+
+
+        <div class="assignment-icon">
+
+            <i class="fa-solid fa-trophy"></i>
+
+        </div>
+
+
+        <h3>
+
+            Python Tuples & Sets Completed!
+
+        </h3>
+
+
+        <p>
+
+            Great work!
+
+            You now understand tuples, sets,
+            indexing, unique values and collection
+            methods.
+
+        </p>
+
+
+        <div class="highlight">
+
+            <i class="fa-solid fa-star"></i>
+
+            <div>
+
+                <strong>+100 XP Earned</strong>
+
+                <p>
+
+                    You completed Lesson 9.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <a href="/courses"
+           class="next-btn">
+
+            Back to Courses
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   SECTION NAVIGATION
+===================================================== */
+
+const sections = [
+    "learn",
+    "try",
+    "practice",
+    "quiz",
+    "complete"
+];
+
+
+const sectionProgress = {
+
+    learn: 0,
+
+    try: 25,
+
+    practice: 50,
+
+    quiz: 75,
+
+    complete: 100
+
+};
+
+
+function goToSection(sectionName) {
+
+
+    sections.forEach(section => {
+
+        const element =
+            document.getElementById(section);
+
+        if (element) {
+
+            element.classList.remove(
+                "active-section"
+            );
+
+        }
+
+    });
+
+
+    const selected =
+        document.getElementById(sectionName);
+
+
+    if (selected) {
+
+        selected.classList.add(
+            "active-section"
+        );
+
+        selected.scrollIntoView({
+
+            behavior: "smooth",
+
+            block: "start"
+
+        });
+
+    }
+
+
+    document
+        .querySelectorAll(".nav-tab")
+        .forEach(tab => {
+
+            tab.classList.remove("active");
+
+
+            if (
+                tab.dataset.section === sectionName
+            ) {
+
+                tab.classList.add("active");
+
+            }
+
+        });
+
+
+    document
+        .querySelectorAll(".step")
+        .forEach(step => {
+
+            step.classList.remove("active");
+
+
+            const current =
+                sections.indexOf(sectionName);
+
+
+            const stepIndex =
+                sections.indexOf(
+                    step.dataset.step
+                );
+
+
+            if (stepIndex <= current) {
+
+                step.classList.add("active");
+
+            }
+
+        });
+
+
+    const progress =
+        sectionProgress[sectionName] || 0;
+
+
+    document.getElementById(
+        "progressPercent"
+    ).textContent =
+        progress + "%";
+
+
+    document.getElementById(
+        "progressFill"
+    ).style.width =
+        progress + "%";
+
+}
+
+
+/* =====================================================
+   NAV TABS
+===================================================== */
+
+document
+    .querySelectorAll(".nav-tab")
+    .forEach(tab => {
+
+        tab.addEventListener(
+            "click",
+            () => {
+
+                goToSection(
+                    tab.dataset.section
+                );
+
+            }
+        );
+
+    });
+
+
+/* =====================================================
+   THEME TOGGLE
+===================================================== */
+
+const themeBtn =
+    document.getElementById("themeToggle");
+
+if (themeBtn) {
+
+    const icon =
+        themeBtn.querySelector("i");
+
+    // Restore saved theme
+    if (localStorage.getItem("theme") === "light") {
+
+        document.body.classList.add("light-mode");
+
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
+
+    }
+
+    themeBtn.addEventListener("click", () => {
+
+        document.body.classList.toggle("light-mode");
+
+        if (
+            document.body.classList.contains(
+                "light-mode"
+            )
+        ) {
+
+            localStorage.setItem(
+                "theme",
+                "light"
+            );
+
+            icon.classList.remove("fa-moon");
+            icon.classList.add("fa-sun");
+
+        } else {
+
+            localStorage.setItem(
+                "theme",
+                "dark"
+            );
+
+            icon.classList.remove("fa-sun");
+            icon.classList.add("fa-moon");
+
+        }
+
+    });
+
+}
+
+
+/* =====================================================
+   TUPLE CHALLENGE
+===================================================== */
+
+function runTupleChallenge() {
+
+
+    const code =
+        document.getElementById(
+            "tupleCode"
+        ).value.trim();
+
+
+    const output =
+        document.getElementById(
+            "tupleOutput"
+        );
+
+
+    if (
+        code.includes("(") &&
+        code.includes(")") &&
+        code.includes("[0]")
+    ) {
+
+        output.innerHTML =
+            "red<br><br>✓ Correct! You accessed the first tuple item.";
+
+    } else {
+
+        output.innerHTML =
+            "💡 Hint: Create a tuple using ( ) and access the first item using [0].";
+
+    }
+
+}
+
+
+/* =====================================================
+   SET CHALLENGE
+===================================================== */
+
+function runSetChallenge() {
+
+
+    const code =
+        document.getElementById(
+            "setCode"
+        ).value.trim();
+
+
+    const output =
+        document.getElementById(
+            "setOutput"
+        );
+
+
+    if (
+        code.includes("{") &&
+        code.includes("}")
+    ) {
+
+        output.innerHTML =
+            "{1, 2, 3, 4}<br><br>✓ Duplicate values are removed automatically!";
+
+    } else {
+
+        output.innerHTML =
+            "💡 Hint: Create a set using curly brackets { }.";
+
+    }
+
+}
+
+
+/* =====================================================
+   ADD SET CHALLENGE
+===================================================== */
+
+function runAddSetChallenge() {
+
+
+    const code =
+        document.getElementById(
+            "addSetCode"
+        ).value.trim();
+
+
+    const output =
+        document.getElementById(
+            "addSetOutput"
+        );
+
+
+    if (
+        code.includes("add")
+    ) {
+
+        output.innerHTML =
+            "{1, 2, 3, 4}<br><br>✓ Great! You added an item to the set.";
+
+    } else {
+
+        output.innerHTML =
+            "💡 Hint: Use the add() method.";
+
+    }
+
+}
+
+
+/* =====================================================
+   PRACTICE
+===================================================== */
+
+function checkPracticeChallenge() {
+
+
+    const code =
+        document.getElementById(
+            "practiceCode"
+        ).value.trim();
+
+
+    const result =
+        document.getElementById(
+            "practiceResult"
+        );
+
+
+    if (
+        code.includes("{") &&
+        code.includes("}") &&
+        code.includes("add")
+    ) {
+
+        result.innerHTML =
+            "🎉 Excellent! You created a set and added a new value. +30 XP";
+
+        result.classList.add(
+            "success"
+        );
+
+    } else {
+
+        result.innerHTML =
+            "💡 Hint: Create a set with the repeated numbers and use add(10).";
+
+    }
+
+}
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+function checkAnswer(button, correct) {
+
+
+    const result =
+        document.getElementById(
+            "quizResult"
+        );
+
+
+    document
+        .querySelectorAll(".quiz-option")
+        .forEach(option => {
+
+            option.disabled = true;
+
+        });
+
+
+    if (correct) {
+
+        button.classList.add(
+            "correct"
+        );
+
+
+        result.innerHTML =
+            "🎉 Correct! A tuple is immutable, which means it cannot be changed. +10 XP";
+
+    } else {
+
+        button.classList.add(
+            "wrong"
+        );
+
+
+        result.innerHTML =
+            "Not quite. The correct answer is <strong>Tuple</strong>.";
+
+    }
+
+}
+
+
+/* =====================================================
+   INITIAL STATE
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        goToSection("learn");
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>

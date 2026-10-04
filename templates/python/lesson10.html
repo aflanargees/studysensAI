@@ -1,0 +1,1964 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 10 | Python Functions</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/lesson.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        <i class="fa-solid fa-brain"></i>
+        <span>StudySense</span> <b>AI</b>
+    </div>
+
+    <nav>
+
+        <a href="/dashboard">
+            <i class="fa-solid fa-house"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="/courses" class="active">
+            <i class="fa-solid fa-book-open"></i>
+            <span>Courses</span>
+        </a>
+
+        <a href="/ai-tutor">
+            <i class="fa-solid fa-robot"></i>
+            <span>AI Tutor</span>
+        </a>
+
+        <a href="/quiz">
+            <i class="fa-solid fa-circle-question"></i>
+            <span>Quiz</span>
+        </a>
+
+        <a href="/projects">
+            <i class="fa-solid fa-code"></i>
+            <span>Projects</span>
+        </a>
+
+        <a href="/profile">
+            <i class="fa-solid fa-user"></i>
+            <span>Profile</span>
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-gear"></i>
+            <span>Settings</span>
+        </a>
+
+    </nav>
+
+    <div class="logout">
+        <a href="/logout">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+        </a>
+    </div>
+
+</aside>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="main">
+
+<!-- =====================================================
+     TOPBAR
+===================================================== -->
+
+<header class="topbar">
+
+    <div class="breadcrumb">
+
+        <a href="/courses">Courses</a>
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+        <span>Python Programming</span>
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+        <strong>Lesson 10</strong>
+
+    </div>
+
+
+    <div class="top-right">
+
+        <button class="top-btn">
+            <i class="fa-regular fa-bell"></i>
+        </button>
+
+        <button class="top-btn" id="themeToggle">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+
+
+        <div class="user">
+
+            <img src="{{ url_for('static', filename='images/profile.png') }}">
+
+            <div>
+
+                <strong>
+                    {{ session.get('user_name', 'Test User') }}
+                </strong>
+
+                <small>Student</small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="lesson-hero">
+
+    <div class="hero-text">
+
+        <span class="lesson-badge">
+
+            <i class="fa-solid fa-bolt"></i>
+
+            LESSON 10
+
+        </span>
+
+
+        <h1>Python Functions</h1>
+
+
+        <p>
+
+            Learn how to create reusable blocks of code
+            using Python functions and make your programs
+            cleaner and easier to understand.
+
+        </p>
+
+
+        <div class="hero-info">
+
+            <span>
+
+                <i class="fa-regular fa-clock"></i>
+
+                30 min
+
+            </span>
+
+
+            <span>
+
+                <i class="fa-solid fa-signal"></i>
+
+                Beginner
+
+            </span>
+
+
+            <span class="xp">
+
+                <i class="fa-solid fa-star"></i>
+
+                +100 XP
+
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-character">
+
+        <div class="floating-star star-one">
+            ✦
+        </div>
+
+        <div class="floating-star star-two">
+            ✦
+        </div>
+
+
+        <div class="python-orb">
+
+            <i class="fa-brands fa-python"></i>
+
+        </div>
+
+
+        <span>
+            Build reusable code!
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PROGRESS
+===================================================== -->
+
+<section class="progress-card">
+
+    <div class="progress-top">
+
+        <div>
+
+            <span>LESSON JOURNEY</span>
+
+            <h3>Your Progress</h3>
+
+        </div>
+
+        <strong id="progressPercent">0%</strong>
+
+    </div>
+
+
+    <div class="progress-track">
+
+        <div class="progress-fill"
+             id="progressFill"
+             style="width:0%;">
+
+        </div>
+
+    </div>
+
+
+    <div class="steps">
+
+        <div class="step active" data-step="learn">
+
+            <div class="step-circle">
+                <i class="fa-solid fa-book-open"></i>
+            </div>
+
+            <span>Learn</span>
+
+        </div>
+
+
+        <div class="line"></div>
+
+
+        <div class="step" data-step="try">
+
+            <div class="step-circle">
+                <i class="fa-solid fa-code"></i>
+            </div>
+
+            <span>Try</span>
+
+        </div>
+
+
+        <div class="line"></div>
+
+
+        <div class="step" data-step="practice">
+
+            <div class="step-circle">
+                <i class="fa-solid fa-pen"></i>
+            </div>
+
+            <span>Practice</span>
+
+        </div>
+
+
+        <div class="line"></div>
+
+
+        <div class="step" data-step="quiz">
+
+            <div class="step-circle">
+                <i class="fa-solid fa-question"></i>
+            </div>
+
+            <span>Quiz</span>
+
+        </div>
+
+
+        <div class="line"></div>
+
+
+        <div class="step" data-step="complete">
+
+            <div class="step-circle">
+                <i class="fa-solid fa-trophy"></i>
+            </div>
+
+            <span>Complete</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     NAVIGATION TABS
+===================================================== -->
+
+<div class="learning-nav">
+
+    <button class="nav-tab active" data-section="learn">
+
+        <i class="fa-solid fa-book-open"></i>
+
+        Learn
+
+    </button>
+
+
+    <button class="nav-tab" data-section="try">
+
+        <i class="fa-solid fa-code"></i>
+
+        Try
+
+    </button>
+
+
+    <button class="nav-tab" data-section="practice">
+
+        <i class="fa-solid fa-pen"></i>
+
+        Practice
+
+    </button>
+
+
+    <button class="nav-tab" data-section="quiz">
+
+        <i class="fa-solid fa-circle-question"></i>
+
+        Quiz
+
+    </button>
+
+
+    <button class="nav-tab" data-section="complete">
+
+        <i class="fa-solid fa-trophy"></i>
+
+        Finish
+
+    </button>
+
+</div>
+
+
+<!-- =====================================================
+     LEARN
+===================================================== -->
+
+<section class="learning-section active-section" id="learn">
+
+
+    <div class="section-title">
+
+        <span class="number">01</span>
+
+        <div>
+
+            <small>LET'S BEGIN</small>
+
+            <h2>What is a Function?</h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="learning-grid">
+
+
+        <div class="lesson-card main-card">
+
+            <p>
+
+                A function is a reusable block of code
+                that performs a particular task.
+
+            </p>
+
+
+            <p>
+
+                Instead of writing the same code again
+                and again, we can place it inside a
+                function and call it whenever we need it.
+
+            </p>
+
+
+            <div class="highlight">
+
+                <i class="fa-solid fa-lightbulb"></i>
+
+                <div>
+
+                    <strong>Simple idea</strong>
+
+                    <p>
+
+                        Write once → reuse many times.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="fact-card">
+
+            <div class="fact-icon">
+
+                <i class="fa-solid fa-gears"></i>
+
+            </div>
+
+
+            <h3>Why Use Functions?</h3>
+
+
+            <div class="fact">
+
+                <i class="fa-solid fa-check"></i>
+
+                <span>Reuse code</span>
+
+            </div>
+
+
+            <div class="fact">
+
+                <i class="fa-solid fa-check"></i>
+
+                <span>Reduce repetition</span>
+
+            </div>
+
+
+            <div class="fact">
+
+                <i class="fa-solid fa-check"></i>
+
+                <span>Organize programs</span>
+
+            </div>
+
+
+            <div class="fact">
+
+                <i class="fa-solid fa-check"></i>
+
+                <span>Make code easier to maintain</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         CREATING A FUNCTION
+    ================================================= -->
+
+    <div class="real-world">
+
+        <div class="real-title">
+
+            <div class="real-icon">
+
+                <i class="fa-solid fa-code"></i>
+
+            </div>
+
+
+            <div>
+
+                <small>FIRST STEP</small>
+
+                <h2>Creating a Function</h2>
+
+            </div>
+
+        </div>
+
+
+        <p>
+
+            Python uses the <strong>def</strong> keyword
+            to create a function.
+
+        </p>
+
+
+        <div class="example-code">
+
+            <span>Python</span>
+
+<pre><code>def greet():
+    print("Hello!")
+
+greet()</code></pre>
+
+        </div>
+
+
+        <div class="world-grid">
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-key"></i>
+
+                <h3>def</h3>
+
+                <p>
+                    Starts a function definition.
+                </p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-tag"></i>
+
+                <h3>greet</h3>
+
+                <p>
+                    The name of the function.
+                </p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-code"></i>
+
+                <h3>Body</h3>
+
+                <p>
+                    Contains the code to execute.
+                </p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-play"></i>
+
+                <h3>Call</h3>
+
+                <p>
+                    greet() runs the function.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         PARAMETERS
+    ================================================= -->
+
+    <div class="mini-lesson">
+
+        <div class="mini-step">
+
+            <span>IMPORTANT CONCEPT</span>
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </div>
+
+
+        <h3>Parameters and Arguments</h3>
+
+
+        <p>
+
+            A function can receive information through
+            <strong>parameters</strong>.
+
+            The actual value passed to the function is
+            called an <strong>argument</strong>.
+
+        </p>
+
+
+        <div class="example-code">
+
+            <span>Example</span>
+
+<pre><code>def greet(name):
+    print("Hello", name)
+
+greet("Afa")</code></pre>
+
+        </div>
+
+
+        <div class="highlight">
+
+            <i class="fa-solid fa-lightbulb"></i>
+
+            <div>
+
+                <strong>Remember</strong>
+
+                <p>
+
+                    <strong>name</strong> is the parameter.
+
+                    <br>
+
+                    <strong>"Afa"</strong> is the argument.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MULTIPLE PARAMETERS
+    ================================================= -->
+
+    <div class="mini-lesson">
+
+        <div class="mini-step">
+
+            <span>LEVEL UP</span>
+
+            <i class="fa-solid fa-users"></i>
+
+        </div>
+
+
+        <h3>Multiple Parameters</h3>
+
+
+        <p>
+
+            A function can accept more than one parameter.
+
+        </p>
+
+
+        <div class="example-code">
+
+            <span>Python</span>
+
+<pre><code>def add(a, b):
+    print(a + b)
+
+add(10, 20)</code></pre>
+
+        </div>
+
+
+        <p>
+
+            Here, <strong>a</strong> receives 10 and
+            <strong>b</strong> receives 20.
+
+        </p>
+
+    </div>
+
+
+    <!-- =================================================
+         RETURN
+    ================================================= -->
+
+    <div class="real-world">
+
+        <div class="real-title">
+
+            <div class="real-icon">
+
+                <i class="fa-solid fa-arrow-turn-up"></i>
+
+            </div>
+
+
+            <div>
+
+                <small>IMPORTANT</small>
+
+                <h2>Returning a Value</h2>
+
+            </div>
+
+        </div>
+
+
+        <p>
+
+            The <strong>return</strong> statement sends
+            a value back from a function.
+
+        </p>
+
+
+        <div class="example-code">
+
+            <span>Python</span>
+
+<pre><code>def add(a, b):
+    return a + b
+
+result = add(10, 20)
+
+print(result)</code></pre>
+
+        </div>
+
+
+        <div class="world-grid">
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-right-long"></i>
+
+                <h3>Input</h3>
+
+                <p>
+                    Values enter the function.
+                </p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-gears"></i>
+
+                <h3>Process</h3>
+
+                <p>
+                    The function performs a task.
+                </p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+                <h3>Return</h3>
+
+                <p>
+                    A result is sent back.
+                </p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-print"></i>
+
+                <h3>Output</h3>
+
+                <p>
+                    The result can be displayed or used.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         DEFAULT PARAMETERS
+    ================================================= -->
+
+    <div class="mini-lesson">
+
+        <div class="mini-step">
+
+            <span>USEFUL FEATURE</span>
+
+            <i class="fa-solid fa-sliders"></i>
+
+        </div>
+
+
+        <h3>Default Parameters</h3>
+
+
+        <p>
+
+            A parameter can have a default value.
+            That value is used when no argument is provided.
+
+        </p>
+
+
+        <div class="example-code">
+
+            <span>Example</span>
+
+<pre><code>def greet(name="Student"):
+    print("Hello", name)
+
+greet()
+greet("Afa")</code></pre>
+
+        </div>
+
+
+        <p>
+
+            The first call uses <strong>Student</strong>
+            as the default value.
+
+        </p>
+
+    </div>
+
+
+    <!-- =================================================
+         FUNCTION FLOW
+    ================================================= -->
+
+    <div class="real-world">
+
+        <div class="real-title">
+
+            <div class="real-icon">
+
+                <i class="fa-solid fa-diagram-project"></i>
+
+            </div>
+
+
+            <div>
+
+                <small>THINK LIKE A PROGRAMMER</small>
+
+                <h2>How a Function Works</h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="world-grid">
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-1"></i>
+
+                <h3>Define</h3>
+
+                <p>
+                    Create the function.
+                </p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-2"></i>
+
+                <h3>Call</h3>
+
+                <p>
+                    Run the function.
+                </p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-3"></i>
+
+                <h3>Process</h3>
+
+                <p>
+                    The function executes its code.
+                </p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-4"></i>
+
+                <h3>Return</h3>
+
+                <p>
+                    The result comes back.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <button class="next-btn"
+            onclick="goToSection('try')">
+
+        Continue to Try
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     TRY
+===================================================== -->
+
+<section class="learning-section" id="try">
+
+
+    <div class="section-title">
+
+        <span class="number">02</span>
+
+        <div>
+
+            <small>LEARN BY DOING</small>
+
+            <h2>Try It Yourself</h2>
+
+        </div>
+
+    </div>
+
+
+    <!-- CHALLENGE 1 -->
+
+    <div class="mini-lesson challenge">
+
+        <div class="mini-step">
+
+            <span>STEP 1</span>
+
+            <i class="fa-solid fa-hand-wave"></i>
+
+        </div>
+
+
+        <h3>Create a Greeting Function</h3>
+
+
+        <p>
+
+            Create a function named
+            <strong>greet()</strong> that prints
+            <strong>Hello, Python!</strong>.
+
+        </p>
+
+
+        <div class="code-editor">
+
+            <div class="editor-bar">
+
+                <span>
+                    <i class="fa-brands fa-python"></i>
+                    Python
+                </span>
+
+
+                <button onclick="runGreeting()">
+
+                    <i class="fa-solid fa-play"></i>
+
+                    Run
+
+                </button>
+
+            </div>
+
+
+            <textarea id="greetingCode"
+                      placeholder="Type your Python code here..."></textarea>
+
+
+            <div class="output-box">
+
+                <small>OUTPUT</small>
+
+                <div id="greetingOutput">
+
+                    Run your code to see the result.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="challenge-hint">
+
+            💡 Hint: Start with
+            <strong>def greet():</strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- CHALLENGE 2 -->
+
+    <div class="mini-lesson challenge">
+
+        <div class="mini-step">
+
+            <span>STEP 2</span>
+
+            <i class="fa-solid fa-plus"></i>
+
+        </div>
+
+
+        <h3>Create an Add Function</h3>
+
+
+        <p>
+
+            Create a function called
+            <strong>add(a, b)</strong>
+            that returns the sum of two numbers.
+
+        </p>
+
+
+        <div class="code-editor">
+
+            <div class="editor-bar">
+
+                <span>
+                    <i class="fa-brands fa-python"></i>
+                    Python
+                </span>
+
+
+                <button onclick="runAddFunction()">
+
+                    <i class="fa-solid fa-play"></i>
+
+                    Run
+
+                </button>
+
+            </div>
+
+
+            <textarea id="addCode"
+                      placeholder="Type your Python code here..."></textarea>
+
+
+            <div class="output-box">
+
+                <small>OUTPUT</small>
+
+                <div id="addOutput">
+
+                    Run your code to see the result.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="challenge-hint">
+
+            💡 Hint: Use
+            <strong>return a + b</strong>.
+
+        </div>
+
+    </div>
+
+
+    <!-- CHALLENGE 3 -->
+
+    <div class="mini-lesson challenge">
+
+        <div class="mini-step">
+
+            <span>STEP 3</span>
+
+            <i class="fa-solid fa-user"></i>
+
+        </div>
+
+
+        <h3>Use a Parameter</h3>
+
+
+        <p>
+
+            Create a function called
+            <strong>square(number)</strong>
+            that returns the square of a number.
+
+        </p>
+
+
+        <div class="code-editor">
+
+            <div class="editor-bar">
+
+                <span>
+                    <i class="fa-brands fa-python"></i>
+                    Python
+                </span>
+
+
+                <button onclick="runSquareFunction()">
+
+                    <i class="fa-solid fa-play"></i>
+
+                    Run
+
+                </button>
+
+            </div>
+
+
+            <textarea id="squareCode"
+                      placeholder="Type your Python code here..."></textarea>
+
+
+            <div class="output-box">
+
+                <small>OUTPUT</small>
+
+                <div id="squareOutput">
+
+                    Run your code to see the result.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="challenge-hint">
+
+            💡 Hint:
+            <strong>return number * number</strong>
+
+        </div>
+
+    </div>
+
+
+    <button class="next-btn"
+            onclick="goToSection('practice')">
+
+        Continue to Practice
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     PRACTICE
+===================================================== -->
+
+<section class="learning-section" id="practice">
+
+
+    <div class="section-title">
+
+        <span class="number">03</span>
+
+        <div>
+
+            <small>MINI CHALLENGE</small>
+
+            <h2>Function Builder</h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="assignment-card">
+
+
+        <div class="assignment-top">
+
+            <div class="assignment-icon">
+
+                <i class="fa-solid fa-puzzle-piece"></i>
+
+            </div>
+
+
+            <div>
+
+                <span>MISSION 10</span>
+
+                <h3>Calculate the Total</h3>
+
+            </div>
+
+        </div>
+
+
+        <p>
+
+            Create a function called
+            <strong>calculate_total(price, quantity)</strong>.
+
+            It should multiply the price by the quantity
+            and return the result.
+
+        </p>
+
+
+        <div class="target-output">
+
+            Example:
+
+            <br><br>
+
+            <strong>price = 50</strong>
+
+            <br>
+
+            <strong>quantity = 3</strong>
+
+            <br><br>
+
+            Expected result:
+
+            <br>
+
+            <strong>150</strong>
+
+        </div>
+
+
+        <div class="final-editor">
+
+            <textarea id="practiceCode"
+                      placeholder="# Write your Python code here"></textarea>
+
+
+            <button onclick="checkPracticeChallenge()">
+
+                <i class="fa-solid fa-play"></i>
+
+                Run My Code
+
+            </button>
+
+        </div>
+
+
+        <div id="practiceResult"
+             class="final-result">
+
+        </div>
+
+    </div>
+
+
+    <button class="next-btn"
+            onclick="goToSection('quiz')">
+
+        Continue to Quiz
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     QUIZ
+===================================================== -->
+
+<section class="learning-section" id="quiz">
+
+
+    <div class="section-title">
+
+        <span class="number">04</span>
+
+        <div>
+
+            <small>CHECK YOUR KNOWLEDGE</small>
+
+            <h2>Quick Quiz</h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="assignment-card">
+
+
+        <div class="assignment-top">
+
+            <div class="assignment-icon">
+
+                <i class="fa-solid fa-question"></i>
+
+            </div>
+
+
+            <div>
+
+                <span>QUESTION 01</span>
+
+                <h3>
+
+                    Which keyword is used to define
+                    a function in Python?
+
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="quiz-options">
+
+
+            <button class="quiz-option"
+                    onclick="checkAnswer(this, false)">
+
+                A. function
+
+            </button>
+
+
+            <button class="quiz-option"
+                    onclick="checkAnswer(this, true)">
+
+                B. def
+
+            </button>
+
+
+            <button class="quiz-option"
+                    onclick="checkAnswer(this, false)">
+
+                C. fun
+
+            </button>
+
+
+            <button class="quiz-option"
+                    onclick="checkAnswer(this, false)">
+
+                D. create
+
+            </button>
+
+        </div>
+
+
+        <div id="quizResult"
+             class="final-result">
+
+        </div>
+
+    </div>
+
+
+    <button class="continue-complete"
+            onclick="goToSection('complete')">
+
+        Continue
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     COMPLETE
+===================================================== -->
+
+<section class="learning-section" id="complete">
+
+
+    <div class="section-title">
+
+        <span class="number">05</span>
+
+        <div>
+
+            <small>LESSON COMPLETE</small>
+
+            <h2>You Did It! 🎉</h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="assignment-card">
+
+
+        <div class="assignment-icon">
+
+            <i class="fa-solid fa-trophy"></i>
+
+        </div>
+
+
+        <h3>
+            Python Functions Completed!
+        </h3>
+
+
+        <p>
+
+            Great work!
+
+            You now understand functions,
+            parameters, arguments, return values
+            and default parameters.
+
+        </p>
+
+
+        <div class="highlight">
+
+            <i class="fa-solid fa-star"></i>
+
+            <div>
+
+                <strong>+100 XP Earned</strong>
+
+                <p>
+                    You completed Lesson 10.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <a href="/courses"
+           class="next-btn">
+
+            Back to Courses
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </a>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+/* =====================================================
+   SECTION NAVIGATION
+===================================================== */
+
+const sections = [
+    "learn",
+    "try",
+    "practice",
+    "quiz",
+    "complete"
+];
+
+
+const sectionProgress = {
+
+    learn: 0,
+    try: 25,
+    practice: 50,
+    quiz: 75,
+    complete: 100
+
+};
+
+
+function goToSection(sectionName) {
+
+    sections.forEach(section => {
+
+        const element =
+            document.getElementById(section);
+
+        if (element) {
+
+            element.classList.remove(
+                "active-section"
+            );
+
+        }
+
+    });
+
+
+    const selected =
+        document.getElementById(sectionName);
+
+
+    if (selected) {
+
+        selected.classList.add(
+            "active-section"
+        );
+
+        selected.scrollIntoView({
+
+            behavior: "smooth",
+
+            block: "start"
+
+        });
+
+    }
+
+
+    document
+        .querySelectorAll(".nav-tab")
+        .forEach(tab => {
+
+            tab.classList.remove("active");
+
+
+            if (
+                tab.dataset.section === sectionName
+            ) {
+
+                tab.classList.add("active");
+
+            }
+
+        });
+
+
+    document
+        .querySelectorAll(".step")
+        .forEach(step => {
+
+            step.classList.remove("active");
+
+
+            const current =
+                sections.indexOf(sectionName);
+
+
+            const stepIndex =
+                sections.indexOf(
+                    step.dataset.step
+                );
+
+
+            if (stepIndex <= current) {
+
+                step.classList.add("active");
+
+            }
+
+        });
+
+
+    const progress =
+        sectionProgress[sectionName] || 0;
+
+
+    document.getElementById(
+        "progressPercent"
+    ).textContent =
+        progress + "%";
+
+
+    document.getElementById(
+        "progressFill"
+    ).style.width =
+        progress + "%";
+
+}
+
+
+/* =====================================================
+   NAV TABS
+===================================================== */
+
+document
+    .querySelectorAll(".nav-tab")
+    .forEach(tab => {
+
+        tab.addEventListener(
+            "click",
+            () => {
+
+                goToSection(
+                    tab.dataset.section
+                );
+
+            }
+        );
+
+    });
+
+
+/* =====================================================
+   THEME
+===================================================== */
+
+const themeBtn =
+    document.getElementById("themeToggle");
+
+if (themeBtn) {
+
+    const icon =
+        themeBtn.querySelector("i");
+
+    // Restore saved theme
+    if (localStorage.getItem("theme") === "light") {
+
+        document.body.classList.add("light-mode");
+
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
+
+    }
+
+    themeBtn.addEventListener("click", () => {
+
+        document.body.classList.toggle("light-mode");
+
+        if (
+            document.body.classList.contains(
+                "light-mode"
+            )
+        ) {
+
+            localStorage.setItem(
+                "theme",
+                "light"
+            );
+
+            icon.classList.remove("fa-moon");
+            icon.classList.add("fa-sun");
+
+        } else {
+
+            localStorage.setItem(
+                "theme",
+                "dark"
+            );
+
+            icon.classList.remove("fa-sun");
+            icon.classList.add("fa-moon");
+
+        }
+
+    });
+
+}
+
+
+/* =====================================================
+   GREETING FUNCTION
+===================================================== */
+
+function runGreeting() {
+
+    const code =
+        document.getElementById(
+            "greetingCode"
+        ).value.trim();
+
+
+    const output =
+        document.getElementById(
+            "greetingOutput"
+        );
+
+
+    if (
+        code.includes("def") &&
+        code.includes("greet") &&
+        code.includes("Hello")
+    ) {
+
+        output.innerHTML =
+            "Hello, Python!<br><br>✓ Correct! You created and called a function.";
+
+    } else {
+
+        output.innerHTML =
+            "💡 Hint: Create a function named greet() and print Hello, Python!";
+
+    }
+
+}
+
+
+/* =====================================================
+   ADD FUNCTION
+===================================================== */
+
+function runAddFunction() {
+
+    const code =
+        document.getElementById(
+            "addCode"
+        ).value.trim();
+
+
+    const output =
+        document.getElementById(
+            "addOutput"
+        );
+
+
+    if (
+        code.includes("def") &&
+        code.includes("add") &&
+        code.includes("return")
+    ) {
+
+        output.innerHTML =
+            "30<br><br>✓ Great! Your function returned the sum.";
+
+    } else {
+
+        output.innerHTML =
+            "💡 Hint: Create add(a, b) and return a + b.";
+
+    }
+
+}
+
+
+/* =====================================================
+   SQUARE FUNCTION
+===================================================== */
+
+function runSquareFunction() {
+
+    const code =
+        document.getElementById(
+            "squareCode"
+        ).value.trim();
+
+
+    const output =
+        document.getElementById(
+            "squareOutput"
+        );
+
+
+    if (
+        code.includes("def") &&
+        code.includes("square") &&
+        code.includes("return")
+    ) {
+
+        output.innerHTML =
+            "25<br><br>✓ Excellent! Your function calculates a square.";
+
+    } else {
+
+        output.innerHTML =
+            "💡 Hint: Create square(number) and return number * number.";
+
+    }
+
+}
+
+
+/* =====================================================
+   PRACTICE
+===================================================== */
+
+function checkPracticeChallenge() {
+
+    const code =
+        document.getElementById(
+            "practiceCode"
+        ).value.trim();
+
+
+    const result =
+        document.getElementById(
+            "practiceResult"
+        );
+
+
+    if (
+        code.includes("def") &&
+        code.includes("calculate_total") &&
+        code.includes("return")
+    ) {
+
+        result.innerHTML =
+            "🎉 Excellent! Your function calculates the total correctly. +30 XP";
+
+        result.classList.add(
+            "success"
+        );
+
+    } else {
+
+        result.innerHTML =
+            "💡 Hint: Create calculate_total(price, quantity) and return price * quantity.";
+
+    }
+
+}
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+function checkAnswer(button, correct) {
+
+    const result =
+        document.getElementById(
+            "quizResult"
+        );
+
+
+    document
+        .querySelectorAll(".quiz-option")
+        .forEach(option => {
+
+            option.disabled = true;
+
+        });
+
+
+    if (correct) {
+
+        button.classList.add(
+            "correct"
+        );
+
+
+        result.innerHTML =
+            "🎉 Correct! The def keyword is used to define a function. +10 XP";
+
+    } else {
+
+        button.classList.add(
+            "wrong"
+        );
+
+
+        result.innerHTML =
+            "Not quite. The correct answer is <strong>def</strong>.";
+
+    }
+
+}
+
+
+/* =====================================================
+   INITIAL STATE
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        goToSection("learn");
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>

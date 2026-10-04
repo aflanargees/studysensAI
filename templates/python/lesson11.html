@@ -1,0 +1,2250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 11 | Error & File Handling</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/lesson.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        <i class="fa-solid fa-brain"></i>
+        <span>StudySense</span> <b>AI</b>
+    </div>
+
+    <nav>
+
+        <a href="/dashboard">
+            <i class="fa-solid fa-house"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="/courses" class="active">
+            <i class="fa-solid fa-book-open"></i>
+            <span>Courses</span>
+        </a>
+
+        <a href="/ai-tutor">
+            <i class="fa-solid fa-robot"></i>
+            <span>AI Tutor</span>
+        </a>
+
+        <a href="/quiz">
+            <i class="fa-solid fa-circle-question"></i>
+            <span>Quiz</span>
+        </a>
+
+        <a href="/projects">
+            <i class="fa-solid fa-code"></i>
+            <span>Projects</span>
+        </a>
+
+        <a href="/profile">
+            <i class="fa-solid fa-user"></i>
+            <span>Profile</span>
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-gear"></i>
+            <span>Settings</span>
+        </a>
+
+    </nav>
+
+    <div class="logout">
+        <a href="/logout">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+        </a>
+    </div>
+
+</aside>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="main">
+
+<!-- =====================================================
+     TOPBAR
+===================================================== -->
+
+<header class="topbar">
+
+    <div class="breadcrumb">
+
+        <a href="/courses">Courses</a>
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+        <span>Python Programming</span>
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+        <strong>Lesson 11</strong>
+
+    </div>
+
+
+    <div class="top-right">
+
+        <button class="top-btn">
+            <i class="fa-regular fa-bell"></i>
+        </button>
+
+        <button class="top-btn" id="themeToggle">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+
+
+        <div class="user">
+
+            <img src="{{ url_for('static', filename='images/profile.png') }}">
+
+            <div>
+
+                <strong>
+                    {{ session.get('user_name', 'Test User') }}
+                </strong>
+
+                <small>Student</small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="lesson-hero">
+
+    <div class="hero-text">
+
+        <span class="lesson-badge">
+
+            <i class="fa-solid fa-bolt"></i>
+
+            LESSON 11
+
+        </span>
+
+
+        <h1>Error & File Handling</h1>
+
+
+        <p>
+
+            Learn how to handle errors safely and work
+            with files so your Python programs can deal
+            with real-world situations.
+
+        </p>
+
+
+        <div class="hero-info">
+
+            <span>
+
+                <i class="fa-regular fa-clock"></i>
+
+                35 min
+
+            </span>
+
+
+            <span>
+
+                <i class="fa-solid fa-signal"></i>
+
+                Beginner
+
+            </span>
+
+
+            <span class="xp">
+
+                <i class="fa-solid fa-star"></i>
+
+                +100 XP
+
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-character">
+
+        <div class="floating-star star-one">
+            ✦
+        </div>
+
+        <div class="floating-star star-two">
+            ✦
+        </div>
+
+
+        <div class="python-orb">
+
+            <i class="fa-brands fa-python"></i>
+
+        </div>
+
+
+        <span>
+            Handle errors. Work with files!
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PROGRESS
+===================================================== -->
+
+<section class="progress-card">
+
+    <div class="progress-top">
+
+        <div>
+
+            <span>LESSON JOURNEY</span>
+
+            <h3>Your Progress</h3>
+
+        </div>
+
+        <strong id="progressPercent">0%</strong>
+
+    </div>
+
+
+    <div class="progress-track">
+
+        <div class="progress-fill"
+             id="progressFill"
+             style="width:0%;">
+
+        </div>
+
+    </div>
+
+
+    <div class="steps">
+
+        <div class="step active" data-step="learn">
+
+            <div class="step-circle">
+                <i class="fa-solid fa-book-open"></i>
+            </div>
+
+            <span>Learn</span>
+
+        </div>
+
+
+        <div class="line"></div>
+
+
+        <div class="step" data-step="try">
+
+            <div class="step-circle">
+                <i class="fa-solid fa-code"></i>
+            </div>
+
+            <span>Try</span>
+
+        </div>
+
+
+        <div class="line"></div>
+
+
+        <div class="step" data-step="practice">
+
+            <div class="step-circle">
+                <i class="fa-solid fa-pen"></i>
+            </div>
+
+            <span>Practice</span>
+
+        </div>
+
+
+        <div class="line"></div>
+
+
+        <div class="step" data-step="quiz">
+
+            <div class="step-circle">
+                <i class="fa-solid fa-question"></i>
+            </div>
+
+            <span>Quiz</span>
+
+        </div>
+
+
+        <div class="line"></div>
+
+
+        <div class="step" data-step="complete">
+
+            <div class="step-circle">
+                <i class="fa-solid fa-trophy"></i>
+            </div>
+
+            <span>Complete</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<div class="learning-nav">
+
+    <button class="nav-tab active" data-section="learn">
+
+        <i class="fa-solid fa-book-open"></i>
+
+        Learn
+
+    </button>
+
+
+    <button class="nav-tab" data-section="try">
+
+        <i class="fa-solid fa-code"></i>
+
+        Try
+
+    </button>
+
+
+    <button class="nav-tab" data-section="practice">
+
+        <i class="fa-solid fa-pen"></i>
+
+        Practice
+
+    </button>
+
+
+    <button class="nav-tab" data-section="quiz">
+
+        <i class="fa-solid fa-circle-question"></i>
+
+        Quiz
+
+    </button>
+
+
+    <button class="nav-tab" data-section="complete">
+
+        <i class="fa-solid fa-trophy"></i>
+
+        Finish
+
+    </button>
+
+</div>
+
+
+<!-- =====================================================
+     LEARN
+===================================================== -->
+
+<section class="learning-section active-section" id="learn">
+
+
+    <div class="section-title">
+
+        <span class="number">01</span>
+
+        <div>
+
+            <small>LET'S BEGIN</small>
+
+            <h2>Why Do We Need Error Handling?</h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="learning-grid">
+
+
+        <div class="lesson-card main-card">
+
+            <p>
+
+                Sometimes a Python program encounters a
+                problem while it is running.
+
+            </p>
+
+
+            <p>
+
+                For example, a user might enter text when
+                the program expects a number.
+
+            </p>
+
+
+            <div class="example-code">
+
+                <span>Problem</span>
+
+<pre><code>age = int(input("Enter your age: "))</code></pre>
+
+            </div>
+
+
+            <p>
+
+                If the user enters
+                <strong>hello</strong>, Python will produce
+                an error.
+
+            </p>
+
+
+            <div class="highlight">
+
+                <i class="fa-solid fa-lightbulb"></i>
+
+                <div>
+
+                    <strong>Good programs expect problems.</strong>
+
+                    <p>
+
+                        Error handling allows us to respond
+                        to errors instead of allowing the
+                        program to stop unexpectedly.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="fact-card">
+
+            <div class="fact-icon">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+            </div>
+
+
+            <h3>Error Handling Helps You</h3>
+
+
+            <div class="fact">
+
+                <i class="fa-solid fa-check"></i>
+
+                <span>Prevent unexpected crashes</span>
+
+            </div>
+
+
+            <div class="fact">
+
+                <i class="fa-solid fa-check"></i>
+
+                <span>Show useful messages</span>
+
+            </div>
+
+
+            <div class="fact">
+
+                <i class="fa-solid fa-check"></i>
+
+                <span>Handle invalid input</span>
+
+            </div>
+
+
+            <div class="fact">
+
+                <i class="fa-solid fa-check"></i>
+
+                <span>Build reliable programs</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         TRY EXCEPT
+    ================================================= -->
+
+    <div class="real-world">
+
+        <div class="real-title">
+
+            <div class="real-icon">
+
+                <i class="fa-solid fa-shield"></i>
+
+            </div>
+
+
+            <div>
+
+                <small>CORE CONCEPT</small>
+
+                <h2>try and except</h2>
+
+            </div>
+
+        </div>
+
+
+        <p>
+
+            Python provides <strong>try</strong> and
+            <strong>except</strong> to handle errors.
+
+        </p>
+
+
+        <div class="example-code">
+
+            <span>Python</span>
+
+<pre><code>try:
+    number = int(input("Enter a number: "))
+    print(number)
+
+except:
+    print("Please enter a valid number.")</code></pre>
+
+        </div>
+
+
+        <div class="world-grid">
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-play"></i>
+
+                <h3>try</h3>
+
+                <p>
+                    Contains code that might cause an error.
+                </p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                <h3>except</h3>
+
+                <p>
+                    Runs when an error occurs.
+                </p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-message"></i>
+
+                <h3>Message</h3>
+
+                <p>
+                    Gives the user useful information.
+                </p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-shield"></i>
+
+                <h3>Safe</h3>
+
+                <p>
+                    The program can continue safely.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         FINALLY
+    ================================================= -->
+
+    <div class="mini-lesson">
+
+        <div class="mini-step">
+
+            <span>NEXT STEP</span>
+
+            <i class="fa-solid fa-flag-checkered"></i>
+
+        </div>
+
+
+        <h3>The finally Block</h3>
+
+
+        <p>
+
+            The <strong>finally</strong> block runs whether
+            an error happens or not.
+
+        </p>
+
+
+        <div class="example-code">
+
+            <span>Example</span>
+
+<pre><code>try:
+    print("Hello")
+
+except:
+    print("Something went wrong")
+
+finally:
+    print("Program finished")</code></pre>
+
+        </div>
+
+
+        <div class="highlight">
+
+            <i class="fa-solid fa-lightbulb"></i>
+
+            <div>
+
+                <strong>Remember</strong>
+
+                <p>
+
+                    <strong>try</strong> → attempt the code
+
+                    <br>
+
+                    <strong>except</strong> → handle the error
+
+                    <br>
+
+                    <strong>finally</strong> → always runs
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         FILE HANDLING
+    ================================================= -->
+
+    <div class="section-title">
+
+        <span class="number">02</span>
+
+        <div>
+
+            <small>WORKING WITH DATA</small>
+
+            <h2>File Handling</h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="learning-grid">
+
+
+        <div class="lesson-card main-card">
+
+            <p>
+
+                Python can create, read and write files.
+
+            </p>
+
+
+            <p>
+
+                This allows programs to store information
+                even after the program is closed.
+
+            </p>
+
+
+            <div class="highlight">
+
+                <i class="fa-solid fa-folder-open"></i>
+
+                <div>
+
+                    <strong>Think of a file like storage.</strong>
+
+                    <p>
+
+                        Your program can put information
+                        into the file and retrieve it later.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="fact-card">
+
+            <div class="fact-icon">
+
+                <i class="fa-solid fa-file"></i>
+
+            </div>
+
+
+            <h3>Common File Operations</h3>
+
+
+            <div class="fact">
+
+                <i class="fa-solid fa-book-open"></i>
+
+                <span>Read</span>
+
+            </div>
+
+
+            <div class="fact">
+
+                <i class="fa-solid fa-pen"></i>
+
+                <span>Write</span>
+
+            </div>
+
+
+            <div class="fact">
+
+                <i class="fa-solid fa-plus"></i>
+
+                <span>Append</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         OPEN
+    ================================================= -->
+
+    <div class="real-world">
+
+        <div class="real-title">
+
+            <div class="real-icon">
+
+                <i class="fa-solid fa-folder"></i>
+
+            </div>
+
+
+            <div>
+
+                <small>FIRST STEP</small>
+
+                <h2>Opening a File</h2>
+
+            </div>
+
+        </div>
+
+
+        <p>
+
+            Python uses the <strong>open()</strong>
+            function to work with files.
+
+        </p>
+
+
+        <div class="example-code">
+
+            <span>Python</span>
+
+<pre><code>file = open("student.txt", "r")
+
+content = file.read()
+
+print(content)
+
+file.close()</code></pre>
+
+        </div>
+
+
+        <div class="world-grid">
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-file"></i>
+
+                <h3>File Name</h3>
+
+                <p>
+                    student.txt
+                </p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-book-open"></i>
+
+                <h3>Mode</h3>
+
+                <p>
+                    r means read.
+                </p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-eye"></i>
+
+                <h3>Read</h3>
+
+                <p>
+                    Get the file content.
+                </p>
+
+            </div>
+
+
+            <div class="world-item">
+
+                <i class="fa-solid fa-xmark"></i>
+
+                <h3>Close</h3>
+
+                <p>
+                    Close the file when finished.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         WRITE
+    ================================================= -->
+
+    <div class="mini-lesson">
+
+        <div class="mini-step">
+
+            <span>CREATE & SAVE</span>
+
+            <i class="fa-solid fa-pen"></i>
+
+        </div>
+
+
+        <h3>Writing to a File</h3>
+
+
+        <p>
+
+            The <strong>w</strong> mode allows us to write
+            data into a file.
+
+        </p>
+
+
+        <div class="example-code">
+
+            <span>Python</span>
+
+<pre><code>file = open("student.txt", "w")
+
+file.write("Welcome to StudySense AI!")
+
+file.close()</code></pre>
+
+        </div>
+
+
+        <div class="highlight">
+
+            <i class="fa-solid fa-triangle-exclamation"></i>
+
+            <div>
+
+                <strong>Be careful with "w"</strong>
+
+                <p>
+
+                    Write mode can replace the existing
+                    contents of a file.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         APPEND
+    ================================================= -->
+
+    <div class="mini-lesson">
+
+        <div class="mini-step">
+
+            <span>ADD MORE DATA</span>
+
+            <i class="fa-solid fa-plus"></i>
+
+        </div>
+
+
+        <h3>Appending to a File</h3>
+
+
+        <p>
+
+            The <strong>a</strong> mode adds new content
+            without removing the existing content.
+
+        </p>
+
+
+        <div class="example-code">
+
+            <span>Python</span>
+
+<pre><code>file = open("student.txt", "a")
+
+file.write("\nPython is fun!")
+
+file.close()</code></pre>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         WITH OPEN
+    ================================================= -->
+
+    <div class="real-world">
+
+        <div class="real-title">
+
+            <div class="real-icon">
+
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+            </div>
+
+
+            <div>
+
+                <small>BETTER WAY</small>
+
+                <h2>Using with open()</h2>
+
+            </div>
+
+        </div>
+
+
+        <p>
+
+            Python also provides a cleaner way to work
+            with files using <strong>with</strong>.
+
+        </p>
+
+
+        <div class="example-code">
+
+            <span>Python</span>
+
+<pre><code>with open("student.txt", "r") as file:
+    content = file.read()
+    print(content)</code></pre>
+
+        </div>
+
+
+        <div class="highlight">
+
+            <i class="fa-solid fa-lightbulb"></i>
+
+            <div>
+
+                <strong>Why use it?</strong>
+
+                <p>
+
+                    Python automatically handles closing
+                    the file after the block finishes.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <button class="next-btn"
+            onclick="goToSection('try')">
+
+        Continue to Try
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     TRY
+===================================================== -->
+
+<section class="learning-section" id="try">
+
+
+    <div class="section-title">
+
+        <span class="number">03</span>
+
+        <div>
+
+            <small>LEARN BY DOING</small>
+
+            <h2>Try It Yourself</h2>
+
+        </div>
+
+    </div>
+
+
+    <!-- TRY 1 -->
+
+    <div class="mini-lesson challenge">
+
+        <div class="mini-step">
+
+            <span>STEP 1</span>
+
+            <i class="fa-solid fa-shield"></i>
+
+        </div>
+
+
+        <h3>Handle an Error</h3>
+
+
+        <p>
+
+            Create a program using
+            <strong>try</strong> and
+            <strong>except</strong> that safely converts
+            input into an integer.
+
+        </p>
+
+
+        <div class="code-editor">
+
+            <div class="editor-bar">
+
+                <span>
+
+                    <i class="fa-brands fa-python"></i>
+
+                    Python
+
+                </span>
+
+
+                <button onclick="runErrorChallenge()">
+
+                    <i class="fa-solid fa-play"></i>
+
+                    Run
+
+                </button>
+
+            </div>
+
+
+            <textarea id="errorCode"
+                      placeholder="Type your Python code here..."></textarea>
+
+
+            <div class="output-box">
+
+                <small>OUTPUT</small>
+
+                <div id="errorOutput">
+
+                    Run your code to see the result.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="challenge-hint">
+
+            💡 Hint: Use
+            <strong>try:</strong> and
+            <strong>except:</strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- TRY 2 -->
+
+    <div class="mini-lesson challenge">
+
+        <div class="mini-step">
+
+            <span>STEP 2</span>
+
+            <i class="fa-solid fa-file"></i>
+
+        </div>
+
+
+        <h3>Read a File</h3>
+
+
+        <p>
+
+            Write code that opens a file using
+            <strong>open()</strong> and reads its content.
+
+        </p>
+
+
+        <div class="code-editor">
+
+            <div class="editor-bar">
+
+                <span>
+
+                    <i class="fa-brands fa-python"></i>
+
+                    Python
+
+                </span>
+
+
+                <button onclick="runFileChallenge()">
+
+                    <i class="fa-solid fa-play"></i>
+
+                    Run
+
+                </button>
+
+            </div>
+
+
+            <textarea id="fileCode"
+                      placeholder="Type your Python code here..."></textarea>
+
+
+            <div class="output-box">
+
+                <small>OUTPUT</small>
+
+                <div id="fileOutput">
+
+                    Run your code to see the result.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="challenge-hint">
+
+            💡 Hint: Use
+            <strong>open("student.txt", "r")</strong>.
+
+        </div>
+
+    </div>
+
+
+    <!-- TRY 3 -->
+
+    <div class="mini-lesson challenge">
+
+        <div class="mini-step">
+
+            <span>STEP 3</span>
+
+            <i class="fa-solid fa-pen"></i>
+
+        </div>
+
+
+        <h3>Write to a File</h3>
+
+
+        <p>
+
+            Create code that opens
+            <strong>notes.txt</strong> in write mode
+            and stores a message inside it.
+
+        </p>
+
+
+        <div class="code-editor">
+
+            <div class="editor-bar">
+
+                <span>
+
+                    <i class="fa-brands fa-python"></i>
+
+                    Python
+
+                </span>
+
+
+                <button onclick="runWriteChallenge()">
+
+                    <i class="fa-solid fa-play"></i>
+
+                    Run
+
+                </button>
+
+            </div>
+
+
+            <textarea id="writeCode"
+                      placeholder="Type your Python code here..."></textarea>
+
+
+            <div class="output-box">
+
+                <small>OUTPUT</small>
+
+                <div id="writeOutput">
+
+                    Run your code to see the result.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="challenge-hint">
+
+            💡 Hint: Use mode <strong>"w"</strong> and
+            <strong>write()</strong>.
+
+        </div>
+
+    </div>
+
+
+    <button class="next-btn"
+            onclick="goToSection('practice')">
+
+        Continue to Practice
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     PRACTICE
+===================================================== -->
+
+<section class="learning-section" id="practice">
+
+
+    <div class="section-title">
+
+        <span class="number">04</span>
+
+        <div>
+
+            <small>MINI CHALLENGE</small>
+
+            <h2>Safe Student Records</h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="assignment-card">
+
+
+        <div class="assignment-top">
+
+            <div class="assignment-icon">
+
+                <i class="fa-solid fa-database"></i>
+
+            </div>
+
+
+            <div>
+
+                <span>MISSION 11</span>
+
+                <h3>Build a Safe File Program</h3>
+
+            </div>
+
+        </div>
+
+
+        <p>
+
+            Imagine you are building a student record
+            system.
+
+            Your program should safely open a file and
+            handle errors if something goes wrong.
+
+        </p>
+
+
+        <div class="target-output">
+
+            Your program should contain:
+
+            <br><br>
+
+            ✓ <strong>try</strong>
+
+            <br>
+
+            ✓ <strong>except</strong>
+
+            <br>
+
+            ✓ <strong>open()</strong>
+
+            <br>
+
+            ✓ Reading a file
+
+            <br>
+
+            ✓ A useful error message
+
+        </div>
+
+
+        <div class="final-editor">
+
+            <textarea id="practiceCode"
+                      placeholder="# Write your Python code here"></textarea>
+
+
+            <button onclick="checkPracticeChallenge()">
+
+                <i class="fa-solid fa-play"></i>
+
+                Run My Code
+
+            </button>
+
+        </div>
+
+
+        <div id="practiceResult"
+             class="final-result">
+
+        </div>
+
+    </div>
+
+
+    <button class="next-btn"
+            onclick="goToSection('quiz')">
+
+        Continue to Quiz
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     QUIZ
+===================================================== -->
+
+<section class="learning-section" id="quiz">
+
+
+    <div class="section-title">
+
+        <span class="number">05</span>
+
+        <div>
+
+            <small>CHECK YOUR KNOWLEDGE</small>
+
+            <h2>Quick Quiz</h2>
+
+        </div>
+
+    </div>
+
+
+    <!-- QUESTION 1 -->
+
+    <div class="assignment-card">
+
+
+        <div class="assignment-top">
+
+            <div class="assignment-icon">
+
+                <i class="fa-solid fa-question"></i>
+
+            </div>
+
+
+            <div>
+
+                <span>QUESTION 01</span>
+
+                <h3>
+
+                    Which keyword is used to handle
+                    an error in Python?
+
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="quiz-options">
+
+            <button class="quiz-option"
+                    onclick="checkAnswer(this, false)">
+
+                A. error
+
+            </button>
+
+
+            <button class="quiz-option"
+                    onclick="checkAnswer(this, true)">
+
+                B. except
+
+            </button>
+
+
+            <button class="quiz-option"
+                    onclick="checkAnswer(this, false)">
+
+                C. handle
+
+            </button>
+
+
+            <button class="quiz-option"
+                    onclick="checkAnswer(this, false)">
+
+                D. catch
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- QUESTION 2 -->
+
+    <div class="assignment-card">
+
+
+        <div class="assignment-top">
+
+            <div class="assignment-icon">
+
+                <i class="fa-solid fa-question"></i>
+
+            </div>
+
+
+            <div>
+
+                <span>QUESTION 02</span>
+
+                <h3>
+
+                    Which mode is commonly used to read
+                    a file?
+
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="quiz-options">
+
+            <button class="quiz-option"
+                    onclick="checkAnswer(this, false)">
+
+                A. w
+
+            </button>
+
+
+            <button class="quiz-option"
+                    onclick="checkAnswer(this, true)">
+
+                B. r
+
+            </button>
+
+
+            <button class="quiz-option"
+                    onclick="checkAnswer(this, false)">
+
+                C. a
+
+            </button>
+
+
+            <button class="quiz-option"
+                    onclick="checkAnswer(this, false)">
+
+                D. x
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- QUESTION 3 -->
+
+    <div class="assignment-card">
+
+
+        <div class="assignment-top">
+
+            <div class="assignment-icon">
+
+                <i class="fa-solid fa-question"></i>
+
+            </div>
+
+
+            <div>
+
+                <span>QUESTION 03</span>
+
+                <h3>
+
+                    Which mode is used to add content
+                    to an existing file?
+
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="quiz-options">
+
+            <button class="quiz-option"
+                    onclick="checkAnswer(this, false)">
+
+                A. r
+
+            </button>
+
+
+            <button class="quiz-option"
+                    onclick="checkAnswer(this, false)">
+
+                B. w
+
+            </button>
+
+
+            <button class="quiz-option"
+                    onclick="checkAnswer(this, true)">
+
+                C. a
+
+            </button>
+
+
+            <button class="quiz-option"
+                    onclick="checkAnswer(this, false)">
+
+                D. x
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <button class="continue-complete"
+            onclick="goToSection('complete')">
+
+        Continue
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     COMPLETE
+===================================================== -->
+
+<section class="learning-section" id="complete">
+
+
+    <div class="section-title">
+
+        <span class="number">06</span>
+
+        <div>
+
+            <small>LESSON COMPLETE</small>
+
+            <h2>Great Work! 🎉</h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="assignment-card">
+
+
+        <div class="assignment-icon">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+        </div>
+
+
+        <h3>
+
+            Error & File Handling Completed!
+
+        </h3>
+
+
+        <p>
+
+            You now know how to handle errors using
+            <strong>try</strong>,
+            <strong>except</strong> and
+            <strong>finally</strong>.
+
+            You also learned how to read, write and
+            append files.
+
+        </p>
+
+
+        <div class="highlight">
+
+            <i class="fa-solid fa-star"></i>
+
+            <div>
+
+                <strong>+100 XP Earned</strong>
+
+                <p>
+
+                    One more lesson before your final
+                    Python challenge!
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <a href="/lesson/python/12"
+           class="next-btn">
+
+            Continue to Lesson 12
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </a>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+/* =====================================================
+   SECTION NAVIGATION
+===================================================== */
+
+const sections = [
+    "learn",
+    "try",
+    "practice",
+    "quiz",
+    "complete"
+];
+
+
+const sectionProgress = {
+
+    learn: 0,
+    try: 25,
+    practice: 50,
+    quiz: 75,
+    complete: 100
+
+};
+
+
+function goToSection(sectionName) {
+
+    sections.forEach(section => {
+
+        const element =
+            document.getElementById(section);
+
+        if (element) {
+
+            element.classList.remove(
+                "active-section"
+            );
+
+        }
+
+    });
+
+
+    const selected =
+        document.getElementById(sectionName);
+
+
+    if (selected) {
+
+        selected.classList.add(
+            "active-section"
+        );
+
+        selected.scrollIntoView({
+
+            behavior: "smooth",
+
+            block: "start"
+
+        });
+
+    }
+
+
+    document
+        .querySelectorAll(".nav-tab")
+        .forEach(tab => {
+
+            tab.classList.remove("active");
+
+
+            if (
+                tab.dataset.section === sectionName
+            ) {
+
+                tab.classList.add("active");
+
+            }
+
+        });
+
+
+    document
+        .querySelectorAll(".step")
+        .forEach(step => {
+
+            step.classList.remove("active");
+
+
+            const current =
+                sections.indexOf(sectionName);
+
+
+            const stepIndex =
+                sections.indexOf(
+                    step.dataset.step
+                );
+
+
+            if (stepIndex <= current) {
+
+                step.classList.add("active");
+
+            }
+
+        });
+
+
+    const progress =
+        sectionProgress[sectionName] || 0;
+
+
+    document.getElementById(
+        "progressPercent"
+    ).textContent =
+        progress + "%";
+
+
+    document.getElementById(
+        "progressFill"
+    ).style.width =
+        progress + "%";
+
+}
+
+
+/* =====================================================
+   NAVIGATION TABS
+===================================================== */
+
+document
+    .querySelectorAll(".nav-tab")
+    .forEach(tab => {
+
+        tab.addEventListener(
+            "click",
+            () => {
+
+                goToSection(
+                    tab.dataset.section
+                );
+
+            }
+        );
+
+    });
+
+
+/* =====================================================
+   THEME
+===================================================== */
+const themeBtn =
+    document.getElementById("themeToggle");
+
+if (themeBtn) {
+
+    const icon =
+        themeBtn.querySelector("i");
+
+    // Restore saved theme
+    if (localStorage.getItem("theme") === "light") {
+
+        document.body.classList.add("light-mode");
+
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
+
+    }
+
+    themeBtn.addEventListener("click", () => {
+
+        document.body.classList.toggle("light-mode");
+
+        if (
+            document.body.classList.contains(
+                "light-mode"
+            )
+        ) {
+
+            localStorage.setItem(
+                "theme",
+                "light"
+            );
+
+            icon.classList.remove("fa-moon");
+            icon.classList.add("fa-sun");
+
+        } else {
+
+            localStorage.setItem(
+                "theme",
+                "dark"
+            );
+
+            icon.classList.remove("fa-sun");
+            icon.classList.add("fa-moon");
+
+        }
+
+    });
+
+}
+
+
+/* =====================================================
+   ERROR CHALLENGE
+===================================================== */
+
+function runErrorChallenge() {
+
+    const code =
+        document.getElementById(
+            "errorCode"
+        ).value.trim();
+
+
+    const output =
+        document.getElementById(
+            "errorOutput"
+        );
+
+
+    if (
+        code.includes("try") &&
+        code.includes("except")
+    ) {
+
+        output.innerHTML =
+            "Please enter a valid number.<br><br>✓ Great! You used error handling.";
+
+    } else {
+
+        output.innerHTML =
+            "💡 Hint: Use a try block for the conversion and an except block to handle the error.";
+
+    }
+
+}
+
+
+/* =====================================================
+   FILE READ CHALLENGE
+===================================================== */
+
+function runFileChallenge() {
+
+    const code =
+        document.getElementById(
+            "fileCode"
+        ).value.trim();
+
+
+    const output =
+        document.getElementById(
+            "fileOutput"
+        );
+
+
+    if (
+        code.includes("open") &&
+        code.includes("read")
+    ) {
+
+        output.innerHTML =
+            "Student information loaded successfully.<br><br>✓ File reading code detected.";
+
+    } else {
+
+        output.innerHTML =
+            "💡 Hint: Open the file in read mode and use read().";
+
+    }
+
+}
+
+
+/* =====================================================
+   FILE WRITE CHALLENGE
+===================================================== */
+
+function runWriteChallenge() {
+
+    const code =
+        document.getElementById(
+            "writeCode"
+        ).value.trim();
+
+
+    const output =
+        document.getElementById(
+            "writeOutput"
+        );
+
+
+    if (
+        code.includes("open") &&
+        code.includes('"w"') &&
+        code.includes("write")
+    ) {
+
+        output.innerHTML =
+            "Message saved to notes.txt.<br><br>✓ Excellent! You used write mode.";
+
+    } else {
+
+        output.innerHTML =
+            "💡 Hint: Use open() with \"w\" and then write().";
+
+    }
+
+}
+
+
+/* =====================================================
+   PRACTICE
+===================================================== */
+
+function checkPracticeChallenge() {
+
+    const code =
+        document.getElementById(
+            "practiceCode"
+        ).value.trim();
+
+
+    const result =
+        document.getElementById(
+            "practiceResult"
+        );
+
+
+    if (
+        code.includes("try") &&
+        code.includes("except") &&
+        code.includes("open")
+    ) {
+
+        result.innerHTML =
+            "🎉 Excellent! Your program includes error handling and file handling. +30 XP";
+
+        result.classList.add(
+            "success"
+        );
+
+    } else {
+
+        result.innerHTML =
+            "💡 Hint: Your solution should contain try, except and open().";
+
+    }
+
+}
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+function checkAnswer(button, correct) {
+
+    const parent =
+        button.parentElement;
+
+
+    parent
+        .querySelectorAll(".quiz-option")
+        .forEach(option => {
+
+            option.disabled = true;
+
+        });
+
+
+    if (correct) {
+
+        button.classList.add(
+            "correct"
+        );
+
+
+        const result =
+            document.createElement("div");
+
+
+        result.className =
+            "final-result success";
+
+
+        result.innerHTML =
+            "🎉 Correct! Great job.";
+
+        parent.after(result);
+
+    } else {
+
+        button.classList.add(
+            "wrong"
+        );
+
+
+        const result =
+            document.createElement("div");
+
+
+        result.className =
+            "final-result";
+
+
+        result.innerHTML =
+            "Not quite. Try to remember the concept and continue.";
+
+        parent.after(result);
+
+    }
+
+}
+
+
+/* =====================================================
+   INITIAL STATE
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        goToSection("learn");
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>
